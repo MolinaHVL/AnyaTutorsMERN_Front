@@ -15,8 +15,30 @@ const UserForm = () => {
         password: yup.string().required('necesitas una contraseña'),
     })
 
+    const { control, handleSubmit, reset } = useForm({
+        defaultValues: defaultValues,
+        resolver: yupResolver(UserFormSchema),
+        mode: 'all',
+    })
+
     return (
-        <h1>hey</h1>
+        <Box
+            id='user-form'
+            component='form'
+            onReset={() => reset(defaultValues)}
+            onSubmit={handleSubmit()}
+
+        >
+            <Grid container spacing={4}>
+                <Grid item xs={8}>
+                    <Controller
+                        control={control}
+                    >
+
+                    </Controller>
+                </Grid>
+            </Grid>
+        </Box>
     );
 }
 
