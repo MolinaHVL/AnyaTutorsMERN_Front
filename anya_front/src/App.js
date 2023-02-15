@@ -6,6 +6,18 @@ import StudentPage from './pages/StudentPage';
 import TeacherPage from './pages/TeacherPage';
 import LoginPage from './pages/LoginPage';
 
+/**
+ * Este es el componente principal de la aplicación.
+ * Contiene una barra de navegación y rutas que muestran diferentes páginas 
+ * según la URL actual. Las páginas disponibles son:
+ * - LoginPage: una página de inicio de sesión.
+ * - RolePage: una página que permite al usuario seleccionar su rol (estudiante o profesor).
+ * - StudentPage: una página para estudiantes.
+ * - TeacherPage: una página para profesores.
+ * 
+ * Este componente utiliza React Router para definir las rutas y mostrar las páginas.
+ */
+
 function App() {
   return (
     <>
