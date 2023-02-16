@@ -27,15 +27,40 @@ const UserForm = () => {
             component='form'
             onReset={() => reset(defaultValues)}
             onSubmit={handleSubmit()}
-
+            sx={{ padding: '24px' }}
         >
             <Grid container spacing={4}>
                 <Grid item xs={8}>
                     <Controller
                         control={control}
-                    >
-
-                    </Controller>
+                        name='email'
+                        render={({ field, fieldState }) => (
+                            <TextField
+                                {...field}
+                                label='Email'
+                                variant='outlined'
+                                fullWidth
+                                error={!!fieldState.error}
+                                helperText={fieldState.error?.message}
+                            />
+                        )}
+                    />
+                </Grid>
+                <Grid item xs={8}>
+                    <Controller
+                        control={control}
+                        name='password'
+                        render={({ field, fieldState }) => (
+                            <TextField
+                                {...field}
+                                label='Password'
+                                variant='outlined'
+                                fullWidth
+                                error={!!fieldState.error}
+                                helperText={fieldState.error?.message}
+                            />
+                        )}
+                    />
                 </Grid>
             </Grid>
         </Box>
