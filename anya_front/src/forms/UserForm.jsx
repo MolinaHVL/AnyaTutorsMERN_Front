@@ -59,6 +59,7 @@ const UserForm = ({ email, setEmail, password, setPassword }) => {
                                 label='Password'
                                 variant='outlined'
                                 fullWidth
+                                type={'password'}
                                 value={password}
                                 onChange={(e) => {
                                     setPassword(e.target.value)
