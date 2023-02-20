@@ -1,7 +1,13 @@
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography';
+import useUser from '../hooks/useUser'
+
 
 const StudentPage = () => {
+
+    //custom hook para saber si el usuario esta logeado
+    const { user, isLoading } = useUser();
+
     return (
         <Box container sx={{
             display: "static",
@@ -14,8 +20,10 @@ const StudentPage = () => {
             color: "white",
             opacity: "0.75",
         }}>
-            <Typography color="white" display="block" fontSize={"36px"} padding={"5px"} marginBottom={"20px"}> Eres un estudiante </Typography>
-
+            {user
+                ? <Typography color="white" display="block" fontSize={"36px"} padding={"5px"} marginBottom={"20px"}> Eres un estudiante </Typography>
+                : <Typography color="white" display="block" fontSize={"36px"} padding={"5px"} marginBottom={"20px"}> Inicia sesion primero </Typography>
+            }
         </Box>
 
     );

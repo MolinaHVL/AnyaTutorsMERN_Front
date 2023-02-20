@@ -3,7 +3,7 @@ import * as yup from 'yup'
 import { useForm, Controller } from 'react-hook-form'
 import { Box, Grid, TextField } from '@mui/material'
 
-const UserForm = () => {
+const UserForm = ({ email, setEmail, password, setPassword }) => {
 
     const defaultValues = {
         email: '',
@@ -25,7 +25,6 @@ const UserForm = () => {
         <Box
             id='user-form'
             component='form'
-            onReset={() => reset(defaultValues)}
             onSubmit={handleSubmit()}
             sx={{ padding: '24px' }}
         >
@@ -40,8 +39,12 @@ const UserForm = () => {
                                 label='Email'
                                 variant='outlined'
                                 fullWidth
-                                error={!!fieldState.error}
-                                helperText={fieldState.error?.message}
+                                value={email}
+                                onChange={(e) => {
+                                    setEmail(e.target.value)
+                                }}
+                            // error={!!fieldState.error}
+                            // helperText={fieldState.error?.message}
                             />
                         )}
                     />
@@ -56,8 +59,13 @@ const UserForm = () => {
                                 label='Password'
                                 variant='outlined'
                                 fullWidth
-                                error={!!fieldState.error}
-                                helperText={fieldState.error?.message}
+                                value={password}
+                                onChange={(e) => {
+                                    setPassword(e.target.value)
+                                }
+                                }
+                            // error={!!fieldState.error}
+                            // helperText={fieldState.error?.message}
                             />
                         )}
                     />

@@ -8,6 +8,7 @@ import LogUserModal from '../modals/LogUserModal'
 
 const LoginPage = () => {
 
+    // Hook para desplegar el LogUserModal
     const [isLogUserModalVisible, setIsLogUserModalVisible] = useState(false);
 
     return (
