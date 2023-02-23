@@ -6,6 +6,7 @@ import Button from '@mui/material/Button'
 import { useState } from 'react';
 import LogUserModal from '../modals/LogUserModal'
 
+
 const LoginPage = () => {
 
     // Hook para desplegar el LogUserModal
