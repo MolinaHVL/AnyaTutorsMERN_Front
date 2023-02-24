@@ -2,12 +2,12 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button"
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import UserLogInForm from "../forms/UserLogInForm";
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import Typography from "@mui/material/Typography";
+import UserRegisterForm from "../forms/UserRegisterForm";
 
 
-const UserLogPage = () => {
+const UserRegisterPage = () => {
 
     //Hooks para manejar el estado del error del form
     const [error, setError] = useState('')
@@ -17,12 +17,15 @@ const UserLogPage = () => {
 
     //Autenticación de firebase
     const handleLogIn = async (submit) => {
+        let message = ""
         try {
-            await signInWithEmailAndPassword(getAuth(), submit.email, submit.password)
+            if (submit.password !== submit.confirmPassword) {
+                setError('las contraseñas no coinciden, favor de verificar')
+                return
+            }
+            await createUserWithEmailAndPassword(getAuth(), submit.email, submit.password)
             navigate('/student')
         } catch (e) {
-            let message = ""
-
             switch (e.message) {
                 case "Firebase: Error (auth/invalid-email).":
                     message = "Direccion de e-mail invalida, favor de cambiarla"
@@ -55,7 +58,7 @@ const UserLogPage = () => {
         }}>
             <Typography fontSize={"24px"} color={"Black"}>Ingresa tus credenciales:</Typography>
             {error && <Typography sx={{ color: "#000" }}>{error}</Typography>}
-            <UserLogInForm onSubmit={handleLogIn} />
+            <UserRegisterForm onSubmit={handleLogIn} />
             <Button
                 variant='outlined'
                 form='user-form'
@@ -67,4 +70,4 @@ const UserLogPage = () => {
     );
 }
 
-export default UserLogPage;
+export default UserRegisterPage;

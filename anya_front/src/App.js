@@ -6,6 +6,7 @@ import StudentPage from './pages/StudentPage';
 import TeacherPage from './pages/TeacherPage';
 import Index from './pages/Index';
 import UserLogPage from './pages/UserLogPage';
+import UserRegisterPage from './pages/UserRegisterPage';
 
 /**
  * Este es el componente principal de la aplicación.
@@ -36,6 +37,10 @@ function App() {
           <Route
             exact path='/UserLogIn'
             element={<UserLogPage />}
+          />
+          <Route
+            exact path='/UserRegister'
+            element={<UserRegisterPage />}
           />
           <Route
             path='/student'

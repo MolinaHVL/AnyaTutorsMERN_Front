@@ -22,7 +22,7 @@ const RolePage = () => {
                     <Typography color="white" display="block" fontSize={"36px"} padding={"5px"} marginBottom={"20px"}>Elige tu rol: </Typography>
 
                     <Stack direction="row" display={"flex"}>
-                        <Link to="/student" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
+                        <Link to="/userRegister" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
 
                             <Button variant="contained"
                                 sx={{

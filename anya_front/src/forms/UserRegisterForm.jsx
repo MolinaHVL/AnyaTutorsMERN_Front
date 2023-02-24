@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { Box, Grid, TextField } from '@mui/material'
 
 
-const UserForm = ({ onSubmit }) => {
+const UserRegisterForm = ({ onSubmit }) => {
 
     const defaultValues = {
         email: '',
@@ -14,6 +14,7 @@ const UserForm = ({ onSubmit }) => {
     const UserFormSchema = yup.object().shape({
         email: yup.string().required('necesitas un email'),
         password: yup.string().required('necesitas una contraseña'),
+        confirmPassword: yup.string().required('confirma tu contraseña')
     })
 
     const { control, handleSubmit } = useForm({
@@ -63,9 +64,26 @@ const UserForm = ({ onSubmit }) => {
                         )}
                     />
                 </Grid>
+                <Grid item xs={8}>
+                    <Controller
+                        control={control}
+                        name='confirmPassword'
+                        render={({ field, fieldState }) => (
+                            <TextField
+                                {...field}
+                                label='Confirm Password'
+                                variant='outlined'
+                                fullWidth
+                                type={'password'}
+                                error={!!fieldState.error}
+                                helperText={fieldState.error?.message}
+                            />
+                        )}
+                    />
+                </Grid>
             </Grid>
         </Box>
     );
 }
 
-export default UserForm;
+export default UserRegisterForm;
