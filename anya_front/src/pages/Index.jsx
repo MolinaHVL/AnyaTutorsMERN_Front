@@ -3,14 +3,9 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { Link } from "react-router-dom"
 import Button from '@mui/material/Button'
-import { useState } from 'react';
-import LogUserModal from '../modals/LogUserModal'
 
 
-const LoginPage = () => {
-
-    // Hook para desplegar el LogUserModal
-    const [isLogUserModalVisible, setIsLogUserModalVisible] = useState(false);
+const Index = () => {
 
     return (
         <>
@@ -38,9 +33,8 @@ const LoginPage = () => {
                             </Typography>
                         </Box>
                         <Stack direction={"row"} paddingRight={{ xs: 0, md: "35px" }} display={"flex"}>
-                            <Link to="/" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
+                            <Link to="/UserLogIn" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
                                 <Button variant="contained"
-                                    onClick={() => setIsLogUserModalVisible(true)}
                                     sx={{
                                         background: "#8adaff",
                                         height: 64,
@@ -95,13 +89,8 @@ const LoginPage = () => {
                     />
                 </Stack>
             </Box>
-
-            <LogUserModal
-                open={isLogUserModalVisible}
-                onClose={() => setIsLogUserModalVisible(false)}
-            />
         </>
     );
 }
 
-export default LoginPage;
+export default Index;

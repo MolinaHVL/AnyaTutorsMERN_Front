@@ -4,7 +4,8 @@ import RolePage from './pages/RolePage';
 import { Route, Routes } from "react-router-dom";
 import StudentPage from './pages/StudentPage';
 import TeacherPage from './pages/TeacherPage';
-import LoginPage from './pages/LoginPage';
+import Index from './pages/Index';
+import UserLogPage from './pages/UserLogPage';
 
 /**
  * Este es el componente principal de la aplicación.
@@ -26,11 +27,15 @@ function App() {
         <Routes>
           <Route
             exact path='/'
-            element={<LoginPage />}
+            element={<Index />}
           />
           <Route
             exact path='/role'
             element={<RolePage />}
+          />
+          <Route
+            exact path='/UserLogIn'
+            element={<UserLogPage />}
           />
           <Route
             path='/student'

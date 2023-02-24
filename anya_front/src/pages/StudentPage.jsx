@@ -6,7 +6,7 @@ import useUser from '../hooks/useUser'
 const StudentPage = () => {
 
     //custom hook para saber si el usuario esta logeado
-    const { user, isLoading } = useUser();
+    const { user } = useUser();
 
     return (
         <Box container sx={{
