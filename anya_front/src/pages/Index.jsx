@@ -9,7 +9,7 @@ const Index = () => {
 
     return (
         <>
-            <Box container sx={{
+            <Box sx={{
                 display: "static",
                 width: "76%",
                 marginX: "10%",

@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 
 const TeacherPage = () => {
     return (
-        <Box container sx={{
+        <Box sx={{
             display: "static",
             width: "50%",
             marginX: "20%",

@@ -42,7 +42,7 @@ const UserLogPage = () => {
 
     return (
 
-        <Box container sx={{
+        <Box sx={{
             display: "static",
             width: "50%",
             marginX: "20%",

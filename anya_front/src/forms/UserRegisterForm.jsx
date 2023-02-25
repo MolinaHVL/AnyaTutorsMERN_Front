@@ -2,13 +2,15 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { useForm, Controller } from 'react-hook-form'
 import { Box, Grid, TextField } from '@mui/material'
+import { useEffect } from 'react'
 
 
-const UserRegisterForm = ({ onSubmit }) => {
+const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
 
     const defaultValues = {
         email: '',
         password: '',
+        confirmPasswordValue: ''
     }
 
     const UserFormSchema = yup.object().shape({
@@ -17,18 +19,34 @@ const UserRegisterForm = ({ onSubmit }) => {
         confirmPassword: yup.string().required('confirma tu contraseña')
     })
 
-    const { control, handleSubmit } = useForm({
+    const { control, handleSubmit, watch } = useForm({
         defaultValues: defaultValues,
         resolver: yupResolver(UserFormSchema),
         mode: 'all',
     })
+
+    const passwordValue = watch('password');
+    const emailValue = watch('email')
+    const confirmPasswordValue = watch('confirmPassword')
+
+    useEffect(() => {
+        setPassword(passwordValue);
+        // eslint-disable-next-line
+    }, [passwordValue]);
+
+    useEffect(() => {
+        setError('')
+        // eslint-disable-next-line
+    }, [passwordValue, emailValue, confirmPasswordValue])
 
     return (
         <Box
             id='user-form'
             component='form'
             onSubmit={handleSubmit(onSubmit)}
-            sx={{ padding: '24px' }}
+            sx={{
+                padding: '24px',
+            }}
         >
             <Grid container spacing={4}>
                 <Grid item xs={8}>
@@ -84,6 +102,7 @@ const UserRegisterForm = ({ onSubmit }) => {
             </Grid>
         </Box>
     );
+
 }
 
 export default UserRegisterForm;

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const RolePage = () => {
     return (
         <>
-            <Box container sx={{
+            <Box sx={{
                 display: "static",
                 width: "50%",
                 marginX: "20%",
