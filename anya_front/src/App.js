@@ -8,6 +8,7 @@ import Index from './pages/Index';
 import UserLogPage from './pages/UserLogPage';
 import UserRegisterPage from './pages/UserRegisterPage';
 
+
 /**
  * Este es el componente principal de la aplicación.
  * Contiene una barra de navegación y rutas que muestran diferentes páginas 
@@ -20,7 +21,9 @@ import UserRegisterPage from './pages/UserRegisterPage';
  * Este componente utiliza React Router para definir las rutas y mostrar las páginas.
  */
 
+
 function App() {
+
   return (
     <>
       <NavBar />

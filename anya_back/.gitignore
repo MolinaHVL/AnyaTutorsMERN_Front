@@ -1,0 +1,6 @@
+#dependencies
+/node_modules
+.env
+
+#credentials
+anyatutors_credentials.json
