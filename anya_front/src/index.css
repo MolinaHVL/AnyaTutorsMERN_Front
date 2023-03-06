@@ -16,6 +16,11 @@ code {
     monospace;
 }
 
+input[type="password"]::-ms-reveal,
+input[type="password"]::-webkit-reveal {
+    display: none;
+}
+
 html,
 body {
   height: 100%;

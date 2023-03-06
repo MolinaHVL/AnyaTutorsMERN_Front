@@ -1,10 +1,26 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
-import { useForm, Controller } from 'react-hook-form'
-import { Box, Grid, TextField } from '@mui/material'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { Box, Grid, TextField } from '@mui/material';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 
 const UserLogInForm = ({ onSubmit }) => {
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
 
     const defaultValues = {
         email: '',
@@ -12,8 +28,8 @@ const UserLogInForm = ({ onSubmit }) => {
     }
 
     const UserFormSchema = yup.object().shape({
-        email: yup.string().required('necesitas un email'),
-        password: yup.string().required('necesitas una contraseña'),
+        email: yup.string().required('Necesitas ingresar un email'),
+        password: yup.string().required('Necesitas ingresar una contraseña'),
     })
 
     const { control, handleSubmit } = useForm({
@@ -27,10 +43,16 @@ const UserLogInForm = ({ onSubmit }) => {
             id='user-form'
             component='form'
             onSubmit={handleSubmit(onSubmit)}
-            sx={{ padding: '24px' }}
+            sx={{ padding: '10px' }}
         >
-            <Grid container spacing={4}>
-                <Grid item xs={8}>
+            <Grid 
+                container 
+                spacing={4}
+                direction="column"
+                alignItems="center"
+                justify="center"
+            >
+                <Grid item xs={8} sx={{}}>
                     <Controller
                         control={control}
                         name='email'
@@ -46,23 +68,31 @@ const UserLogInForm = ({ onSubmit }) => {
                         )}
                     />
                 </Grid>
+
                 <Grid item xs={8}>
-                    <Controller
-                        control={control}
-                        name='password'
-                        render={({ field, fieldState }) => (
-                            <TextField
-                                {...field}
-                                label='Password'
-                                variant='outlined'
-                                fullWidth
-                                type={'password'}
-                                error={!!fieldState.error}
-                                helperText={fieldState.error?.message}
-                            />
-                        )}
-                    />
+                    <FormControl sx={{}} variant="outlined">
+                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                        <OutlinedInput
+                            id="outlined-adornment-password"
+                            type={showPassword ? 'text' : 'password'}
+                            noValidate
+                            endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end"
+                                >
+                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                            }
+                            label="Password"
+                        />
+                    </FormControl>
                 </Grid>
+                
             </Grid>
         </Box>
     );
