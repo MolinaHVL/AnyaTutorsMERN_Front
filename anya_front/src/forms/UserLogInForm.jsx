@@ -3,9 +3,6 @@ import * as yup from 'yup';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { Box, Grid, TextField } from '@mui/material';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import OutlinedInput from '@mui/material/OutlinedInput';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
@@ -15,9 +12,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 const UserLogInForm = ({ onSubmit }) => {
 
     const [showPassword, setShowPassword] = useState(false);
-
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
@@ -45,8 +40,8 @@ const UserLogInForm = ({ onSubmit }) => {
             onSubmit={handleSubmit(onSubmit)}
             sx={{ padding: '10px' }}
         >
-            <Grid 
-                container 
+            <Grid
+                container
                 spacing={4}
                 direction="column"
                 alignItems="center"
@@ -69,30 +64,37 @@ const UserLogInForm = ({ onSubmit }) => {
                     />
                 </Grid>
 
-                <Grid item xs={8}>
-                    <FormControl sx={{}} variant="outlined">
-                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-password"
-                            type={showPassword ? 'text' : 'password'}
-                            noValidate
-                            endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                                >
-                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                                </IconButton>
-                            </InputAdornment>
-                            }
-                            label="Password"
-                        />
-                    </FormControl>
+                <Grid item xs={8} sx={{}}>
+                    <Controller
+                        control={control}
+                        name='password'
+                        render={({ field, fieldState }) => (
+                            <TextField
+                                {...field}
+                                label='Password'
+                                type={showPassword ? 'text' : "password"}
+                                variant='outlined'
+                                fullWidth
+                                error={!!fieldState.error}
+                                helperText={fieldState.error?.message}
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                        )}
+                    />
                 </Grid>
-                
+
             </Grid>
         </Box>
     );

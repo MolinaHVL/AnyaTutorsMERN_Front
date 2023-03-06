@@ -1,11 +1,19 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { useForm, Controller } from 'react-hook-form'
-import { Box, Grid, TextField } from '@mui/material'
-import { useEffect } from 'react'
+import { Box, Grid, IconButton, InputAdornment, TextField } from '@mui/material'
+import { useEffect, useState } from 'react'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import Visibility from '@mui/icons-material/Visibility'
 
 
 const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
+
+    const [showPassword, setShowPassword] = useState(false);
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
 
     const defaultValues = {
         email: '',
@@ -45,10 +53,16 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
             component='form'
             onSubmit={handleSubmit(onSubmit)}
             sx={{
-                padding: '24px',
+                padding: '10px',
             }}
         >
-            <Grid container spacing={4}>
+            <Grid
+                container
+                spacing={4}
+                direction="column"
+                alignItems="center"
+                justify="center"
+            >
                 <Grid item xs={8}>
                     <Controller
                         control={control}
@@ -65,7 +79,7 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                         )}
                     />
                 </Grid>
-                <Grid item xs={8}>
+                <Grid item xs={8} sx={{}}>
                     <Controller
                         control={control}
                         name='password'
@@ -73,16 +87,29 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                             <TextField
                                 {...field}
                                 label='Password'
+                                type={showPassword ? 'text' : "password"}
                                 variant='outlined'
                                 fullWidth
-                                type={'password'}
                                 error={!!fieldState.error}
                                 helperText={fieldState.error?.message}
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                }}
                             />
                         )}
                     />
                 </Grid>
-                <Grid item xs={8}>
+                <Grid item xs={8} sx={{}}>
                     <Controller
                         control={control}
                         name='confirmPassword'
@@ -90,11 +117,24 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                             <TextField
                                 {...field}
                                 label='Confirm Password'
+                                type={showPassword ? 'text' : "password"}
                                 variant='outlined'
                                 fullWidth
-                                type={'password'}
                                 error={!!fieldState.error}
                                 helperText={fieldState.error?.message}
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                }}
                             />
                         )}
                     />

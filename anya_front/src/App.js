@@ -9,6 +9,7 @@ import UserLogPage from './pages/UserLogPage';
 import UserRegisterPage from './pages/UserRegisterPage';
 
 
+
 /**
  * Este es el componente principal de la aplicación.
  * Contiene una barra de navegación y rutas que muestran diferentes páginas 
@@ -24,6 +25,7 @@ import UserRegisterPage from './pages/UserRegisterPage';
 
 function App() {
 
+
   return (
     <>
       <NavBar />
@@ -38,11 +40,11 @@ function App() {
             element={<RolePage />}
           />
           <Route
-            exact path='/UserLogIn'
+            exact path='/userLogIn'
             element={<UserLogPage />}
           />
           <Route
-            exact path='/UserRegister'
+            exact path='/userRegister'
             element={<UserRegisterPage />}
           />
           <Route

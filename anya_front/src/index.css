@@ -1,6 +1,5 @@
 body {
   background-image: url('/public/background.jpg');
-  background-color: hotpink;
   background-size: cover;
   background-position: center;
   margin: 0;
@@ -18,7 +17,7 @@ code {
 
 input[type="password"]::-ms-reveal,
 input[type="password"]::-webkit-reveal {
-    display: none;
+  display: none;
 }
 
 html,
