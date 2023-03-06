@@ -21,7 +21,7 @@ const StudentPage = () => {
             opacity: "0.75",
         }}>
             {user
-                ? <Typography color="white" display="block" fontSize={"36px"} padding={"5px"} marginBottom={"20px"}> Eres un estudiante </Typography>
+                ? <Typography color="white" display="block" fontSize={"36px"} padding={"5px"} marginBottom={"20px"}> {user.uid} </Typography>
                 : <Typography color="white" display="block" fontSize={"36px"} padding={"5px"} marginBottom={"20px"}> Inicia sesion primero </Typography>
             }
         </Box>

@@ -53,10 +53,10 @@ const UserLogInForm = ({ onSubmit }) => {
                         render={({ field, fieldState }) => (
                             <TextField
                                 {...field}
+                                type={'password'}
                                 label='Password'
                                 variant='outlined'
                                 fullWidth
-                                type={'password'}
                                 error={!!fieldState.error}
                                 helperText={fieldState.error?.message}
                             />
