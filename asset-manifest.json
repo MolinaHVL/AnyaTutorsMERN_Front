@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/AnyaTutorsMERN_Front/static/css/main.3fb624c8.css",
+    "main.js": "/AnyaTutorsMERN_Front/static/js/main.86efc5e8.js",
+    "static/media/background.jpg": "/AnyaTutorsMERN_Front/static/media/background.d8c0b411544815bd1d98.jpg",
+    "index.html": "/AnyaTutorsMERN_Front/index.html",
+    "main.3fb624c8.css.map": "/AnyaTutorsMERN_Front/static/css/main.3fb624c8.css.map",
+    "main.86efc5e8.js.map": "/AnyaTutorsMERN_Front/static/js/main.86efc5e8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3fb624c8.css",
+    "static/js/main.86efc5e8.js"
+  ]
+}
