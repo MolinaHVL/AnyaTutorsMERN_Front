@@ -24,7 +24,7 @@ const NavBar = () => {
     const handleLogout = async () => {
         await signOut(auth)
             .then(() => {
-                navigate('/')
+                navigate('/AnyaTutorsMERN_Front')
             })
             .catch((error) => {
                 // An error happened.
@@ -48,7 +48,7 @@ const NavBar = () => {
                         variant="h4"
                         noWrap
                         component="a"
-                        href='/'
+                        href='/AnyaTutorsMERN_Front'
                         sx={{
                             mr: 2,
                             flexGrow: 1,
@@ -81,7 +81,7 @@ const NavBar = () => {
                             :
                             <ColorButton
                                 variant='outlined'
-                                id='log Out'
+                                id='log In'
                                 children='Log In'
                                 onClick={handleLogin}
                                 size='large'

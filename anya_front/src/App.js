@@ -32,7 +32,7 @@ function App() {
       <div className="App" >
         <Routes>
           <Route
-            exact path='/'
+            exact path='/AnyaTutorsMERN_Front'
             element={<Index />}
           />
           <Route
