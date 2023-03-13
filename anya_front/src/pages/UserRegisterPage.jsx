@@ -8,6 +8,7 @@ import UserRegisterForm from "../forms/UserRegisterForm";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { Stack } from "@mui/system";
+import NavBar from '../components/NavBar';
 
 
 const UserRegisterPage = () => {
@@ -65,18 +66,18 @@ const UserRegisterPage = () => {
     return (
 
         <Box sx={{
+            backgroundColor: 'white',
             display: "static",
             marginX: "auto",
             marginY: "5%",
             padding: "5%",
             paddingTop: "2%",
-            background: "White",
             color: "white",
             opacity: "0.9",
             borderRadius: "15px",
             width: "250px", // Ancho fijo en píxeles
             '@media screen and (max-width: 600px)': { // Ancho del 100% para pantallas más pequeñas
-                width: "100%"
+                width: "100%",
             }
         }}>
             <Typography fontSize={"24px"} color={"Black"} paddingBottom={'10px'}>Ingresa tus credenciales:</Typography>

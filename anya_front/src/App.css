@@ -133,6 +133,8 @@ body {
   margin: auto;
   padding: 1rem;
   background: var(--bodyColor);
+  margin: 0;
+  padding: 0;
 }
 
 .container {

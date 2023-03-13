@@ -3,9 +3,9 @@ import RolePage from './pages/RolePage';
 import { Route, Routes } from "react-router-dom";
 import StudentPage from './pages/StudentPage';
 import TeacherPage from './pages/TeacherPage';
-import Index from './pages/Index';
 import UserLogPage from './pages/UserLogPage';
 import UserRegisterPage from './pages/UserRegisterPage';
+import Index from './pages/index/index';
 
 
 

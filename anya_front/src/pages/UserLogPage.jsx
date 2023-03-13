@@ -6,7 +6,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import UserLogInForm from "../forms/UserLogInForm";
 import Typography from "@mui/material/Typography";
 import useUser from '../hooks/useUser'
-
+import NavBar from '../components/NavBar';
 
 const UserLogPage = () => {
 
@@ -53,22 +53,23 @@ const UserLogPage = () => {
     }
 
     return (
-
-        <Box sx={{
-            display: "static",
-            marginX: "auto",
-            marginY: "5%",
-            padding: "5%",
-            paddingTop: "2%",
-            background: "White",
-            color: "white",
-            opacity: "0.9",
-            borderRadius: "15px",
-            width: "250px", // Ancho fijo en píxeles
-            '@media screen and (max-width: 600px)': { // Ancho del 100% para pantallas más pequeñas
-                width: "100%",
-            }
-        }}>
+        <Box
+            sx={{
+                backgroundColor: 'white',
+                display: "static",
+                marginX: "auto",
+                marginY: "5%",
+                padding: "5%",
+                paddingTop: "2%",
+                color: "white",
+                opacity: "0.9",
+                borderRadius: "15px",
+                width: "250px", // Ancho fijo en píxeles
+                '@media screen and (max-width: 600px)': { // Ancho del 100% para pantallas más pequeñas
+                    width: "100%",
+                }
+            }}
+        >
             <Typography fontSize={"24px"} color={"Black"}>Ingresa tus credenciales:</Typography>
             {error && <Typography sx={{ color: "#000" }}>{error}</Typography>}
             <UserLogInForm onSubmit={handleLogIn} />
@@ -79,6 +80,7 @@ const UserLogPage = () => {
                 children='Log in'
             />
         </Box>
+
 
     );
 }

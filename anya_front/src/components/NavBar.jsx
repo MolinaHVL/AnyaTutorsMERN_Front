@@ -24,7 +24,7 @@ const NavBar = () => {
     const handleLogout = async () => {
         await signOut(auth)
             .then(() => {
-                navigate('/AnyaTutorsMERN_Front')
+                navigate('/AnyaTutorsMERN_Front/')
             })
             .catch((error) => {
                 // An error happened.
