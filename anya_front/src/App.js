@@ -1,5 +1,4 @@
 import './App.css';
-import NavBar from './components/NavBar';
 import RolePage from './pages/RolePage';
 import { Route, Routes } from "react-router-dom";
 import StudentPage from './pages/StudentPage';
@@ -28,7 +27,6 @@ function App() {
 
   return (
     <>
-      <NavBar />
       <div className="App" >
         <Routes>
           <Route
