@@ -1,8 +1,7 @@
 {
   "name": "my-app",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd anya_back && nodemon src/server.js",
+    "start": "npm run client",
     "client": "cd anya_front && npm run start"
   },
   "devDependencies": {
