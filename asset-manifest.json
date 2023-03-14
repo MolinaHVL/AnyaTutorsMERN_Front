@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/AnyaTutorsMERN_Front/static/css/main.d3a15efb.css",
-    "main.js": "/AnyaTutorsMERN_Front/static/js/main.61bfe048.js",
+    "main.js": "/AnyaTutorsMERN_Front/static/js/main.a902b0aa.js",
     "static/media/mate.jpg": "/AnyaTutorsMERN_Front/static/media/mate.cfd2a7b7a161f57767d7.jpg",
     "static/media/Contabilidad.jpg": "/AnyaTutorsMERN_Front/static/media/Contabilidad.762072c5f14f6348cdc9.jpg",
     "static/media/Ingles.jpg": "/AnyaTutorsMERN_Front/static/media/Ingles.60e5c6c17fe4de5efadd.jpg",
@@ -17,13 +17,17 @@
     "static/media/conta.jpg": "/AnyaTutorsMERN_Front/static/media/conta.d4ead29161b8bc37bf1b.jpg",
     "static/media/contab.jpg": "/AnyaTutorsMERN_Front/static/media/contab.ae45236277e3723b9de7.jpg",
     "static/media/logo.png": "/AnyaTutorsMERN_Front/static/media/logo.bc42b5177a2291f1aeff.png",
+    "static/media/mountains_front.png": "/AnyaTutorsMERN_Front/static/media/mountains_front.b9f5ac84a4e59fe43b5e.png",
     "static/media/background.jpg": "/AnyaTutorsMERN_Front/static/media/background.d8c0b411544815bd1d98.jpg",
+    "static/media/mountains_behind.png": "/AnyaTutorsMERN_Front/static/media/mountains_behind.c50cf728938a7cf57c1e.png",
+    "static/media/stars.png": "/AnyaTutorsMERN_Front/static/media/stars.476f54d4de3fa26fae59.png",
+    "static/media/Moon2.png": "/AnyaTutorsMERN_Front/static/media/Moon2.1f10a452ea5a241d765a.png",
     "index.html": "/AnyaTutorsMERN_Front/index.html",
     "main.d3a15efb.css.map": "/AnyaTutorsMERN_Front/static/css/main.d3a15efb.css.map",
-    "main.61bfe048.js.map": "/AnyaTutorsMERN_Front/static/js/main.61bfe048.js.map"
+    "main.a902b0aa.js.map": "/AnyaTutorsMERN_Front/static/js/main.a902b0aa.js.map"
   },
   "entrypoints": [
     "static/css/main.d3a15efb.css",
-    "static/js/main.61bfe048.js"
+    "static/js/main.a902b0aa.js"
   ]
 }
