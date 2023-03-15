@@ -3,7 +3,6 @@ import './body.css';
 import Top from './Top Section/Top'
 import Listing from './Listing Section/Listing'
 import useUser from '../../hooks/useUser'
-import Typography from '@mui/material/Typography';
 
 const Body = () => {
 

@@ -34,23 +34,23 @@ function App() {
             element={<Index />}
           />
           <Route
-            exact path='/role'
+            exact path='AnyaTutorsMERN_Front/role'
             element={<RolePage />}
           />
           <Route
-            exact path='/userLogIn'
+            exact path='AnyaTutorsMERN_Front/userLogIn'
             element={<UserLogPage />}
           />
           <Route
-            exact path='/userRegister'
+            exact path='AnyaTutorsMERN_Front/userRegister'
             element={<UserRegisterPage />}
           />
           <Route
-            path='/student'
+            path='AnyaTutorsMERN_Front/student'
             element={<StudentPage />}
           />
           <Route
-            path='/teacher'
+            path='AnyaTutorsMERN_Front/teacher'
             element={<TeacherPage />}
           />
         </Routes>
