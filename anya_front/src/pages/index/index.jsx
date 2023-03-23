@@ -34,7 +34,7 @@ const Index = () => {
                 <img src={mountainFront} alt="img" id="mountains_front" style={{ top: scrollValue * 0 + 'px' }} type="image/png" />
                 <h2 id="text" style={{ marginLeft: scrollValue * 6 + 'px', marginTop: scrollValue * 1.5 + 'px' }}>Bienvenidos</h2>
                 <button onClick={() => navigate('/AnyaTutorsMERN_Front/role')} className="btn" id="bt" style={{ marginTop: scrollValue * 1.5 + 'px' }}>Registrarse</button>
-                <button onClick={() => navigate('/UserLogIn')} className="btn" alt="img" id="bt2" style={{ marginTop: scrollValue * 1.5 + 'px' }}>Iniciar sesion</button>
+                <button onClick={() => navigate('/AnyaTutorsMERN_Front/UserLogIn')} className="btn" alt="img" id="bt2" style={{ marginTop: scrollValue * 1.5 + 'px' }}>Iniciar sesion</button>
 
             </section>
             <div className="sec" id="sec">

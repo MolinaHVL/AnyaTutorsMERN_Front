@@ -8,7 +8,6 @@ import UserRegisterForm from "../forms/UserRegisterForm";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { Stack } from "@mui/system";
-import NavBar from '../components/NavBar';
 
 
 const UserRegisterPage = () => {
@@ -38,7 +37,7 @@ const UserRegisterPage = () => {
                 return
             }
             await createUserWithEmailAndPassword(getAuth(), submit.email, submit.password)
-            navigate('/student')
+            navigate('/AnyaTutorsMERN_Front/student')
         } catch (e) {
             switch (e.message) {
                 case "Firebase: Error (auth/invalid-email).":

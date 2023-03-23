@@ -3,7 +3,6 @@ import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
-import NavBar from '../components/NavBar';
 
 const RolePage = () => {
     return (
@@ -27,7 +26,7 @@ const RolePage = () => {
                     <Typography color="black" display="block" fontSize={"36px"} padding={"5px"} marginBottom={"20px"}>Elige tu rol: </Typography>
 
                     <Stack direction="row" display={"flex"}>
-                        <Link to="/userRegister" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
+                        <Link to="/AnyaTutorsMERN_Front/userRegister" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
 
                             <Button variant="contained"
                                 sx={{
@@ -51,7 +50,7 @@ const RolePage = () => {
                                 ESTUDIANTE
                             </Button>
                         </Link>
-                        <Link to="/teacher" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
+                        <Link to="/AnyaTutorsMERN_Front/teacher" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
 
                             <Button variant="contained"
                                 sx={{

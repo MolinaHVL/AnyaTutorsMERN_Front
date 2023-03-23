@@ -6,15 +6,17 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import UserLogInForm from "../forms/UserLogInForm";
 import Typography from "@mui/material/Typography";
 import useUser from '../hooks/useUser'
-import NavBar from '../components/NavBar';
 
 const UserLogPage = () => {
 
     const { user } = useUser();
 
+    //variable clave para navegar por las paginas
+    const navigate = useNavigate();
+
     useEffect(() => {
         if (user) {
-            navigate("/student")
+            navigate("/AnyaTutorsMERN_Front/student")
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
@@ -22,15 +24,12 @@ const UserLogPage = () => {
     //Hooks para manejar el estado del error del form
     const [error, setError] = useState('')
 
-    //variable clave para navegar por las paginas
-    const navigate = useNavigate();
-
     //Autenticación de firebase
     const handleLogIn = async (submit) => {
         try {
             await signInWithEmailAndPassword(getAuth(), submit.email, submit.password)
                 .then(() => {
-                    navigate('/student')
+                    navigate('/AnyaTutorsMERN_Front/student')
                 })
         } catch (e) {
             let message = ""

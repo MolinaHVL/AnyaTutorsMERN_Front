@@ -16,7 +16,7 @@ const LogUserModal = ({ open, onClose }) => {
     const handleLogIn = async (submit) => {
         try {
             await signInWithEmailAndPassword(getAuth(), submit.email, submit.password)
-            navigate('/student')
+            navigate('/AnyaTutorsMERN_Front/student')
         } catch (e) {
             setError(e.message)
         }

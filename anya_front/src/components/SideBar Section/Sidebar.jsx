@@ -29,13 +29,13 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    navigate('/userLogIn')
+    navigate('/AnyaTutorsMERN_Front/userLogIn')
   }
 
   const handleLogout = async () => {
     await signOut(auth)
       .then(() => {
-        navigate('/AnyaTutorsMERN_Front/')
+        navigate('/AnyaTutorsMERN_Front')
       })
       .catch((error) => {
         // An error happened.

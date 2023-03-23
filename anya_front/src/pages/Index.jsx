@@ -33,7 +33,7 @@ const Index = () => {
                             </Typography>
                         </Box>
                         <Stack direction={"row"} paddingRight={{ xs: 0, md: "35px" }} display={"flex"}>
-                            <Link to="/UserLogIn" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
+                            <Link to="/AnyaTutorsMERN_Front/UserLogIn" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
                                 <Button variant="contained"
                                     sx={{
                                         background: "#8adaff",
@@ -56,7 +56,7 @@ const Index = () => {
                                     INICIAR SESION
                                 </Button>
                             </Link>
-                            <Link to="/role" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
+                            <Link to="/AnyaTutorsMERN_Front/role" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
                                 <Button variant="contained"
                                     sx={{
                                         background: "#8adaff",
