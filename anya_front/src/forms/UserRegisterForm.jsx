@@ -22,9 +22,9 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
     }
 
     const UserFormSchema = yup.object().shape({
-        email: yup.string().required('necesitas un email'),
-        password: yup.string().required('necesitas una contraseña'),
-        confirmPassword: yup.string().required('confirma tu contraseña')
+        email: yup.string().required('Necesitas ingresar un email'),
+        password: yup.string().required('Necesitas ingresar una contraseña'),
+        confirmPassword: yup.string().required('Confirma tu contraseña')
     })
 
     const { control, handleSubmit, watch } = useForm({
@@ -63,7 +63,7 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                 alignItems="center"
                 justify="center"
             >
-                <Grid item xs={8}>
+                <Grid item xs={8} sx={{width: '80%', marginY: '0px'}}>
                     <Controller
                         control={control}
                         name='email'
@@ -79,7 +79,7 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                         )}
                     />
                 </Grid>
-                <Grid item xs={8} sx={{}}>
+                <Grid item xs={8} sx={{width: '80%', marginY: '0px'}}>
                     <Controller
                         control={control}
                         name='password'
@@ -109,7 +109,7 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                         )}
                     />
                 </Grid>
-                <Grid item xs={8} sx={{}}>
+                <Grid item xs={8} sx={{width: '80%', marginY: '0px'}}>
                     <Controller
                         control={control}
                         name='confirmPassword'

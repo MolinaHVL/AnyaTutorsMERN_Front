@@ -69,17 +69,17 @@ const UserRegisterPage = () => {
             display: "static",
             marginX: "auto",
             marginY: "5%",
-            padding: "5%",
-            paddingTop: "2%",
+            paddingX: "5%",
+            paddingY: "20%",
             color: "white",
             opacity: "0.9",
             borderRadius: "15px",
-            width: "250px", // Ancho fijo en píxeles
+            width: "350px", // Ancho fijo en píxeles
             '@media screen and (max-width: 600px)': { // Ancho del 100% para pantallas más pequeñas
                 width: "100%",
             }
         }}>
-            <Typography fontSize={"24px"} color={"Black"} paddingBottom={'10px'}>Ingresa tus credenciales:</Typography>
+            <Typography fontSize={"24px"} color={"Black"} paddingBottom={'10px'}>Registro de cuenta</Typography>
             {error && <Typography sx={{ color: "#000" }}>{error}</Typography>}
             <UserRegisterForm onSubmit={handleLogIn} setPassword={setPassword} setError={setError} />
             {password &&
@@ -90,7 +90,7 @@ const UserRegisterPage = () => {
                         ) : (
                             <CancelIcon sx={{ color: "red", mr: 1 }} />
                         )}
-                        <Typography sx={{ color: hasCapitalLetter ? "green" : "red" }}> Minimo una MAYUSCULA </Typography>
+                        <Typography sx={{ color: hasCapitalLetter ? "green" : "red" }}> Mínimo una Mayuscula </Typography>
                     </Stack>
                     <Stack direction={'row'}>
                         {hasNumbers ? (
@@ -98,7 +98,7 @@ const UserRegisterPage = () => {
                         ) : (
                             <CancelIcon sx={{ color: "red", mr: 1 }} />
                         )}
-                        <Typography sx={{ color: hasNumbers ? "green" : "red" }}> Minimo un NUMERO </Typography>
+                        <Typography sx={{ color: hasNumbers ? "green" : "red" }}> Mínimo un Número </Typography>
                     </Stack>
                     <Stack direction={'row'}>
                         {hasSpecialSymbol ? (
@@ -106,16 +106,18 @@ const UserRegisterPage = () => {
                         ) : (
                             <CancelIcon sx={{ color: "red", mr: 1 }} />
                         )}
-                        <Typography sx={{ color: hasSpecialSymbol ? "green" : "red" }}> Minimo un SIMBOLO @!#  </Typography>
+                        <Typography sx={{ color: hasSpecialSymbol ? "green" : "red" }}> Mínimo un símbolo especial @!#  </Typography>
                     </Stack>
                 </Stack>
             }
             <Button
-                variant='outlined'
+                variant='contained'
                 form='user-form'
                 type='submit'
-                children='Log in'
+                children='Registrarse'
+                style={{marginTop: '15px'}}
             />
+            
         </Box>
 
     );

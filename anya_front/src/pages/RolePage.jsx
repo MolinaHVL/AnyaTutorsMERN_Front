@@ -34,6 +34,7 @@ const RolePage = () => {
                                     height: 64,
                                     width: 0.50,
                                     margin: 0,
+                                    marginRight: 1,
                                     padding: 0.1,
                                     borderRadious: 0,
                                     boxShadow: 3,
@@ -47,7 +48,7 @@ const RolePage = () => {
 
                                 }}
                             >
-                                ESTUDIANTE
+                                Estudiante
                             </Button>
                         </Link>
                         <Link to="/AnyaTutorsMERN_Front/teacher" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
@@ -58,6 +59,7 @@ const RolePage = () => {
                                     height: 64,
                                     width: 0.50,
                                     margin: 0,
+                                    marginLeft: 1,
                                     padding: 0.1,
                                     borderRadious: 0,
                                     boxShadow: 3,
@@ -71,7 +73,7 @@ const RolePage = () => {
 
                                 }}
                             >
-                                MAESTRO
+                                Tutor
                             </Button>
                         </Link>
                     </Stack>

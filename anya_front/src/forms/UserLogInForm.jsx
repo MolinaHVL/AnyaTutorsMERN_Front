@@ -38,7 +38,7 @@ const UserLogInForm = ({ onSubmit }) => {
             id='user-form'
             component='form'
             onSubmit={handleSubmit(onSubmit)}
-            sx={{ padding: '10px' }}
+            sx={{ paddingTop: '30px', paddingBottom: '20px' }}
         >
             <Grid
                 container
@@ -47,7 +47,7 @@ const UserLogInForm = ({ onSubmit }) => {
                 alignItems="center"
                 justify="center"
             >
-                <Grid item xs={8} sx={{}}>
+                <Grid item xs={8} sx={{width: '80%'}}>
                     <Controller
                         control={control}
                         name='email'
@@ -64,7 +64,7 @@ const UserLogInForm = ({ onSubmit }) => {
                     />
                 </Grid>
 
-                <Grid item xs={8} sx={{}}>
+                <Grid item xs={8} sx={{width: '80%'}}>
                     <Controller
                         control={control}
                         name='password'

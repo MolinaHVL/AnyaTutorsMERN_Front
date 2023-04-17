@@ -58,26 +58,29 @@ const UserLogPage = () => {
                 display: "static",
                 marginX: "auto",
                 marginY: "5%",
-                padding: "5%",
-                paddingTop: "2%",
+                paddingX: "5%",
+                paddingY: "20%",
                 color: "white",
                 opacity: "0.9",
                 borderRadius: "15px",
-                width: "250px", // Ancho fijo en píxeles
+                width: "350px", // Ancho fijo en píxeles
                 '@media screen and (max-width: 600px)': { // Ancho del 100% para pantallas más pequeñas
                     width: "100%",
                 }
             }}
         >
-            <Typography fontSize={"24px"} color={"Black"}>Ingresa tus credenciales:</Typography>
+            <Typography fontSize={"24px"} color={"Black"}>Inicio de Sesión</Typography>
             {error && <Typography sx={{ color: "#000" }}>{error}</Typography>}
             <UserLogInForm onSubmit={handleLogIn} />
             <Button
-                variant='outlined'
+                variant='contained'
                 form='user-form'
                 type='submit'
-                children='Log in'
+                children='Inicio de Sesión'
+                style={{marginTop: '15px'}}
             />
+
+            <Typography fontSize={"15px"} color={"Black"}>Inicio de Sesión</Typography>
         </Box>
 
 
