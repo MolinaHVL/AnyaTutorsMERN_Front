@@ -1,14 +1,24 @@
+//MaterialUI imports
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button"
-import { useState } from 'react'
-import { useNavigate } from "react-router-dom"
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import Typography from "@mui/material/Typography";
-import UserRegisterForm from "../forms/UserRegisterForm";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
-import { Stack } from "@mui/system";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
+//React import
+import { useState } from 'react'
+import { useNavigate } from "react-router-dom"
+
+//Firebase imports
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import useUser from "../hooks/useUser"
+
+//Components imports
+import UserRegisterForm from "../forms/UserRegisterForm";
+
+//API imports
+import { saveStudent } from "../api/StudentsAPI";
 
 const UserRegisterPage = () => {
 
@@ -37,7 +47,13 @@ const UserRegisterPage = () => {
                 return
             }
             await createUserWithEmailAndPassword(getAuth(), submit.email, submit.password)
-            navigate('/AnyaTutorsMERN_Front/student')
+                .then(() => {
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    saveStudent(submit)
+                    navigate('/AnyaTutorsMERN_Front/student')
+                })
+
+
         } catch (e) {
             switch (e.message) {
                 case "Firebase: Error (auth/invalid-email).":
