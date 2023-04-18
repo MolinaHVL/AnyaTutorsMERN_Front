@@ -5,6 +5,7 @@ import StudentPage from './pages/StudentPage';
 import TeacherPage from './pages/TeacherPage';
 import UserLogPage from './pages/UserLogPage';
 import UserRegisterPage from './pages/UserRegisterPage';
+import UserRegisterStep1 from './pages/UserRegisterStep1';
 import Index from './pages/index/index';
 import AdminPage from './pages/AdminPage';
 import ListStudents from './pages/ListStudents';
@@ -63,8 +64,10 @@ function App() {
             path='AnyaTutorsMERN_Front/ListStudents'
             element={<ListStudents />}
           />
-
-
+          <Route
+            path='AnyaTutorsMERN_Front/userRegisterS1'
+            element={<UserRegisterStep1/>}
+          />
         </Routes>
 
       </div>

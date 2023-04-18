@@ -4,9 +4,11 @@ import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { Box, Grid, TextField } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
+import Typography from "@mui/material/Typography";
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 
 
 const UserLogInForm = ({ onSubmit }) => {
@@ -38,16 +40,16 @@ const UserLogInForm = ({ onSubmit }) => {
             id='user-form'
             component='form'
             onSubmit={handleSubmit(onSubmit)}
-            sx={{ padding: '10px' }}
+            sx={{ paddingTop: '12px', paddingBottom: '20px' }}
         >
             <Grid
                 container
-                spacing={4}
+                spacing={3}
                 direction="column"
                 alignItems="center"
                 justify="center"
             >
-                <Grid item xs={8} sx={{}}>
+                <Grid item xs={8} sx={{width: '80%',}}>
                     <Controller
                         control={control}
                         name='email'
@@ -57,14 +59,36 @@ const UserLogInForm = ({ onSubmit }) => {
                                 label='Email'
                                 variant='outlined'
                                 fullWidth
+                                InputProps={{
+                                    style: {
+                                        fontFamily: 'Poppins',
+                                        fontWeight: 'Bold',
+                                    },
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                          <EmailRoundedIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
                                 error={!!fieldState.error}
-                                helperText={fieldState.error?.message}
+                                helperText={
+                                    <Typography
+                                        sx={{
+                                            fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
+                                            fontWeight: 'bold',
+                                            fontSize: '13px',
+                                            color: '', // Puedes cambiar el color aquí
+                                        }}
+                                    >
+                                        {fieldState.error?.message}
+                                    </Typography>   
+                                }
                             />
                         )}
                     />
                 </Grid>
 
-                <Grid item xs={8} sx={{}}>
+                <Grid item xs={8} sx={{width: '80%'}}>
                     <Controller
                         control={control}
                         name='password'
@@ -76,8 +100,23 @@ const UserLogInForm = ({ onSubmit }) => {
                                 variant='outlined'
                                 fullWidth
                                 error={!!fieldState.error}
-                                helperText={fieldState.error?.message}
+                                helperText={
+                                    <Typography
+                                        sx={{
+                                            fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
+                                            fontWeight: 'bold',
+                                            fontSize: '13px',
+                                            color: '', // Puedes cambiar el color aquí
+                                        }}
+                                    >
+                                        {fieldState.error?.message}
+                                    </Typography>   
+                                }
                                 InputProps={{
+                                    style: {
+                                        fontFamily: 'Poppins',
+                                        fontWeight: 'Bold',
+                                    },
                                     endAdornment: (
                                         <InputAdornment position="end">
                                             <IconButton

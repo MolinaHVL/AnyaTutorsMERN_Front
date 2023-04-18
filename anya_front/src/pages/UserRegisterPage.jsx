@@ -4,6 +4,7 @@ import Button from "@mui/material/Button"
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Stack from "@mui/material/Stack";
+import { Link } from 'react-router-dom';
 import Typography from "@mui/material/Typography";
 
 //React import
@@ -85,28 +86,33 @@ const UserRegisterPage = () => {
             display: "static",
             marginX: "auto",
             marginY: "5%",
-            padding: "5%",
-            paddingTop: "2%",
+            paddingX: "5%",
+            paddingTop: "7%",
+            paddingBottom: "5%",
             color: "white",
             opacity: "0.9",
             borderRadius: "15px",
-            width: "250px", // Ancho fijo en píxeles
+            width: "550px", // Ancho fijo en píxeles
             '@media screen and (max-width: 600px)': { // Ancho del 100% para pantallas más pequeñas
                 width: "100%",
             }
         }}>
-            <Typography fontSize={"24px"} color={"Black"} paddingBottom={'10px'}>Ingresa tus credenciales:</Typography>
+            <Typography fontSize={"25px"} marginBottom={"15px"} color={"Black"} fontFamily={'Poppins'} fontWeight={'bold'}>
+                Registro de cuenta
+            </Typography>
+
             {error && <Typography sx={{ color: "#000" }}>{error}</Typography>}
             <UserRegisterForm onSubmit={handleLogIn} setPassword={setPassword} setError={setError} />
             {password &&
-                <Stack direction={'column'} style={{ display: "flex" }} paddingBottom={'15px'}>
+                <Stack direction={'column'} style={{ display: "flex", width: "100%", paddingLeft: "75px"}} paddingBottom={'15px'}>
                     <Stack direction={'row'}>
                         {hasCapitalLetter ? (
                             <CheckCircleIcon sx={{ color: "green", mr: 1 }} />
                         ) : (
                             <CancelIcon sx={{ color: "red", mr: 1 }} />
                         )}
-                        <Typography sx={{ color: hasCapitalLetter ? "green" : "red" }}> Minimo una MAYUSCULA </Typography>
+                        <Typography sx={{ fontSize:"14px", fontFamily:"Poppins", fontWeight: "bold", 
+                        color: hasCapitalLetter ? "green" : "red" }}> Mínimo una Mayúscula </Typography>
                     </Stack>
                     <Stack direction={'row'}>
                         {hasNumbers ? (
@@ -114,7 +120,7 @@ const UserRegisterPage = () => {
                         ) : (
                             <CancelIcon sx={{ color: "red", mr: 1 }} />
                         )}
-                        <Typography sx={{ color: hasNumbers ? "green" : "red" }}> Minimo un NUMERO </Typography>
+                        <Typography sx={{ fontSize:"14px", fontFamily:"Poppins", fontWeight: "bold",    color: hasNumbers ? "green" : "red" }}> Mínimo un Número </Typography>
                     </Stack>
                     <Stack direction={'row'}>
                         {hasSpecialSymbol ? (
@@ -122,16 +128,80 @@ const UserRegisterPage = () => {
                         ) : (
                             <CancelIcon sx={{ color: "red", mr: 1 }} />
                         )}
-                        <Typography sx={{ color: hasSpecialSymbol ? "green" : "red" }}> Minimo un SIMBOLO @!#  </Typography>
+                        <Typography sx={{ fontSize:"14px", fontFamily:"Poppins", fontWeight: "bold", color: hasSpecialSymbol ? "green" : "red" }}> Mínimo un símbolo especial <u>@!#</u></Typography>
                     </Stack>
                 </Stack>
             }
             <Button
-                variant='outlined'
-                form='user-form'
-                type='submit'
-                children='Log in'
-            />
+                variant="contained"
+                form="user-form"
+                type="submit"
+                children="Registrarse"
+                sx={{ textTransform: 'none',
+                 width: '80%',
+                 marginTop: '20px',
+                 fontSize: '16px',
+                 fontFamily: 'Poppins',
+                 fontWeight: 'bold',
+                }}
+            />  
+
+            <Box sx={{ marginTop: "20px", width: '100%'}}>           
+                <Button
+                    component={Link}
+                    to="/AnyaTutorsMERN_Front/userRegisterS1"
+                    variant="text"
+                    color="primary"
+                    sx={{ textTransform: 'none', 
+                        textDecoration: 'none', 
+                        width: '40%',
+                        padding: '3',
+                        fontSize: '13px',
+                        fontFamily: 'Poppins', 
+                        fontWeight: 'bold',
+                        color: '', // Cambia el color a un tono más oscuro
+                    }}
+                >
+                    ¿Problemas para registrarte?
+                </Button>
+            
+                <Button
+                    component={Link}
+                    to="/AnyaTutorsMERN_Front/userLogIn"
+                    variant="text"
+                    color="primary"
+                    sx={{ textTransform: 'none', 
+                        // textDecoration: 'underline', 
+                        width: '40%',
+                        padding: '3',
+                        fontSize: '13px',
+                        fontFamily: 'Poppins', 
+                        fontWeight: 'bold',
+                        color: '', // Cambia el color a un tono más oscuro
+                    }}
+                >
+                    Acceder a cuenta
+                </Button>
+
+                <Button
+                component={Link}
+                to="/AnyaTutorsMERN_Front"
+                variant="text"
+                color="primary"
+                 sx={{ textTransform: 'none', 
+                    textDecoration: 'none', 
+                    width: '80%',
+                    fontSize: '13px',
+                    fontFamily: 'Poppins', 
+                    fontWeight: 'bold',
+                    color: '#333', // Cambia el color a un tono más oscuro
+                    marginTop: '20px',
+                }}
+                >
+                    Copyright © AnyaTutors 2023.
+                </Button>
+            </Box>
+                      
         </Box>
 
     );
