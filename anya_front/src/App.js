@@ -7,6 +7,8 @@ import UserLogPage from './pages/UserLogPage';
 import UserRegisterPage from './pages/UserRegisterPage';
 import Index from './pages/index/index';
 import AdminPage from './pages/AdminPage';
+import ListStudents from './pages/ListStudents';
+
 
 
 
@@ -24,7 +26,6 @@ import AdminPage from './pages/AdminPage';
 
 
 function App() {
-
 
   return (
     <>
@@ -58,6 +59,12 @@ function App() {
             path='AnyaTutorsMERN_Front/admin'
             element={<AdminPage />}
           />
+          <Route
+            path='AnyaTutorsMERN_Front/ListStudents'
+            element={<ListStudents />}
+          />
+
+
         </Routes>
 
       </div>

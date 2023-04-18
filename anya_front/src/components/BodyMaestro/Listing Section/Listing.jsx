@@ -11,9 +11,14 @@ import ayuda from "../../../fotos/ayuda.jpg";
 //Importar estilo de botones 
 import Button from '@mui/material/Button';
 
+import { useNavigate } from "react-router-dom"
+
 
 
 const Listing = () => {
+
+  const navigate = useNavigate()
+
   return (
     <div className='listingSection'>
 
@@ -50,7 +55,7 @@ const Listing = () => {
           <img src={estud} alt=' ' width={"300px"} height={"200px"} />
           <h3>Estudiantes</h3>
           <p>En este apartado se encuentra toda la informacion de los estudiantes registrados</p>
-          <Button variant="contained" color="secondary">Ingresar</Button>
+          <Button variant="contained" onClick={() => { navigate("/AnyaTutorsMERN_Front/ListStudents") }} color="secondary">Ingresar</Button>
         </div>
         <div className="singleItemAdmin">
 

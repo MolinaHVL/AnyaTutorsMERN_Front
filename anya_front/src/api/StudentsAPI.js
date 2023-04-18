@@ -1,8 +1,14 @@
 const SERVER_URL = process.env.REACT_APP_API_URL + "/students/";
 
 export const getStudents = async () => {
+    console.log(SERVER_URL);
     try {
-        const response = await fetch(SERVER_URL);
+        const response = await fetch(SERVER_URL, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
 
         if (response.status === 200) return response.json();
         else return [];
@@ -18,7 +24,7 @@ export const saveStudent = async (Student, UserUID) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "User-UID": UserUID
+                "User-UID": { UserUID }
             },
             body: JSON.stringify(Student),
         });
