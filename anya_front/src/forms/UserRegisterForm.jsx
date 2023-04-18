@@ -3,8 +3,10 @@ import * as yup from 'yup'
 import { useForm, Controller } from 'react-hook-form'
 import { Box, Grid, IconButton, InputAdornment, TextField } from '@mui/material'
 import { useEffect, useState } from 'react'
+import Typography from "@mui/material/Typography";
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import Visibility from '@mui/icons-material/Visibility'
+import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 
 
 const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
@@ -53,12 +55,12 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
             component='form'
             onSubmit={handleSubmit(onSubmit)}
             sx={{
-                padding: '10px',
+                paddingY: '10px',
             }}
         >
             <Grid
                 container
-                spacing={4}
+                spacing={3}
                 direction="column"
                 alignItems="center"
                 justify="center"
@@ -73,8 +75,30 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                                 label='Email'
                                 variant='outlined'
                                 fullWidth
+                                InputProps={{
+                                    style: {
+                                        fontFamily: 'Poppins',
+                                        fontWeight: 'Bold',
+                                    },
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                          <EmailRoundedIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
                                 error={!!fieldState.error}
-                                helperText={fieldState.error?.message}
+                                helperText={
+                                    <Typography
+                                        sx={{
+                                            fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
+                                            fontWeight: 'bold',
+                                            fontSize: '13px',
+                                            color: '', // Puedes cambiar el color aquí
+                                        }}
+                                    >
+                                        {fieldState.error?.message}
+                                    </Typography>   
+                                }
                             />
                         )}
                     />
@@ -91,8 +115,23 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                                 variant='outlined'
                                 fullWidth
                                 error={!!fieldState.error}
-                                helperText={fieldState.error?.message}
+                                helperText={
+                                    <Typography
+                                        sx={{
+                                            fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
+                                            fontWeight: 'bold',
+                                            fontSize: '13px',
+                                            color: '', // Puedes cambiar el color aquí
+                                        }}
+                                    >
+                                        {fieldState.error?.message}
+                                    </Typography>   
+                                }
                                 InputProps={{
+                                    style: {
+                                        fontFamily: 'Poppins',
+                                        fontWeight: 'Bold',
+                                    },
                                     endAdornment: (
                                         <InputAdornment position="end">
                                             <IconButton
@@ -121,8 +160,23 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                                 variant='outlined'
                                 fullWidth
                                 error={!!fieldState.error}
-                                helperText={fieldState.error?.message}
+                                helperText={
+                                    <Typography
+                                        sx={{
+                                            fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
+                                            fontWeight: 'bold',
+                                            fontSize: '13px',
+                                            color: '', // Puedes cambiar el color aquí
+                                        }}
+                                    >
+                                        {fieldState.error?.message}
+                                    </Typography>   
+                                }
                                 InputProps={{
+                                    style: {
+                                        fontFamily: 'Poppins',
+                                        fontWeight: 'Bold',
+                                    },
                                     endAdornment: (
                                         <InputAdornment position="end">
                                             <IconButton
