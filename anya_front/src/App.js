@@ -6,6 +6,7 @@ import TeacherPage from './pages/TeacherPage';
 import UserLogPage from './pages/UserLogPage';
 import UserRegisterPage from './pages/UserRegisterPage';
 import Index from './pages/index/index';
+import AdminPage from './pages/AdminPage';
 
 
 
@@ -52,6 +53,10 @@ function App() {
           <Route
             path='AnyaTutorsMERN_Front/teacher'
             element={<TeacherPage />}
+          />
+          <Route
+            path='AnyaTutorsMERN_Front/admin'
+            element={<AdminPage />}
           />
         </Routes>
 

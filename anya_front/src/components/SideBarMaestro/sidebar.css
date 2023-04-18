@@ -1,0 +1,145 @@
+:root{
+    --TitleColor:hsl(224, 91%, 31%);
+    --HColor: #7d9bdd;
+    --paleBlue: hsl(199, 66%, 66%);
+    --whiteColor: hsl(0,0%,100%);
+    --blackColor: hsl(0,0%,18%);
+    --textColor: hsl(220,1%,48%);
+    --bgColor: hsl(219, 72%, 79%);
+    --greyText: rgb(190,190,190);
+    --inputColor: hsl(330,12%,97%);
+    --bodyColor: hsl(219, 27%, 85%);
+    
+    /*estilo de fuente*/
+    --biggestFontSize: 2.5rem;
+    --h1FontSize: 1.5rem;
+    --normalFontSize: 2rem;
+    --smallFontSize: 2.5rem;
+    --smallestFontSize:.75rem;
+    }
+    
+
+.sideBar{
+
+    background: var(--whiteColor);
+    box-shadow: 1px 0px 4px var(--greyText);
+    width: 18%;
+    height: 100%;
+    gap: 3rem;
+    overflow: auto;
+
+    
+}
+.logoDiv{
+
+    padding: 1.5rem 1.5rem 0;
+    cursor:pointer;
+    
+    
+ }
+  #log{
+    max-width: 50px;
+    margin-right: .5rem;
+    border-radius: 2px;
+    padding: .2rem;
+   }
+   h2{
+    font-size: 1.5rem;
+    color: var(--TitleColor);
+   }
+
+   .divTitle{
+    font-size:1.3rem;
+    color: #2b1055;
+    padding: 0 1.5rem 1.5rem;
+   }
+   .listItem{
+    padding: .2rem 1.5rem;
+    width: 100%;
+    position: relative;
+   }
+
+   .listItem ::before{
+    position:absolute;
+    content: ' ';
+    height: 0%;
+    left: 0;
+    width: 5px;
+    bottom: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #623aa1;
+   }
+
+   .menuLink{
+    color: #2b1055;
+    font-weight: 500;
+    transition: 0;
+   }
+
+   .icon{
+    margin-right: .5rem;
+   }
+
+   .listItem:hover .menuLink{
+    color: var(--greyText);
+    transition: 0;
+   }
+
+   .listItem:hover .menuLink ::before{
+    height: 100%;
+    transition: .3s ease;
+   }
+
+   .sideBarCard{
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+
+   }
+
+   .sideBarCard .icon{
+    position: absolute;
+    background:#2b1055;
+    border: 10px solid var(--whiteColor) ;
+    font-size: 3rem;
+    border-radius: 50%;
+    top: -8px;
+    right: 50%;
+    transform: translate(50%);
+    z-index: 100;
+
+   }
+
+   .sideBarCard .cardContent{
+    position: relative;
+    padding: 1rem;
+    background: #2b1055;
+    border-radius: 10px;
+    overflow: hidden;
+   }
+
+     .sideBarCard .cardContent .circle1,.circle2{
+        position: absolute;
+        background: #623aa1;
+        border-radius: 50%;
+        opacity: .7;
+      }
+
+      .sideBarCard .cardContent .circle1 {
+        height: 100px;
+        width: 100px;
+        top: -50px;
+        left: -50px;
+
+      }
+
+      .sideBarCard .cardContent .circle2 {
+        height: 150px;
+        width: 150px;
+        bottom: -80px;
+        right: -70px;
+        z-index: 1;
+
+      }
