@@ -13,15 +13,18 @@ import { useNavigate } from "react-router-dom"
 
 //Firebase imports
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import useUser from "../hooks/useUser"
+// import useUser from "../hooks/useUser"
 
 //Components imports
 import UserRegisterForm from "../forms/UserRegisterForm";
 
 //API imports
-import { saveStudent } from "../api/StudentsAPI";
+// import { saveStudent } from "../api/StudentsAPI";
 
 const UserRegisterPage = () => {
+
+    //Hooks para saber si el usuario esta logueado
+    // const { user } = useUser();
 
     //Hooks para manejar el estado del error del form
     const [error, setError] = useState('')
@@ -48,11 +51,8 @@ const UserRegisterPage = () => {
                 return
             }
             await createUserWithEmailAndPassword(getAuth(), submit.email, submit.password)
-                .then(() => {
-                    // eslint-disable-next-line react-hooks/rules-of-hooks
-                    saveStudent(submit)
-                    navigate('/AnyaTutorsMERN_Front/student')
-                })
+            navigate('/AnyaTutorsMERN_Front/student')
+
 
 
         } catch (e) {
