@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/AnyaTutorsMERN_Front/static/css/main.fc19540d.css",
-    "main.js": "/AnyaTutorsMERN_Front/static/js/main.18595add.js",
+    "main.js": "/AnyaTutorsMERN_Front/static/js/main.52a60ef1.js",
     "static/media/mate.jpg": "/AnyaTutorsMERN_Front/static/media/mate.cfd2a7b7a161f57767d7.jpg",
     "static/media/Contabilidad.jpg": "/AnyaTutorsMERN_Front/static/media/Contabilidad.762072c5f14f6348cdc9.jpg",
     "static/media/ayuda.jpg": "/AnyaTutorsMERN_Front/static/media/ayuda.94817abfd5d5b6500894.jpg",
@@ -28,10 +28,10 @@
     "static/media/Moon2.png": "/AnyaTutorsMERN_Front/static/media/Moon2.1f10a452ea5a241d765a.png",
     "index.html": "/AnyaTutorsMERN_Front/index.html",
     "main.fc19540d.css.map": "/AnyaTutorsMERN_Front/static/css/main.fc19540d.css.map",
-    "main.18595add.js.map": "/AnyaTutorsMERN_Front/static/js/main.18595add.js.map"
+    "main.52a60ef1.js.map": "/AnyaTutorsMERN_Front/static/js/main.52a60ef1.js.map"
   },
   "entrypoints": [
     "static/css/main.fc19540d.css",
-    "static/js/main.18595add.js"
+    "static/js/main.52a60ef1.js"
   ]
 }
