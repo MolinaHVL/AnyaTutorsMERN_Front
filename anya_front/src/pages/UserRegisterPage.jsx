@@ -19,7 +19,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import UserRegisterForm from "../forms/UserRegisterForm";
 
 //API imports
-// import { saveStudent } from "../api/StudentsAPI";
+import { saveStudent } from "../api/StudentsAPI";
 
 const UserRegisterPage = () => {
 
@@ -51,6 +51,7 @@ const UserRegisterPage = () => {
                 return
             }
             await createUserWithEmailAndPassword(getAuth(), submit.email, submit.password)
+            await saveStudent(submit)
             navigate('/AnyaTutorsMERN_Front/student')
 
 
@@ -104,15 +105,17 @@ const UserRegisterPage = () => {
             {error && <Typography sx={{ color: "#000" }}>{error}</Typography>}
             <UserRegisterForm onSubmit={handleLogIn} setPassword={setPassword} setError={setError} />
             {password &&
-                <Stack direction={'column'} style={{ display: "flex", width: "100%", paddingLeft: "75px"}} paddingBottom={'15px'}>
+                <Stack direction={'column'} style={{ display: "flex", width: "100%", paddingLeft: "75px" }} paddingBottom={'15px'}>
                     <Stack direction={'row'}>
                         {hasCapitalLetter ? (
                             <CheckCircleIcon sx={{ color: "green", mr: 1 }} />
                         ) : (
                             <CancelIcon sx={{ color: "red", mr: 1 }} />
                         )}
-                        <Typography sx={{ fontSize:"14px", fontFamily:"Poppins", fontWeight: "bold", 
-                        color: hasCapitalLetter ? "green" : "red" }}> Mínimo una Mayúscula </Typography>
+                        <Typography sx={{
+                            fontSize: "14px", fontFamily: "Poppins", fontWeight: "bold",
+                            color: hasCapitalLetter ? "green" : "red"
+                        }}> Mínimo una Mayúscula </Typography>
                     </Stack>
                     <Stack direction={'row'}>
                         {hasNumbers ? (
@@ -120,7 +123,7 @@ const UserRegisterPage = () => {
                         ) : (
                             <CancelIcon sx={{ color: "red", mr: 1 }} />
                         )}
-                        <Typography sx={{ fontSize:"14px", fontFamily:"Poppins", fontWeight: "bold",    color: hasNumbers ? "green" : "red" }}> Mínimo un Número </Typography>
+                        <Typography sx={{ fontSize: "14px", fontFamily: "Poppins", fontWeight: "bold", color: hasNumbers ? "green" : "red" }}> Mínimo un Número </Typography>
                     </Stack>
                     <Stack direction={'row'}>
                         {hasSpecialSymbol ? (
@@ -128,7 +131,7 @@ const UserRegisterPage = () => {
                         ) : (
                             <CancelIcon sx={{ color: "red", mr: 1 }} />
                         )}
-                        <Typography sx={{ fontSize:"14px", fontFamily:"Poppins", fontWeight: "bold", color: hasSpecialSymbol ? "green" : "red" }}> Mínimo un símbolo especial <u>@!#</u></Typography>
+                        <Typography sx={{ fontSize: "14px", fontFamily: "Poppins", fontWeight: "bold", color: hasSpecialSymbol ? "green" : "red" }}> Mínimo un símbolo especial <u>@!#</u></Typography>
                     </Stack>
                 </Stack>
             }
@@ -137,45 +140,48 @@ const UserRegisterPage = () => {
                 form="user-form"
                 type="submit"
                 children="Registrarse"
-                sx={{ textTransform: 'none',
-                 width: '80%',
-                 marginTop: '20px',
-                 fontSize: '16px',
-                 fontFamily: 'Poppins',
-                 fontWeight: 'bold',
+                sx={{
+                    textTransform: 'none',
+                    width: '80%',
+                    marginTop: '20px',
+                    fontSize: '16px',
+                    fontFamily: 'Poppins',
+                    fontWeight: 'bold',
                 }}
-            />  
+            />
 
-            <Box sx={{ marginTop: "20px", width: '100%'}}>           
+            <Box sx={{ marginTop: "20px", width: '100%' }}>
                 <Button
                     component={Link}
                     to="/AnyaTutorsMERN_Front/userRegisterS1"
                     variant="text"
                     color="primary"
-                    sx={{ textTransform: 'none', 
-                        textDecoration: 'none', 
+                    sx={{
+                        textTransform: 'none',
+                        textDecoration: 'none',
                         width: '40%',
                         padding: '3',
                         fontSize: '13px',
-                        fontFamily: 'Poppins', 
+                        fontFamily: 'Poppins',
                         fontWeight: 'bold',
                         color: '', // Cambia el color a un tono más oscuro
                     }}
                 >
                     ¿Problemas para registrarte?
                 </Button>
-            
+
                 <Button
                     component={Link}
                     to="/AnyaTutorsMERN_Front/userLogIn"
                     variant="text"
                     color="primary"
-                    sx={{ textTransform: 'none', 
+                    sx={{
+                        textTransform: 'none',
                         // textDecoration: 'underline', 
                         width: '40%',
                         padding: '3',
                         fontSize: '13px',
-                        fontFamily: 'Poppins', 
+                        fontFamily: 'Poppins',
                         fontWeight: 'bold',
                         color: '', // Cambia el color a un tono más oscuro
                     }}
@@ -184,24 +190,25 @@ const UserRegisterPage = () => {
                 </Button>
 
                 <Button
-                component={Link}
-                to="/AnyaTutorsMERN_Front"
-                variant="text"
-                color="primary"
-                 sx={{ textTransform: 'none', 
-                    textDecoration: 'none', 
-                    width: '80%',
-                    fontSize: '13px',
-                    fontFamily: 'Poppins', 
-                    fontWeight: 'bold',
-                    color: '#333', // Cambia el color a un tono más oscuro
-                    marginTop: '20px',
-                }}
+                    component={Link}
+                    to="/AnyaTutorsMERN_Front"
+                    variant="text"
+                    color="primary"
+                    sx={{
+                        textTransform: 'none',
+                        textDecoration: 'none',
+                        width: '80%',
+                        fontSize: '13px',
+                        fontFamily: 'Poppins',
+                        fontWeight: 'bold',
+                        color: '#333', // Cambia el color a un tono más oscuro
+                        marginTop: '20px',
+                    }}
                 >
                     Copyright © AnyaTutors 2023.
                 </Button>
             </Box>
-                      
+
         </Box>
 
     );

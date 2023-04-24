@@ -79,6 +79,29 @@ const Index = () => {
                                     REGISTRARSE
                                 </Button>
                             </Link>
+                            <Link to="/AnyaTutorsMERN_Front/Admin" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
+                                <Button variant="contained"
+                                    sx={{
+                                        background: "#8adaff",
+                                        height: 64,
+                                        width: 0.50,
+                                        margin: 0,
+                                        padding: 0.1,
+                                        borderRadious: 0,
+                                        boxShadow: 3,
+                                        border: 1,
+                                        borderColor: "#8adaff",
+                                        color: "Black",
+                                        fontSize: "22px",
+                                        fontWeight: "bold",
+                                        fontFamily: "monospace",
+                                        flexGrow: 1,
+
+                                    }}
+                                >
+                                    ADMIN
+                                </Button>
+                            </Link>
                         </Stack>
                     </Stack>
                     <Box

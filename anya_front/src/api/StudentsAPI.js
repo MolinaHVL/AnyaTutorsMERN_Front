@@ -17,14 +17,13 @@ export const getStudents = async () => {
     }
 };
 
-export const saveStudent = async (Student, UserUID) => {
+export const saveStudent = async (Student) => {
     try {
         console.log(process.env.REACT_APP_API_URL)
         const response = await fetch(SERVER_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "User-UID": { UserUID }
             },
             body: JSON.stringify(Student),
         });

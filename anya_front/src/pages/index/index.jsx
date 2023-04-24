@@ -35,6 +35,7 @@ const Index = () => {
                 <h2 id="text" style={{ marginLeft: scrollValue * 6 + 'px', marginTop: scrollValue * 1.5 + 'px' }}>Bienvenidos</h2>
                 <button onClick={() => navigate('/AnyaTutorsMERN_Front/role')} className="btn" id="bt" style={{ marginTop: scrollValue * 1.5 + 'px' }}>Registrarse</button>
                 <button onClick={() => navigate('/AnyaTutorsMERN_Front/UserLogIn')} className="btn" alt="img" id="bt2" style={{ marginTop: scrollValue * 1.5 + 'px' }}>Iniciar sesion</button>
+                <button onClick={() => navigate('/AnyaTutorsMERN_Front/admin')} className="btn" alt="img" id="bt2" style={{ marginTop: scrollValue * 1.5 + 'px' }}>Admin</button>
 
             </section>
             <div className="sec" id="sec">
