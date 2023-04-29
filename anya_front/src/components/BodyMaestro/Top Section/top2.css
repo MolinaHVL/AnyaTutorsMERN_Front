@@ -5,6 +5,7 @@
     --HColor: #7597de;
     --paleBlue: hsl(199, 81%, 83%);
     --whiteColor: hsl(0,0%,100%);
+    --blackColor: hsl(0,0%,18%);
     --textColor: hsl(220,1%,48%);
     --bgColor: hsl(219, 72%, 79%);
     --greyText: rgb(190,190,190);
@@ -13,8 +14,10 @@
     
     /*estilo de fuente*/
     --biggestFontSize: 2.5rem;
+    --h1FontSize: 3rem;
     --h2FontSize: 1.25rem;
     --h3FontSize: 1rem;
+    --normalFontSize: 1.5rem;
     --smallFontSize: .813rem;
     --smallestFontSize:.75rem;
     }
@@ -23,15 +26,15 @@
         justify-content: space-between;
     }
 
-    .topSection .headerSection .title #tit{
-        font-size: 2.5rem;
-        color: black;
+    .topSection .headerSection .title h1{
+        font-size: var(--h1FontSize);
+        color: var(--blackColor);
         font-weight: 700;
     }
 
-    .topSection .headerSection .title #tex{
-        font-size: 1.9rem;
-        color: black;
+    .topSection .headerSection .title p{
+        font-size: var(--normalFontSize);
+        color: var(--blackColor);
         font-weight: 500;
     }
 
@@ -40,15 +43,13 @@
        background: var(--whiteColor);
        border-radius: 5px;
        gap: 1rem;
-      
-       width: 500px;
+       box-shadow: 0 2px 4px var(--inputColor);
     }
 
     .topSection .searchBar input{
        border: none;
        outline: none;
        background: none;
-       width: 500px;
      }
 
      .topSection .adminDiv{
@@ -75,7 +76,49 @@
        
      }
 
-    
- 
+     .cardSection {
+        margin-top: 3rem;
+        gap: 1rem;
+     }
+     .cardSection .rightCard{
+        position: relative;
+        flex-basis: 90%;
+        height: 150px;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        padding: 2rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        border: 5px solid black;
+     }
 
     
+     .cardSection .rightCard .circle3,.circle4{
+      position: absolute;
+      background: var(--whiteColor);
+      border-radius: 50%;
+      opacity: .7;
+    }
+
+    .cardSection .rightCard  .circle3 {
+      height: 100px;
+      width: 100px;
+      top: -50px;
+      left: -50px;
+
+    }
+
+    .cardSection .rightCard  .circle4 {
+      height: 150px;
+      width: 150px;
+      bottom: -80px;
+      right: -70px;
+      z-index: 1;
+
+    }
+
+    h1{
+      font-size: var(--h1FontSize);
+      font-weight: 450;
+    }

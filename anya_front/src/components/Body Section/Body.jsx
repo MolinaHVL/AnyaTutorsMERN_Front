@@ -1,5 +1,5 @@
 import React from 'react';
-import './body.css';
+import '../../App.css';
 import Top from './Top Section/Top'
 import Listing from './Listing Section/Listing'
 import useUser from '../../hooks/useUser'
