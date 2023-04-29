@@ -13,8 +13,6 @@
     align-items: flex-start;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
-
 * {
     padding: 0;
     box-sizing: border-box;
@@ -68,16 +66,16 @@ li {
     cursor: pointer;
 }
 
-
-
 .flex {
     display: flex;
+}
+
+.flex,.grid {
     align-items: center;
 }
 
 .grid {
     display: grid;
-    align-items: center;
     gap: 1.5rem;
 }
 
@@ -101,23 +99,23 @@ li {
     color: var(--blackColor);
 }
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.Body body {
     margin: auto;
     padding: 1rem;
     background: linear-gradient(#2b1055, transparent);
 
 }
 
+.Body body,.containerAdmin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .containerAdmin {
     position: relative;
     width: 95vw;
     height: 95vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: #a084dc91;
     overflow: hidden;
     border-radius: 1rem;

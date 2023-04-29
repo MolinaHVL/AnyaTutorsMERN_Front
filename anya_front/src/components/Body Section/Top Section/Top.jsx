@@ -1,5 +1,5 @@
 import React from 'react';
-import './top.css';
+import './top2.css';
 
 //Importar iconos 
 import { IoSearch } from "react-icons/io5";

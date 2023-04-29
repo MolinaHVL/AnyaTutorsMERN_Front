@@ -1,5 +1,5 @@
 import React from 'react';
-import './listing.css';
+import './listing2.css';
 
 //importar imagenes - metodo cuando las imagenes son estaticas 
 import estad from "../../../fotos/estad.jpg";

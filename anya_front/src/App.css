@@ -1,83 +1,15 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Rubik&display=swap');
-
+/* APP.js Base CSS @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* Default Styles */
 * {
-  padding: 0;
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Rubik';
+  padding: 0;
   transition: .3s ease;
-
 }
-
-/*colores y estilos por default son variables*/
-
-:root {
-  --TitleColor: hsl(224, 91%, 31%);
-  --HColor: #7597de;
-  --paleBlue: hsl(199, 81%, 83%);
-  --whiteColor: hsl(0, 0%, 100%);
-  --blackColor: hsl(0, 0%, 18%);
-  --textColor: hsl(220, 1%, 48%);
-  --bgColor: hsl(219, 72%, 79%);
-  --greyText: rgb(190, 190, 190);
-  --inputColor: hsl(330, 12%, 97%);
-  --bodyColor: hsl(219, 27%, 85%);
-
-  /*estilo de fuente*/
-  --biggestFontSize: 2.5rem;
-  --h1FontSize: 1.5rem;
-  --h2FontSize: 1.25rem;
-  --h3FontSize: 1rem;
-  --normalFontSize: .950rem;
-  --smallFontSize: .813rem;
-  --smallestFontSize: .75rem;
-}
-
-/*Estilos por Default*/
 
 html {
   font-size: 90%;
-
+  width: 100%;
 }
 
 a {
@@ -89,36 +21,34 @@ li {
 }
 
 .icon {
-  font-size: var(--h2FontSize);
   cursor: pointer;
+  font-size: var(--h2FontSize);
 }
 
-
-
 .flex {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 .grid {
-  display: grid;
   align-items: center;
+  display: grid;
   gap: 1.5rem;
 }
 
 .btn {
+  background: var(--whiteColor);
   border: none;
-  outline: none;
-  cursor: pointer;
   border-radius: 8px;
   box-shadow: 0 2px 4px var(--intputColor);
-  padding: .8rem 1rem;
   color: var(--textColor);
+  cursor: pointer;
+  outline: none;
+  padding: .8rem 1rem;
 }
 
 .btn .icon {
   margin-left: .5rem;
-
 }
 
 .btn:hover {
@@ -126,15 +56,52 @@ li {
   color: var(--blackColor);
 }
 
+/* Custom Styles */
+:root {
+  /* Colors */
+  --TitleColor: hsl(224, 91%, 31%);
+  --HColor: #7597de;
+  --paleBlue: hsl(199, 81%, 83%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --textColor: hsl(220, 1%, 48%);
+  --bgColor: hsl(219, 72%, 79%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: hsl(330, 12%, 97%);
+  --bodyColor: hsl(219, 27%, 85%);
+
+  /* Fonts */
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 1.5rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: .950rem;
+  --smallFontSize: .813rem;
+  --smallestFontSize: .75rem;
+}
+
 body {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  margin: auto;
-  padding: 1rem;
   background: var(--bodyColor);
+  display: flex;
+  justify-content: center;
   margin: 0;
   padding: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  align-items: center;
+  background-color: #282c34;
+  color: var(--whiteColor);
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .container {
@@ -148,4 +115,143 @@ body {
   overflow: hidden;
   border-radius: 1rem;
   box-shadow: 2px 2px 8px var(--greyText);
+}
+
+/* Index Component CSS @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+.index *::before,
+.index *::after {
+  font-family: 'Poppins';
+  scroll-behavior: smooth;
+}
+
+.index body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(#2b1055, #7597de);
+}
+
+.index header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10000;
+}
+
+.index header .logo {
+  color: #fff;
+  font: 700 2em/1 'Poppins', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.index section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.index section::before {
+  content: '';
+  bottom: 0;
+  height: 100px;
+  background: linear-gradient(to top, #1c0522, transparent);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.index section::before,
+.index section img {
+  position: absolute;
+  width: 100%;
+}
+
+.index section img {
+  top: 0;
+  left: 0;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.index section img#moon {
+  mix-blend-mode: screen;
+  z-index: 11;
+}
+
+.index section img#mountains_front {
+  z-index: 10;
+}
+
+.index section img#mountains_behind {
+  z-index: 1;
+}
+
+.index section img#stars {
+  z-index: 9;
+}
+
+.index #text {
+  position: absolute;
+  color: #fff;
+  white-space: nowrap;
+  font: 5.5vw/1 'Poppins', sans-serif;
+}
+
+.index #text,
+.index .btn {
+  z-index: 11;
+}
+
+.index .btn {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 40px;
+  background: #fff;
+  color: #2b1055;
+  font: 1em/1 'Poppins', sans-serif;
+  transform: translateY(90px);
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.index .sec {
+  position: relative;
+  padding: 100px;
+  background: #1c0522;
+}
+
+.index .sec h2 {
+  font: 3.5em/1 'Poppins', sans-serif;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.index .sec p {
+  font: 2em/1 'Poppins', sans-serif;
+  color: #fff;
+}
+
+/* Starts Body for ADMIN @@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+.mainContent {
+  width: 82%;
+  height: 100%;
+  padding: 2rem;
+  overflow: auto;
+}
+
+.bottom {
+  margin-top: 2rem;
+  gap: 2rem;
+  align-items: flex-start;
 }

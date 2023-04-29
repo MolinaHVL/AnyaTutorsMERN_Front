@@ -1,0 +1,95 @@
+:root {
+    --TitleColor: hsl(224, 91%, 31%);
+    --HColor: #7d9bdd;
+    --paleBlue: hsl(199, 66%, 66%);
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(0, 0%, 18%);
+    --textColor: hsl(220, 1%, 48%);
+    --bgColor: hsl(219, 72%, 79%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: hsl(330, 12%, 97%);
+    --bodyColor: hsl(219, 27%, 85%);
+
+    /*estilo de fuente*/
+    --biggestFontSize: 2.5rem;
+    --h1FontSize: 1.5rem;
+    --h2FontSize: 1.25rem;
+    --normalFontSizeAdmin: 1rem;
+    --smallFontSize: 2.5rem;
+    --smallestFontSize: .75rem;
+}
+
+.heading {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.h1 {
+    font-size: var(--h2FontSize);
+    color: var(--blackColor);
+    font-weight: 700;
+}
+
+.btn {
+    border: 1px solid transparent;
+    font-weight: 800;
+}
+
+.btn:hover {
+    border: 1px solid var(--HColor);
+}
+
+.secContainer {
+    width: 100%;
+    margin: 1rem 0;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-top: 2px solid white;
+}
+
+.singleItemAdmin {
+    margin-top: 20px;
+    position: relative;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: .5rem;
+    border-radius: 10px;
+    background: var(--whiteColor);
+}
+
+.singleItemAdmin:hover {
+
+    background: none;
+    box-shadow: 0 2px 2px black;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.singleItemAdmin img {
+    margin-top: 10px;
+    max-width: 300px;
+    border-radius: 5px;
+}
+
+.singleItemAdmin Button {
+
+    width: 200px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    margin-top: 10px;
+
+}
+
+.singleItemAdmin h3 {
+    font-size: 1.5rem;
+    padding: .400rem 0;
+}
+
+.singleItemAdmin p {
+    font-size: var(--normalFontSizeAdmin);
+    text-align: center;
+}

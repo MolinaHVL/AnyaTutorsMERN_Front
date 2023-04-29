@@ -1,5 +1,5 @@
 import React from 'react';
-import './listing.css';
+import './listing3.css';
 
 //importar iconos 
 // import { IoArrowForwardSharp } from "react-icons/io5";

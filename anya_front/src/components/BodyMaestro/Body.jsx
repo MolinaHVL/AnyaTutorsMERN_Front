@@ -1,18 +1,24 @@
 import React from 'react';
-import './body.css';
+import '../../App.css';
 import Top from './Top Section/Top'
 import Listing from './Listing Section/Listing'
-
+import useUser from '../../hooks/useUser'
 
 const Body = () => {
+
+  const { user } = useUser();
+
   return (
-    <div className='mainContentAdmin'>
+    <div className='mainContent'>
       <Top />
 
-      <div className='bottom flex'>
-        <Listing />
+      {user
+        &&
+        <div className='bottom flex'>
+          <Listing />
 
-      </div>
+        </div>
+      }
 
     </div>
   )
