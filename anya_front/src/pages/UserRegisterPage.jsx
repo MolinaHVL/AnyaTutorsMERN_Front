@@ -102,7 +102,7 @@ const UserRegisterPage = () => {
                 Registro de cuenta
             </Typography>
 
-            {error && <Typography sx={{ color: "#000" }}>{error}</Typography>}
+            {error && <Typography sx={{ color: "red" }}>{error}</Typography>}
             <UserRegisterForm onSubmit={handleLogIn} setPassword={setPassword} setError={setError} />
             {password &&
                 <Stack direction={'column'} style={{ display: "flex", width: "100%", paddingLeft: "75px" }} paddingBottom={'15px'}>

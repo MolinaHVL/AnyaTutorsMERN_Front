@@ -87,7 +87,7 @@ li {
 
 body {
   align-items: center;
-  background: var(--bodyColor);
+  background: linear-gradient(#2b1055, #7597de);
   display: flex;
   justify-content: center;
   margin: 0;
@@ -561,5 +561,51 @@ body {
 
 .singleItem p {
   font-size: var(--normalFontSizeStudent);
+  text-align: center;
+}
+
+.singleItemAdmin {
+  margin-top: 20px;
+  position: relative;
+  width: 350px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: .5rem;
+  border-radius: 10px;
+  background: var(--whiteColor);
+}
+
+.singleItemAdmin:hover {
+
+  background: none;
+  box-shadow: 0 2px 2px black;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.singleItemAdmin img {
+  margin-top: 10px;
+  max-width: 300px;
+  border-radius: 5px;
+}
+
+.singleItemAdmin Button {
+
+  width: 200px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  margin-top: 10px;
+
+}
+
+.singleItemAdmin h3 {
+  font-size: 1.5rem;
+  padding: .400rem 0;
+}
+
+.singleItemAdmin p {
+  font-size: var(--normalFontSizeAdmin);
   text-align: center;
 }

@@ -1,14 +1,15 @@
 import './App.css';
 import RolePage from './pages/RolePage';
 import { Route, Routes } from "react-router-dom";
-import StudentPage from './pages/StudentPage';
 import TeacherPage from './pages/TeacherPage';
 import UserLogPage from './pages/UserLogPage';
 import UserRegisterPage from './pages/UserRegisterPage';
 import UserRegisterStep1 from './pages/UserRegisterStep1';
 import Index from './pages/index';
-import AdminPage from './pages/AdminPage';
-import ListStudents from './pages/ListStudents';
+import Layout from './LayoutRoute';
+import AdminGrid from './components/AdminGrid';
+import TeacherList from './components/Body Section/TeacherList';
+import AllStudents from './components/AllStudents';
 
 
 
@@ -32,41 +33,43 @@ function App() {
     <>
       <div className="App" >
         <Routes>
+          {/* Pages outside the application. */}
           <Route
             exact path='/AnyaTutorsMERN_Front'
             element={<Index />}
           />
           <Route
-            exact path='AnyaTutorsMERN_Front/role'
+            path='AnyaTutorsMERN_Front/role'
             element={<RolePage />}
           />
           <Route
-            exact path='AnyaTutorsMERN_Front/userLogIn'
+            path='AnyaTutorsMERN_Front/userLogIn'
             element={<UserLogPage />}
           />
           <Route
-            exact path='AnyaTutorsMERN_Front/userRegister'
+            path='AnyaTutorsMERN_Front/userRegister'
             element={<UserRegisterPage />}
-          />
-          <Route
-            path='AnyaTutorsMERN_Front/student'
-            element={<StudentPage />}
           />
           <Route
             path='AnyaTutorsMERN_Front/teacher'
             element={<TeacherPage />}
           />
           <Route
-            path='AnyaTutorsMERN_Front/admin'
-            element={<AdminPage />}
-          />
-          <Route
-            path='AnyaTutorsMERN_Front/ListStudents'
-            element={<ListStudents />}
-          />
-          <Route
             path='AnyaTutorsMERN_Front/userRegisterS1'
             element={<UserRegisterStep1 />}
+          />
+          {/* Inside the application */}
+          <Route
+            path='AnyaTutorsMERN_Front/ListStudents'
+            element={<Layout><AllStudents /></Layout>}
+          />
+          <Route
+            path='AnyaTutorsMERN_Front/student'
+            element={<Layout><TeacherList /></Layout>}
+          />
+          <Route
+            path="/AnyaTutorsMERN_Front/admin"
+            element={<Layout><AdminGrid /></Layout>}
           />
         </Routes>
 

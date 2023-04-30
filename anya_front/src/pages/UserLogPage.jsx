@@ -75,56 +75,60 @@ const UserLogPage = () => {
             <Typography fontSize={"25px"} marginBottom={"15px"} color={"Black"} fontFamily={'Poppins'} fontWeight={'bold'}>
                 Inicio de sesión
             </Typography>
-           
+
             {/* Para agregar el icono del Inicio de sesión quitar de comentario el código de abajo */}
             {/* <Typography marginTop={'10px'}>
                 <AccountCircleIcon color="primary" sx={{ fontSize: 80, color: ''}} />
             </Typography> */}
-                    
-            {error && <Typography sx={{ color: "#000" }}>{error}</Typography>}
+
+            {error && <Typography sx={{ color: "red" }}>{error}</Typography>}
             <UserLogInForm onSubmit={handleLogIn} />
             <Box sx={{ marginTop: "10px", width: '100%' }}>
                 <Button
-                variant="contained"
-                form="user-form"
-                type="submit"
-                children="Iniciar sesión"
-                sx={{ textTransform: 'none',
-                 width: '80%',
-                 fontSize: '16px',
-                 fontFamily: 'Poppins',
-                 fontWeight: 'bold',}}
+                    variant="contained"
+                    form="user-form"
+                    type="submit"
+                    children="Iniciar sesión"
+                    sx={{
+                        textTransform: 'none',
+                        width: '80%',
+                        fontSize: '16px',
+                        fontFamily: 'Poppins',
+                        fontWeight: 'bold',
+                    }}
                 />
             </Box>
-            <Box sx={{ marginTop: "20px", width: '100%'}}>           
-            <Button
-                component={Link}
-                to="/AnyaTutorsMERN_Front"
-                variant="text"
-                color="primary"
-                 sx={{ textTransform: 'none', 
-                    textDecoration: 'none', 
-                    width: '40%',
-                    padding: '3',
-                    fontSize: '13px',
-                    fontFamily: 'Poppins', 
-                    fontWeight: 'bold',
-                    color: '', // Cambia el color a un tono más oscuro
-                }}
-            >
-                ¿Olvidaste tu contraseña?
-            </Button>
-            <Button
+            <Box sx={{ marginTop: "20px", width: '100%' }}>
+                <Button
+                    component={Link}
+                    to="/AnyaTutorsMERN_Front"
+                    variant="text"
+                    color="primary"
+                    sx={{
+                        textTransform: 'none',
+                        textDecoration: 'none',
+                        width: '40%',
+                        padding: '3',
+                        fontSize: '13px',
+                        fontFamily: 'Poppins',
+                        fontWeight: 'bold',
+                        color: '', // Cambia el color a un tono más oscuro
+                    }}
+                >
+                    ¿Olvidaste tu contraseña?
+                </Button>
+                <Button
                     component={Link}
                     to="/AnyaTutorsMERN_Front/userRegister"
                     variant="text"
                     color="primary"
-                    sx={{ textTransform: 'none', 
+                    sx={{
+                        textTransform: 'none',
                         // textDecoration: 'underline', 
                         width: '40%',
                         padding: '3',
                         fontSize: '13px',
-                        fontFamily: 'Poppins', 
+                        fontFamily: 'Poppins',
                         fontWeight: 'bold',
                         color: '', // Cambia el color a un tono más oscuro
                     }}
@@ -137,11 +141,12 @@ const UserLogPage = () => {
                 to="/AnyaTutorsMERN_Front"
                 variant="text"
                 color="primary"
-                 sx={{ textTransform: 'none', 
-                    textDecoration: 'none', 
+                sx={{
+                    textTransform: 'none',
+                    textDecoration: 'none',
                     width: '80%',
                     fontSize: '13px',
-                    fontFamily: 'Poppins', 
+                    fontFamily: 'Poppins',
                     fontWeight: 'bold',
                     color: '#333', // Cambia el color a un tono más oscuro
                     marginTop: '20px',

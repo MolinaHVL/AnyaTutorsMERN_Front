@@ -20,7 +20,9 @@ import con from "../../fotos/conta.jpg";
 import ma from "../../fotos/mate3.jpg";
 import idi from "../../fotos/idio.jpg";
 import le from "../../fotos/profe.jpg";
-const Listing = () => {
+
+
+const TeacherList = () => {
   return (
     <div className='listingSection'>
 
@@ -162,4 +164,4 @@ const Listing = () => {
   )
 
 }
-export default Listing;
+export default TeacherList;
