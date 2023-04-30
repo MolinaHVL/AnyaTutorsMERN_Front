@@ -1,4 +1,4 @@
-import Sidebar from '../components/SideBar Section/Sidebar';
+import Sidebar from '../components/Sidebar';
 import Body from '../components/Body Section/Body';
 
 

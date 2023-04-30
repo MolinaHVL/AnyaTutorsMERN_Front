@@ -1,5 +1,5 @@
 import AllStudents from "../components/AllStudents";
-import Sidebar from "../components/SideBarMaestro/Sidebar";
+import Sidebar from "../components/Sidebar";
 import { useState, useEffect } from "react";
 import { getStudents } from "../api/StudentsAPI";
 

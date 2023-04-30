@@ -1,15 +1,15 @@
 import React from 'react';
-import './top2.css';
+import '../../App.css';
 
 //Importar iconos 
 import { IoSearch } from "react-icons/io5";
 import { IoSchoolOutline } from "react-icons/io5";
 import { IoNotificationsOutline } from "react-icons/io5";
-import useUser from '../../../hooks/useUser'
+import useUser from '../../hooks/useUser'
 
 //importar imagen 
 
-import img from '../../../fotos/estud.jpg';
+import img from '../../fotos/estud.jpg';
 
 const Top = () => {
 

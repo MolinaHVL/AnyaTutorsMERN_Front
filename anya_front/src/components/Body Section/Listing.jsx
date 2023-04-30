@@ -1,5 +1,5 @@
 import React from 'react';
-import './listing3.css';
+import '../../App.css';
 
 //importar iconos 
 // import { IoArrowForwardSharp } from "react-icons/io5";
@@ -7,19 +7,19 @@ import { IoHeartSharp } from "react-icons/io5";
 
 
 //importar imagenes - metodo cuando las imagenes son estaticas 
-import mate from "../../../fotos/mate.jpg";
-import ingles from "../../../fotos/Ingles.jpg";
-import conta from "../../../fotos/Contabilidad.jpg";
-import prog from "../../../fotos/Programacion.jpg";
-import c from "../../../fotos/contab.jpg";
-import m from "../../../fotos/mate2.jpg";
-import p from "../../../fotos/nutricion.jpg";
-import i from "../../../fotos/idioma.jpg";
-import n from "../../../fotos/nutri.jpg";
-import con from "../../../fotos/conta.jpg";
-import ma from "../../../fotos/mate3.jpg";
-import idi from "../../../fotos/idio.jpg";
-import le from "../../../fotos/profe.jpg";
+import mate from "../../fotos/mate.jpg";
+import ingles from "../../fotos/Ingles.jpg";
+import conta from "../../fotos/Contabilidad.jpg";
+import prog from "../../fotos/Programacion.jpg";
+import c from "../../fotos/contab.jpg";
+import m from "../../fotos/mate2.jpg";
+import p from "../../fotos/nutricion.jpg";
+import i from "../../fotos/idioma.jpg";
+import n from "../../fotos/nutri.jpg";
+import con from "../../fotos/conta.jpg";
+import ma from "../../fotos/mate3.jpg";
+import idi from "../../fotos/idio.jpg";
+import le from "../../fotos/profe.jpg";
 const Listing = () => {
   return (
     <div className='listingSection'>

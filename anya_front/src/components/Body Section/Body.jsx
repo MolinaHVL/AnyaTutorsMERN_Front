@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../App.css';
-import Top from './Top Section/Top'
-import Listing from './Listing Section/Listing'
+import Top from './Top'
+import Listing from './Listing'
 import useUser from '../../hooks/useUser'
 
 const Body = () => {

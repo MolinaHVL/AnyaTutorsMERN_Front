@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import StudentInfo from "./StudentInfo";
-import Top from "./BodyMaestro/Top Section/Top";
+import Top from "./Body Section/Top";
 
 const AllStudents = ({ students }) => {
     return (

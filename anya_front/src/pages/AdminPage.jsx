@@ -1,9 +1,9 @@
-import Body from "../components/BodyMaestro/Body";
-import Sidebar from "../components/SideBarMaestro/Sidebar";
+import Body from "../components/Body Section/Body";
+import Sidebar from "../components/Sidebar";
 
 const AdminPage = () => {
     return (
-        <div className='containerAdmin'>
+        <div className='container'>
             <Sidebar />
             <Body />
 

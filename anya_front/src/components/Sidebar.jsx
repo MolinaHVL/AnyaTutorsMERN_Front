@@ -1,11 +1,11 @@
 import React from 'react';
-import './sidebar.css';
+import '../App.css';
 import { useNavigate } from "react-router-dom"
-import useUser from '../../hooks/useUser'
+import useUser from '../hooks/useUser'
 
 
 //importar imagenes =======>
-import logo from '../../fotos/logo.png';
+import logo from '../fotos/logo.png';
 
 //importar iconos=======>
 import { IoMdContact } from 'react-icons/io';
