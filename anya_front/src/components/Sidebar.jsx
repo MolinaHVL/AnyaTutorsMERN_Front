@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import { useNavigate } from "react-router-dom"
 import useUser from '../hooks/useUser'
-
+import { Link } from 'react-router-dom';
 
 //importar imagenes =======>
 import logo from '../fotos/logo.png';
@@ -43,11 +43,10 @@ const Sidebar = () => {
       });
   }
 
+
   return (
     <div className='sideBar grid'>
-
       <div className='logoDiv flex'>
-
         <img src={logo} alt="mage name" id='log' />
         <h2>AnyaTutors.</h2>
       </div>
@@ -59,76 +58,74 @@ const Sidebar = () => {
 
         <ul className='menuLists grid'>
           <li className='listItem'>
-
-            {user && <a href='#top' className='menuLink flex'>
-              <IoMdContact className='icon' />
-              <span className='smallText'>
-                Mi cuenta
-              </span>
-            </a>}
+            {user && (
+              <Link to='#top' className='menuLink flex'>
+                <IoMdContact className='icon' />
+                <span className='smallText'>
+                  Mi cuenta
+                </span>
+              </Link>
+            )}
           </li>
 
           <li className='listItem'>
-
-            {user && <a href='#top' className='menuLink flex'>
-              <ImCalendar className='icon' />
-              <span className='smallText'>
-                Tutorias
-              </span>
-            </a>}
+            {user && (
+              <Link to='#top' className='menuLink flex'>
+                <ImCalendar className='icon' />
+                <span className='smallText'>
+                  Tutorias
+                </span>
+              </Link>
+            )}
           </li>
 
           <li className='listItem'>
-            {user
-              ?
-              <a href='#top' className='menuLink flex' onClick={handleLogout}>
+            {user ? (
+              <Link to='#top' className='menuLink flex' onClick={handleLogout}>
                 <CiPower className='icon' />
                 <span className='smallText'>
                   Cerrar sesión
                 </span>
-              </a>
-              :
-              <a href='#top' className='menuLink flex' onClick={handleLogin}>
+              </Link>
+            ) : (
+              <Link to='#top' className='menuLink flex' onClick={handleLogin}>
                 <CiPower className='icon' />
                 <span className='smallText'>
                   Iniciar sesión
                 </span>
-              </a>
-            }
-
+              </Link>
+            )}
           </li>
-
         </ul>
       </div>
 
-      {user && <div className="settingsDiv">
-        <h3 className='divTitle'>
-          Configuracion
-        </h3>
+      {user && (
+        <div className="settingsDiv">
+          <h3 className='divTitle'>
+            Configuracion
+          </h3>
 
-        <ul className='menuLists grid'>
-          <li className='listItem'>
+          <ul className='menuLists grid'>
+            <li className='listItem'>
+              <Link to='/AnyaTutorsMERN_Front/chat' className='menuLink flex'>
+                <IoLanguageOutline className='icon' />
+                <span className='smallText'>
+                  Chat Global
+                </span>
+              </Link>
+            </li>
 
-            <a href='/AnyaTutorsMERN_Front/chat' className='menuLink flex'>
-              <IoLanguageOutline className='icon' />
-              <span className='smallText'>
-                Chat Global
-              </span>
-            </a>
-          </li>
-
-          <li className='listItem'>
-
-            <a href='#top' className='menuLink flex'>
-              <IoCardOutline className='icon' />
-              <span className='smallText'>
-                Tarjetas
-              </span>
-            </a>
-          </li>
-
-        </ul>
-      </div>}
+            <li className='listItem'>
+              <Link to='#top' className='menuLink flex'>
+                <IoCardOutline className='icon' />
+                <span className='smallText'>
+                  Tarjetas
+                </span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
 
       <div className='sideBarCard'>
         <IoHelpCircleOutline className="icon" />
@@ -139,13 +136,9 @@ const Sidebar = () => {
           <h3>¿Necesitas ayuda?</h3>
           <p>Si tienes problemas con AnyaTutors, comuniquese con nosotros si tienes mas preguntas</p>
           <button className='btn'>Ayuda</button>
-
         </div>
       </div>
-
     </div>
-
-  )
-
+  );
 }
 export default Sidebar;
