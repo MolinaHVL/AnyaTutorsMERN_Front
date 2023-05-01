@@ -10,6 +10,7 @@ import Layout from './LayoutRoute';
 import AdminGrid from './components/AdminGrid';
 import TeacherList from './components/Body Section/TeacherList';
 import AllStudents from './components/AllStudents';
+import Chat from './components/ChatGlobal';
 
 
 
@@ -68,8 +69,12 @@ function App() {
             element={<Layout><TeacherList /></Layout>}
           />
           <Route
-            path="/AnyaTutorsMERN_Front/admin"
+            path="AnyaTutorsMERN_Front/admin"
             element={<Layout><AdminGrid /></Layout>}
+          />
+          <Route
+            path='AnyaTutorsMERN_Front/chat'
+            element={<Layout><Chat /></Layout>}
           />
         </Routes>
 

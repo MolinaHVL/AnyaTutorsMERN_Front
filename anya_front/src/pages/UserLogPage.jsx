@@ -5,53 +5,51 @@ import { useNavigate } from "react-router-dom"
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import UserLogInForm from "../forms/UserLogInForm";
 import Typography from "@mui/material/Typography";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
 import useUser from '../hooks/useUser'
 
 const UserLogPage = () => {
-
     const { user } = useUser();
-
-    //variable clave para navegar por las paginas
     const navigate = useNavigate();
+    const [error, setError] = useState('');
 
     useEffect(() => {
         if (user) {
-            navigate("/AnyaTutorsMERN_Front/student")
+            user.getIdTokenResult().then((idTokenResult) => {
+                if (idTokenResult.claims.Student) {
+                    navigate('/AnyaTutorsMERN_Front/student');
+                } else if (idTokenResult.claims.Teacher) {
+                    navigate('/AnyaTutorsMERN_Front/teacher');
+                } else if (idTokenResult.claims.admin) {
+                    navigate('/AnyaTutorsMERN_Front/admin');
+                }
+            });
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user]);
+    }, [user, navigate]);
 
-    //Hooks para manejar el estado del error del form
-    const [error, setError] = useState('')
-
-    //Autenticación de firebase
     const handleLogIn = async (submit) => {
         try {
-            await signInWithEmailAndPassword(getAuth(), submit.email, submit.password)
-                .then(() => {
-                    navigate('/AnyaTutorsMERN_Front/student')
-                })
+            await signInWithEmailAndPassword(getAuth(), submit.email, submit.password);
         } catch (e) {
-            let message = ""
+            let message = '';
 
             switch (e.message) {
-                case "Firebase: Error (auth/invalid-email).":
-                    message = "Direccion de e-mail invalida, favor de cambiarla"
+                case 'Firebase: Error (auth/invalid-email).':
+                    message = 'Direccion de e-mail invalida, favor de cambiarla';
                     break;
-                case "Firebase: Error (auth/user-not-found).":
-                    message = "El correo proporcionado no pertenece a ningun usuario"
+                case 'Firebase: Error (auth/user-not-found).':
+                    message = 'El correo proporcionado no pertenece a ningun usuario';
                     break;
-                case "Firebase: Error (auth/wrong-password).":
-                    message = "Contraseña incorrecta, favor de verificar"
+                case 'Firebase: Error (auth/wrong-password).':
+                    message = 'Contraseña incorrecta, favor de verificar';
                     break;
                 default:
-                    message = e.message
+                    message = e.message;
             }
-            setError(message)
+            setError(message);
         }
-    }
+    };
 
     return (
         <Box

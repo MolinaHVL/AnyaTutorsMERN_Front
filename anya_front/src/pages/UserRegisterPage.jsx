@@ -50,9 +50,17 @@ const UserRegisterPage = () => {
                 setError('Las contraseñas no coinciden, favor de verificar')
                 return
             }
-            await createUserWithEmailAndPassword(getAuth(), submit.email, submit.password)
-            await saveStudent(submit)
-            navigate('/AnyaTutorsMERN_Front/student')
+            // Get the user object after creating a user with email and password
+            const userCredential = await createUserWithEmailAndPassword(getAuth(), submit.email, submit.password);
+            const user = userCredential.user;
+
+            // Get the UID of the recently created user
+            const uid = user.uid;
+
+            // Pass the UID along with the rest of the user info to saveStudent function
+            await saveStudent({ ...submit, uid });
+
+            navigate('/AnyaTutorsMERN_Front/student');
 
 
 

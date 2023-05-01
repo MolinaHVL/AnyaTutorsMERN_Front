@@ -109,10 +109,10 @@ const Sidebar = () => {
         <ul className='menuLists grid'>
           <li className='listItem'>
 
-            <a href='#top' className='menuLink flex'>
+            <a href='/AnyaTutorsMERN_Front/chat' className='menuLink flex'>
               <IoLanguageOutline className='icon' />
               <span className='smallText'>
-                Cambiar idioma
+                Chat Global
               </span>
             </a>
           </li>
