@@ -20,6 +20,7 @@ import UserRegisterForm from "../forms/UserRegisterForm";
 
 //API imports
 import { saveStudent } from "../api/StudentsAPI";
+import Copyright from "../components/Copyright";
 
 const UserRegisterPage = () => {
 
@@ -197,7 +198,7 @@ const UserRegisterPage = () => {
                     Acceder a cuenta
                 </Button>
 
-                <Button
+                {/* <Button
                     component={Link}
                     to="/AnyaTutorsMERN_Front"
                     variant="text"
@@ -214,7 +215,8 @@ const UserRegisterPage = () => {
                     }}
                 >
                     Copyright © AnyaTutors 2023.
-                </Button>
+                </Button> */}
+                <Copyright />
             </Box>
 
         </Box>

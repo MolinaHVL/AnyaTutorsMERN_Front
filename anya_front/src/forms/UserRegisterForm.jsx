@@ -65,7 +65,7 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                 alignItems="center"
                 justify="center"
             >
-                <Grid item xs={8} sx={{width: '80%', marginY: '0px'}}>
+                <Grid item xs={8} sx={{ width: '80%', marginY: '0px' }}>
                     <Controller
                         control={control}
                         name='email'
@@ -82,13 +82,14 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                                     },
                                     endAdornment: (
                                         <InputAdornment position="end">
-                                          <EmailRoundedIcon />
+                                            <EmailRoundedIcon />
                                         </InputAdornment>
                                     ),
                                 }}
                                 error={!!fieldState.error}
                                 helperText={
                                     <Typography
+                                        component="div"
                                         sx={{
                                             fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
                                             fontWeight: 'bold',
@@ -97,13 +98,13 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                                         }}
                                     >
                                         {fieldState.error?.message}
-                                    </Typography>   
+                                    </Typography>
                                 }
                             />
                         )}
                     />
                 </Grid>
-                <Grid item xs={8} sx={{width: '80%', marginY: '0px'}}>
+                <Grid item xs={8} sx={{ width: '80%', marginY: '0px' }}>
                     <Controller
                         control={control}
                         name='password'
@@ -117,6 +118,7 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                                 error={!!fieldState.error}
                                 helperText={
                                     <Typography
+                                        component="div"
                                         sx={{
                                             fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
                                             fontWeight: 'bold',
@@ -125,7 +127,7 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                                         }}
                                     >
                                         {fieldState.error?.message}
-                                    </Typography>   
+                                    </Typography>
                                 }
                                 InputProps={{
                                     style: {
@@ -148,7 +150,7 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                         )}
                     />
                 </Grid>
-                <Grid item xs={8} sx={{width: '80%', marginY: '0px'}}>
+                <Grid item xs={8} sx={{ width: '80%', marginY: '0px' }}>
                     <Controller
                         control={control}
                         name='confirmPassword'
@@ -162,6 +164,7 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                                 error={!!fieldState.error}
                                 helperText={
                                     <Typography
+                                        component="div"
                                         sx={{
                                             fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
                                             fontWeight: 'bold',
@@ -170,7 +173,7 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
                                         }}
                                     >
                                         {fieldState.error?.message}
-                                    </Typography>   
+                                    </Typography>
                                 }
                                 InputProps={{
                                     style: {
