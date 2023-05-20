@@ -197,25 +197,6 @@ const UserRegisterPage = () => {
                 >
                     Acceder a cuenta
                 </Button>
-
-                {/* <Button
-                    component={Link}
-                    to="/AnyaTutorsMERN_Front"
-                    variant="text"
-                    color="primary"
-                    sx={{
-                        textTransform: 'none',
-                        textDecoration: 'none',
-                        width: '80%',
-                        fontSize: '13px',
-                        fontFamily: 'Poppins',
-                        fontWeight: 'bold',
-                        color: '#333', // Cambia el color a un tono más oscuro
-                        marginTop: '20px',
-                    }}
-                >
-                    Copyright © AnyaTutors 2023.
-                </Button> */}
                 <Copyright />
             </Box>
 
