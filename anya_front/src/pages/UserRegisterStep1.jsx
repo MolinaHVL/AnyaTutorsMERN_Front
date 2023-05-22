@@ -14,6 +14,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { saveStudent } from '../api/StudentsAPI';
+import { saveTeacher } from '../api/TeachersAPI';
 
 
 const FormContext = createContext();
@@ -223,35 +224,46 @@ const RegisterForm = () => {
       const storage = getStorage();
 
       const files = [form.picture, form.dip, form.iden];  // The keys for each file in your state
+      const urlFilesPromises = []
 
       for (let i = 0; i < files.length; i++) {
         console.log('subiendo archivo:', { i })
         const file = files[i];  // Access each file from your state
-        const storageRef = ref(storage, `userProfilePhotos/${uid}/${file.name}`);
+        const storageRef = ref(storage, `userProfileFiles/${uid}/${file.name}`);
         const uploadTask = uploadBytesResumable(storageRef, file);
 
-        uploadTask.on('state_changed',
-          (snapshot) => {
-            console.log(snapshot)
-          },
-          (error) => {
-            // Handle unsuccessful uploads
-            console.log(error);
-          },
-          () => {
-            // Upload completed successfully, now we can get the download URL
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              console.log('File available at', downloadURL);
-            });
-          }
-        );
+        const urlFilePromise = new Promise((resolve, reject) => {
+          uploadTask.on('state_changed',
+            (snapshot) => {
+              console.log(snapshot)
+            },
+            (error) => {
+              // Handle unsuccessful uploads
+              console.log(error);
+              reject(error);
+            },
+            () => {
+              // Upload completed successfully, now we can get the download URL
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                console.log('File available at', downloadURL);
+                resolve(downloadURL);
+              });
+            }
+          );
+        });
+
+        urlFilesPromises.push(urlFilePromise);
       }
 
-      // await saveStudent({ ...form, uid });
+      const urlFiles = await Promise.all(urlFilesPromises);
+
+      form.picture = urlFiles[0]
+      form.dip = urlFiles[1]
+      form.iden = urlFiles[2]
+
+      await saveTeacher({ ...form, uid });
 
       // navigate('/AnyaTutorsMERN_Front/student');
-
-
 
     } catch (e) {
       let message = ''
@@ -276,7 +288,6 @@ const RegisterForm = () => {
       }
       setError(message)
     }
-
   };
 
   const steps = ['First Step', 'Second Step', 'Third Step'];
