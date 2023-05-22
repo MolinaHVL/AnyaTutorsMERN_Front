@@ -10,13 +10,13 @@ import {
     Typography,
 } from "@mui/material";
 import { io } from "socket.io-client"
-import useUser from "../hooks/useUser";
+import useUser from "../hooks/useStudent";
 
 const socket = io(process.env.REACT_APP_API_URL)
 
 const Chat = () => {
 
-    const { user } = useUser();
+    const { student } = useUser();
 
 
     const [messages, setMessages] = useState([]);
@@ -42,7 +42,7 @@ const Chat = () => {
         const newMessage = {
             text: inputValue,
             timestamp: new Date(),
-            sender: user.email,
+            sender: [student.nombre, student.picture],
         };
         socket.emit("message", newMessage);
         setInputValue("");
@@ -59,9 +59,9 @@ const Chat = () => {
                         <Paper variant="outlined" style={{ height: "400px", overflow: "scroll" }}>
                             {messages.map((message, index) => (
                                 <Box key={index} display="flex" alignItems="center" p={2}>
-                                    <Avatar>{message.sender[0]}</Avatar>
+                                    <Avatar src={message.sender[1]}>{message.sender[0][0]}</Avatar>
                                     <Box ml={2}>
-                                        <Typography variant="body1">{message.sender}</Typography>
+                                        <Typography variant="body1">{message.sender[0]}</Typography>
                                         <Typography variant="body2">{message.text}</Typography>
                                     </Box>
                                 </Box>

@@ -1,5 +1,4 @@
 import { Box, Stack, Typography } from "@mui/material";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 const StudentInfo = ({ student }) => {
@@ -28,16 +27,18 @@ const StudentInfo = ({ student }) => {
                 alignItems={"center"}
                 spacing={2}
             >
-                <AccountCircleIcon sx={{ fontSize: "80px" }} />
+                <div className="adminImage">
+                    {student && <img src={student.picture} alt='Estudiante' id='estu' />}
+                </div>
                 <Stack spacing={1} sx={{ width: 1 }}>
                     <Typography fontSize={20} fontFamily={'Poppins'} sx={{ fontWeight: 'bold' }}>Email: </Typography>
-                    <Typography fontSize={16} fontFamily={'Poppins'} sx={{ overflowWrap: "break-word" }}>{student.email}</Typography>
-                    <Typography fontSize={20} fontFamily={'Poppins'} sx={{ fontWeight: 'bold' }}>Password: </Typography>
-                    <Typography fontSize={16} fontFamily={'Poppins'} sx={{ overflowWrap: "break-word" }}>{student.password}</Typography>
+                    <Typography fontSize={16} fontFamily={'Poppins'} sx={{ overflowWrap: "break-word" }}>{student.correo}</Typography>
+                    <Typography fontSize={20} fontFamily={'Poppins'} sx={{ fontWeight: 'bold' }}>Usuario: </Typography>
+                    <Typography fontSize={16} fontFamily={'Poppins'} sx={{ overflowWrap: "break-word" }}>{student.nombre}</Typography>
                 </Stack>
                 <Stack spacing={1} sx={{ width: 1 }}>
-                    <Typography fontSize={16} fontFamily={'Poppins'} sx={{ fontWeight: 'bold' }}>Role:</Typography>
-                    <Typography fontSize={20} fontFamily={'Poppins'}>Student</Typography>
+                    <Typography fontSize={16} fontFamily={'Poppins'} sx={{ fontWeight: 'bold' }}>Rol:</Typography>
+                    <Typography fontSize={20} fontFamily={'Poppins'}>Estudiante</Typography>
                 </Stack>
             </Stack>
         </Box>

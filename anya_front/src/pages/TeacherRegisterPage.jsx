@@ -5,6 +5,7 @@ import { makeStyles } from '@mui/styles';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Typography from "@mui/material/Typography";
+import { useNavigate } from 'react-router-dom';
 
 import { FcPanorama } from "react-icons/fc";
 import { FcDiploma1 } from "react-icons/fc";
@@ -13,7 +14,6 @@ import { FcDocument } from "react-icons/fc";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import { saveStudent } from '../api/StudentsAPI';
 import { saveTeacher } from '../api/TeachersAPI';
 
 
@@ -137,21 +137,6 @@ const useStyles = makeStyles({
   },
 });
 
-// const CssTextField = styled(TextField)({
-
-//   '& .MuiOutlinedInput-root': {
-//     '& fieldset': {
-//       borderColor: '#205295',
-//     },
-//     '&:hover fieldset': {
-//       borderColor: '#E8E2E2',
-//     },
-//     '&.Mui-focused fieldset': {
-//       borderColor: 'blue',
-//     },
-//   },
-// });
-
 const CssTextField = styled(TextField)(({ hasError }) => ({
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
@@ -167,6 +152,8 @@ const CssTextField = styled(TextField)(({ hasError }) => ({
 }));
 
 const RegisterForm = () => {
+
+  const navigate = useNavigate()
 
   const [error, setError] = useState('')
   const classes = useStyles();
@@ -210,7 +197,6 @@ const RegisterForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(form);
     if (!form.dip || !form.iden || !form.picture) {
       setError("hace falta uno o mas documentos")
       return
@@ -227,7 +213,6 @@ const RegisterForm = () => {
       const urlFilesPromises = []
 
       for (let i = 0; i < files.length; i++) {
-        console.log('subiendo archivo:', { i })
         const file = files[i];  // Access each file from your state
         const storageRef = ref(storage, `userProfileFiles/${uid}/${file.name}`);
         const uploadTask = uploadBytesResumable(storageRef, file);
@@ -235,7 +220,6 @@ const RegisterForm = () => {
         const urlFilePromise = new Promise((resolve, reject) => {
           uploadTask.on('state_changed',
             (snapshot) => {
-              console.log(snapshot)
             },
             (error) => {
               // Handle unsuccessful uploads
@@ -245,7 +229,6 @@ const RegisterForm = () => {
             () => {
               // Upload completed successfully, now we can get the download URL
               getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                console.log('File available at', downloadURL);
                 resolve(downloadURL);
               });
             }
@@ -263,7 +246,7 @@ const RegisterForm = () => {
 
       await saveTeacher({ ...form, uid });
 
-      // navigate('/AnyaTutorsMERN_Front/student');
+      navigate('/AnyaTutorsMERN_Front/teacher');
 
     } catch (e) {
       let message = ''
@@ -290,7 +273,7 @@ const RegisterForm = () => {
     }
   };
 
-  const steps = ['First Step', 'Second Step', 'Third Step'];
+  const steps = ['Cuenta', 'Datos personales', 'Documentos'];
 
   const getStepContent = (step) => {
     switch (step) {
@@ -582,10 +565,10 @@ const StepThree = ({ form, setForm, classes }) => {
   );
 };
 
-export const UserRegisterStep1 = () => (
+export const TeacherRegisterPage = () => (
   <FormProvider>
     <RegisterForm />
   </FormProvider>
 );
 
-export default UserRegisterStep1
+export default TeacherRegisterPage

@@ -1,16 +1,17 @@
 import './App.css';
 import RolePage from './pages/RolePage';
 import { Route, Routes } from "react-router-dom";
-import TeacherPage from './pages/TeacherPage';
 import UserLogPage from './pages/UserLogPage';
-import UserRegisterPage from './pages/UserRegisterPage';
-import UserRegisterStep1 from './pages/UserRegisterStep1';
 import Index from './pages/index';
 import Layout from './LayoutRoute';
 import AdminGrid from './components/AdminGrid';
 import TeacherList from './components/Body Section/TeacherList';
 import AllStudents from './components/AllStudents';
 import Chat from './components/ChatGlobal';
+import StudentRegisterPage from './pages/StudentRegisterPage';
+import TeacherRegisterPage from './pages/TeacherRegisterPage';
+import CoursesComponent from './components/TeacherCourses';
+import UserProfile from './components/profile';
 
 
 
@@ -48,16 +49,16 @@ function App() {
             element={<UserLogPage />}
           />
           <Route
-            path='AnyaTutorsMERN_Front/userRegister'
-            element={<UserRegisterPage />}
+            path='AnyaTutorsMERN_Front/studentRegister'
+            element={<StudentRegisterPage />}
           />
           <Route
             path='AnyaTutorsMERN_Front/teacher'
-            element={<TeacherPage />}
+            element={<Layout><CoursesComponent /></Layout>}
           />
           <Route
-            path='AnyaTutorsMERN_Front/userRegisterS1'
-            element={<UserRegisterStep1 />}
+            path='AnyaTutorsMERN_Front/teacherRegister'
+            element={<TeacherRegisterPage />}
           />
           {/* Inside the application */}
           <Route
@@ -75,6 +76,10 @@ function App() {
           <Route
             path='AnyaTutorsMERN_Front/chat'
             element={<Layout><Chat /></Layout>}
+          />
+          <Route
+            path='AnyaTutorsMERN_Front/profile'
+            element={<Layout><UserProfile /></Layout>}
           />
         </Routes>
 

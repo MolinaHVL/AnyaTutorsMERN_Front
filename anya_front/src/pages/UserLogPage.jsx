@@ -7,26 +7,24 @@ import UserLogInForm from "../forms/UserLogInForm";
 import Typography from "@mui/material/Typography";
 // import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
-import useUser from '../hooks/useUser'
+import useUser from '../hooks/useStudent'
 
 const UserLogPage = () => {
-    const { user } = useUser();
+    const { student } = useUser();
     const navigate = useNavigate();
     const [error, setError] = useState('');
 
     useEffect(() => {
-        if (user) {
-            user.getIdTokenResult().then((idTokenResult) => {
-                if (idTokenResult.claims.Student) {
-                    navigate('/AnyaTutorsMERN_Front/student');
-                } else if (idTokenResult.claims.Teacher) {
-                    navigate('/AnyaTutorsMERN_Front/teacher');
-                } else if (idTokenResult.claims.admin) {
-                    navigate('/AnyaTutorsMERN_Front/admin');
-                }
-            });
+        if (student) {
+            if (student.token.Student) {
+                navigate('/AnyaTutorsMERN_Front/student');
+            } else if (student.token.Teacher) {
+                navigate('/AnyaTutorsMERN_Front/teacher');
+            } else if (student.token.admin) {
+                navigate('/AnyaTutorsMERN_Front/admin');
+            }
         }
-    }, [user, navigate]);
+    }, [student, navigate]);
 
     const handleLogIn = async (submit) => {
         try {

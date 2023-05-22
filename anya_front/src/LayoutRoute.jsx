@@ -1,12 +1,12 @@
 import React from 'react';
 // import { Route } from 'react-router-dom';
 import Top from './components/Body Section/Top';
-import useUser from './hooks/useUser';
+import useUser from './hooks/useStudent';
 import Sidebar from './components/Sidebar';
 
 
 const Layout = ({ children }) => {
-    const { user } = useUser();
+    const { student } = useUser();
 
     return (
         <div className='container'>
@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
             <div className='mainContent'>
                 <Top />
 
-                {user && (
+                {student && (
                     <div className='bottom flex'>
                         {children}
                     </div>

@@ -1,7 +1,6 @@
 const SERVER_URL = process.env.REACT_APP_API_URL + "/students/";
 
 export const getStudents = async () => {
-    console.log(SERVER_URL);
     try {
         const response = await fetch(SERVER_URL, {
             headers: {
@@ -54,6 +53,20 @@ export const deleteStudent = async (id) => {
     try {
         const response = await fetch(SERVER_URL + id, { method: "DELETE" });
         return response.status === 204;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const getSingleStudent = async (Student) => {
+    try {
+        const response = await fetch(SERVER_URL + Student.email, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+        });
+
+        if (response.status === 200) return response.json();
+        else return false;
     } catch (error) {
         console.log(error);
     }

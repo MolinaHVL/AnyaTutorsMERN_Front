@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { useNavigate } from "react-router-dom"
-import useUser from '../hooks/useUser'
+import useUser from '../hooks/useStudent'
 import { Link } from 'react-router-dom';
 
 //importar imagenes =======>
@@ -23,7 +23,7 @@ import { getAuth, signOut } from 'firebase/auth';
 const Sidebar = () => {
 
   //custom hook para saber si el usuario esta logeado
-  const { user } = useUser();
+  const { student } = useUser();
   const auth = getAuth()
 
   const navigate = useNavigate();
@@ -58,8 +58,8 @@ const Sidebar = () => {
 
         <ul className='menuLists grid'>
           <li className='listItem'>
-            {user && (
-              <Link to='#top' className='menuLink flex'>
+            {student && (
+              <Link to='/AnyaTutorsMERN_Front/profile' className='menuLink flex'>
                 <IoMdContact className='icon' />
                 <span className='smallText'>
                   Mi cuenta
@@ -69,7 +69,7 @@ const Sidebar = () => {
           </li>
 
           <li className='listItem'>
-            {user && (
+            {student && (
               <Link to='#top' className='menuLink flex'>
                 <ImCalendar className='icon' />
                 <span className='smallText'>
@@ -80,7 +80,7 @@ const Sidebar = () => {
           </li>
 
           <li className='listItem'>
-            {user ? (
+            {student ? (
               <Link to='#top' className='menuLink flex' onClick={handleLogout}>
                 <CiPower className='icon' />
                 <span className='smallText'>
@@ -99,7 +99,7 @@ const Sidebar = () => {
         </ul>
       </div>
 
-      {user && (
+      {student && (
         <div className="settingsDiv">
           <h3 className='divTitle'>
             Configuracion

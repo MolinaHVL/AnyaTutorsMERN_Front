@@ -19,7 +19,6 @@ export const getTeachers = async () => {
 
 export const saveTeacher = async (Teacher) => {
     try {
-        console.log(process.env.REACT_APP_API_URL)
         const response = await fetch(SERVER_URL, {
             method: "POST",
             headers: {

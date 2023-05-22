@@ -26,7 +26,7 @@ const RolePage = () => {
                     <Typography color="black" display="block" fontSize={"36px"} padding={"5px"} marginBottom={"20px"}>Elige tu rol: </Typography>
 
                     <Stack direction="row" display={"flex"}>
-                        <Link to="/AnyaTutorsMERN_Front/userRegister" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
+                        <Link to="/AnyaTutorsMERN_Front/studentRegister" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
 
                             <Button variant="contained"
                                 sx={{
@@ -51,7 +51,7 @@ const RolePage = () => {
                                 Estudiante
                             </Button>
                         </Link>
-                        <Link to="/AnyaTutorsMERN_Front/teacher" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
+                        <Link to="/AnyaTutorsMERN_Front/teacherRegister" style={{ width: 0.5, flexGrow: 1, textDecoration: "none", display: "flex" }}>
 
                             <Button variant="contained"
                                 sx={{

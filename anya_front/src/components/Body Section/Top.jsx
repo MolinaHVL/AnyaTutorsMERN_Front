@@ -5,22 +5,20 @@ import '../../App.css';
 import { IoSearch } from "react-icons/io5";
 import { IoSchoolOutline } from "react-icons/io5";
 import { IoNotificationsOutline } from "react-icons/io5";
-import useUser from '../../hooks/useUser'
+import useUser from '../../hooks/useStudent'
 
 //importar imagen 
 
-import img from '../../fotos/estud.jpg';
-
 const Top = () => {
 
-  const { user } = useUser();
+  const { student } = useUser();
 
   return (
     <div className='topSection'>
       <div className="headerSection flex">
         <div className="title">
           <h1>Bienvenido Estudiante</h1>
-          <p>Hola {user && user.email}</p>
+          <p>Hola {student && student.nombre}</p>
         </div>
 
         <div className="searchBar flex">
@@ -34,7 +32,7 @@ const Top = () => {
           <IoNotificationsOutline className='icon' />
 
           <div className="adminImage">
-            <img src={img} alt='Estudiante' id='estu' />
+            {student && <img src={student.picture} alt='Estudiante' id='estu' />}
           </div>
         </div>
 
@@ -47,7 +45,7 @@ const Top = () => {
             <div className='circle4'></div>
           </div>
 
-          {user
+          {student
             ?
             <h1>Resuelve tus dudas con AnyaTutors</h1>
             :
