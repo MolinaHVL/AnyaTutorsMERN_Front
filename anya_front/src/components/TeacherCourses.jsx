@@ -38,7 +38,7 @@ function CoursesComponent() {
         console.log(course)
         const savedCourse = await saveCourse(course)
         console.log(savedCourse)
-
+        handleClose()
     };
 
     const addVideoField = () => {
@@ -103,7 +103,7 @@ function CoursesComponent() {
                                 <Grid item xs={12} key={index}>
                                     <Grid container direction="column" style={{ textAlign: 'justify' }}>
                                         <Grid item xs={6}>
-                                            <Avatar src={coverImage} variant="square" style={{ width: '100%', height: '60px', borderRadius: '30px 5px 30px 5px', }} />
+                                            <Avatar src={course.imagenPortada || coverImage} variant="square" style={{ width: '100%', height: '60px', borderRadius: '30px 5px 30px 5px', }} />
                                         </Grid>
                                         <Grid item xs={6} style={{ margin: '10px 0px 10px 0px' }}>
                                             <Typography variant="h5">{course.titulo}</Typography>
@@ -186,7 +186,7 @@ function CoursesComponent() {
                         </form>
                     </DialogContent>
                 </Dialog>
-                <CourseModal open={modalOpen} handleClose={handleClose} course={selectedCourse} />
+                <CourseModal open={modalOpen} handleClose={handleClose} course={selectedCourse} user={student} />
             </Box>
         </ThemeProvider>
     );

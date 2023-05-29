@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@mui/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from "react-router-dom"
 import {
     Button,
     Dialog,
@@ -10,13 +11,9 @@ import {
     Avatar,
     Typography,
     Grid,
-    TextField,
-    List,
-    ListItem,
-    ListItemAvatar,
-    ListItemText,
 } from '@mui/material';
-import { addComment } from '../api/CoursesAPI';
+import VideoSlider from '../components/VideoSlider';
+import { unEnrollCourse } from '../api/CoursesAPI';
 
 
 const theme = createTheme({
@@ -42,6 +39,9 @@ const useStyles = makeStyles({
     modalContent: {
         width: '100%',
         padding: '0px 10px',
+        backgroundColor: "black",
+        borderRadius: '10px'
+
     },
     modalActions: {
         width: '100%',
@@ -56,37 +56,19 @@ const useStyles = makeStyles({
 
 const CourseModal = ({ open, handleClose, course, user }) => {
 
-
-
-    const [inputValue, setInputValue] = useState("");
-
-    const [comments, setComments] = useState([])
-
-    const handleInputChange = (event) => {
-        setInputValue(event.target.value);
-    };
-
-    const handleSendMessage = async (course, profilePhoto, from, message) => {
-        const newComment = { profilePhoto: profilePhoto, from: from, message: message }
-        setComments([...comments, newComment])
-        setInputValue('')
-
-        await addComment(course, newComment)
-    };
+    const navigate = useNavigate()
 
     const classes = useStyles();
-
-    useEffect(() => {
-        if (course && course.comments) {
-            setComments(course.comments)
-        }
-    }, [course]);
 
     if (!course) {
         return null;
     }
 
+    const handleUnEnroll = async (course, student) => {
+        await unEnrollCourse(course, student);
 
+        navigate('/AnyaTutorsMERN_Front/student')
+    };
 
     return (
         <ThemeProvider theme={theme}>
@@ -112,70 +94,27 @@ const CourseModal = ({ open, handleClose, course, user }) => {
                 <DialogContent>
                     <Grid container className={classes.modalContent}>
                         <Grid container direction="column" style={{ textAlign: 'justify' }}>
-                            <Typography variant="h6" style={{ marginBottom: '5px' }}>
+                            <Typography variant="h6" style={{ marginTop: ' 10px', marginBottom: '5px', color: 'white' }}>
                                 Descripción
                             </Typography>
-                            <Typography variant="body1" style={{ fontFamily: 'Poppins', color: '#023e8a', marginBottom: '10px' }}>
+                            <Typography variant="body1" style={{ fontFamily: 'Poppins', color: 'white', marginBottom: '10px' }}>
                                 {course.descripcion}
                             </Typography>
 
                             {/* Línea de separación */}
                             <div className={classes.separator}></div>
 
-                            <Typography variant="h6" style={{ marginTop: '10px' }}>
-                                Comentarios
+                            <Typography variant="h6" style={{ marginTop: '10px', marginBottom: '15px', color: 'white' }}>
+                                Videos
                             </Typography>
                         </Grid>
                         <Grid container direction="column" style={{ textAlign: 'justify' }}>
-                            <List>
-                                {comments.length === 0 ?
-                                    <Typography variant="body1" style={{ fontFamily: 'Poppins', color: '#023e8a' }}>
-                                        Este curso no tiene comentarios todavia...
-                                    </Typography>
-                                    :
-                                    comments.map((comment, index) => (
-                                        <ListItem key={index}>
-                                            <ListItemAvatar>
-                                                <Avatar src={comment.profilePhoto} />
-                                            </ListItemAvatar>
-                                            <ListItemText primary={comment.from} secondary={comment.message} />
-                                        </ListItem>
-                                    ))
-                                }
-                            </List>
+
+                            <VideoSlider videos={course.videos} />
+
+
+
                         </Grid>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            fullWidth
-                            name="comment"
-                            label="Add your comment"
-                            type="text"
-                            id="comment"
-                            style={{ fontFamily: 'Poppins' }}
-                            value={inputValue}
-                            onChange={handleInputChange}
-                            onKeyDown={(e) => {
-                                if (e.key === 'Enter' && !e.shiftKey) {
-
-                                    if (inputValue.trim() === '') {
-                                        e.preventDefault(); // Evitar el comportamiento por defecto de Enter (nueva línea)
-
-                                        const trimmedValue = inputValue.trim(); // Eliminar los espacios en blanco al inicio y al final
-
-                                        if (trimmedValue !== '') {
-
-
-                                            handleSendMessage(course, user.picture, user.nombre, inputValue);
-                                        }
-                                    } else {
-                                        e.preventDefault(); // Evitar el comportamiento por defecto de Enter (nueva línea)
-                                        // Función que maneja el envío del mensaje
-                                        handleSendMessage(course, user.picture, user.nombre, inputValue);
-                                    }
-                                }
-                            }}
-                        />
                     </Grid>
                 </DialogContent>
                 <DialogActions>
@@ -183,8 +122,8 @@ const CourseModal = ({ open, handleClose, course, user }) => {
                         <Button onClick={handleClose} color="primary" variant='outlined' className={classes.buttonsCustomized} style={{ margin: '0px 10px 15px 0px' }}>
                             Cerrar
                         </Button>
-                        <Button color='secondary' variant="contained" className={classes.buttonsCustomized} style={{ margin: '0px 15px 15px 0px' }}>
-                            Registrarse
+                        <Button color='secondary' variant="contained" onClick={() => handleUnEnroll(course, user)} className={classes.buttonsCustomized} style={{ margin: '0px 15px 15px 0px' }}>
+                            Abandonar Curso
                         </Button>
                     </Grid>
                 </DialogActions>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from "react-router-dom"
 import {
     Button,
     Dialog,
@@ -16,7 +17,7 @@ import {
     ListItemAvatar,
     ListItemText,
 } from '@mui/material';
-import { addComment } from '../api/CoursesAPI';
+import { addComment, enrollCourse } from '../api/CoursesAPI';
 
 
 const theme = createTheme({
@@ -56,7 +57,7 @@ const useStyles = makeStyles({
 
 const CourseModal = ({ open, handleClose, course, user }) => {
 
-
+    const navigate = useNavigate()
 
     const [inputValue, setInputValue] = useState("");
 
@@ -72,6 +73,12 @@ const CourseModal = ({ open, handleClose, course, user }) => {
         setInputValue('')
 
         await addComment(course, newComment)
+    };
+
+    const handleEnroll = async (course, student) => {
+        await enrollCourse(course, student);
+
+        navigate('/AnyaTutorsMERN_Front/studentCourses')
     };
 
     const classes = useStyles();
@@ -183,7 +190,7 @@ const CourseModal = ({ open, handleClose, course, user }) => {
                         <Button onClick={handleClose} color="primary" variant='outlined' className={classes.buttonsCustomized} style={{ margin: '0px 10px 15px 0px' }}>
                             Cerrar
                         </Button>
-                        <Button color='secondary' variant="contained" className={classes.buttonsCustomized} style={{ margin: '0px 15px 15px 0px' }}>
+                        <Button color='secondary' variant="contained" onClick={() => handleEnroll(course, user)} className={classes.buttonsCustomized} style={{ margin: '0px 15px 15px 0px' }}>
                             Registrarse
                         </Button>
                     </Grid>
