@@ -1,35 +1,18 @@
 {
   "files": {
-    "main.css": "/AnyaTutorsMERN_Front/static/css/main.68fe9339.css",
-    "main.js": "/AnyaTutorsMERN_Front/static/js/main.e1cb7eba.js",
-    "static/media/mate.jpg": "/AnyaTutorsMERN_Front/static/media/mate.cfd2a7b7a161f57767d7.jpg",
-    "static/media/Contabilidad.jpg": "/AnyaTutorsMERN_Front/static/media/Contabilidad.762072c5f14f6348cdc9.jpg",
-    "static/media/ayuda.jpg": "/AnyaTutorsMERN_Front/static/media/ayuda.94817abfd5d5b6500894.jpg",
-    "static/media/Ingles.jpg": "/AnyaTutorsMERN_Front/static/media/Ingles.60e5c6c17fe4de5efadd.jpg",
-    "static/media/nutricion.jpg": "/AnyaTutorsMERN_Front/static/media/nutricion.1cc267a94bbce9966d51.jpg",
-    "static/media/nutri.jpg": "/AnyaTutorsMERN_Front/static/media/nutri.4138fd66f2a0a98dfcfd.jpg",
-    "static/media/mate2.jpg": "/AnyaTutorsMERN_Front/static/media/mate2.c3e1ccba96eaa8adc66b.jpg",
-    "static/media/Programacion.jpg": "/AnyaTutorsMERN_Front/static/media/Programacion.7441de91898965227e20.jpg",
-    "static/media/mate3.jpg": "/AnyaTutorsMERN_Front/static/media/mate3.7ba01ad50c6e12b68d25.jpg",
-    "static/media/estud.jpg": "/AnyaTutorsMERN_Front/static/media/estud.f3c3f7cf1f87979d402a.jpg",
-    "static/media/idioma.jpg": "/AnyaTutorsMERN_Front/static/media/idioma.668ed1b224bc6ae0ce0a.jpg",
-    "static/media/profe.jpg": "/AnyaTutorsMERN_Front/static/media/profe.65ed2dd77aaca87fe109.jpg",
-    "static/media/maestros.jpg": "/AnyaTutorsMERN_Front/static/media/maestros.65d7fb6ddfc31be47738.jpg",
-    "static/media/estad.jpg": "/AnyaTutorsMERN_Front/static/media/estad.282ab170a2e58ea962dc.jpg",
-    "static/media/idio.jpg": "/AnyaTutorsMERN_Front/static/media/idio.df38cf45b17872887da0.jpg",
-    "static/media/conta.jpg": "/AnyaTutorsMERN_Front/static/media/conta.d4ead29161b8bc37bf1b.jpg",
-    "static/media/contab.jpg": "/AnyaTutorsMERN_Front/static/media/contab.ae45236277e3723b9de7.jpg",
+    "main.css": "/AnyaTutorsMERN_Front/static/css/main.d4defdb1.css",
+    "main.js": "/AnyaTutorsMERN_Front/static/js/main.d05610fb.js",
     "static/media/logo.png": "/AnyaTutorsMERN_Front/static/media/logo.bc42b5177a2291f1aeff.png",
     "static/media/mountains_front.png": "/AnyaTutorsMERN_Front/static/media/mountains_front.b9f5ac84a4e59fe43b5e.png",
     "static/media/mountains_behind.png": "/AnyaTutorsMERN_Front/static/media/mountains_behind.c50cf728938a7cf57c1e.png",
     "static/media/stars.png": "/AnyaTutorsMERN_Front/static/media/stars.476f54d4de3fa26fae59.png",
     "static/media/Moon2.png": "/AnyaTutorsMERN_Front/static/media/Moon2.1f10a452ea5a241d765a.png",
     "index.html": "/AnyaTutorsMERN_Front/index.html",
-    "main.68fe9339.css.map": "/AnyaTutorsMERN_Front/static/css/main.68fe9339.css.map",
-    "main.e1cb7eba.js.map": "/AnyaTutorsMERN_Front/static/js/main.e1cb7eba.js.map"
+    "main.d4defdb1.css.map": "/AnyaTutorsMERN_Front/static/css/main.d4defdb1.css.map",
+    "main.d05610fb.js.map": "/AnyaTutorsMERN_Front/static/js/main.d05610fb.js.map"
   },
   "entrypoints": [
-    "static/css/main.68fe9339.css",
-    "static/js/main.e1cb7eba.js"
+    "static/css/main.d4defdb1.css",
+    "static/js/main.d05610fb.js"
   ]
 }
