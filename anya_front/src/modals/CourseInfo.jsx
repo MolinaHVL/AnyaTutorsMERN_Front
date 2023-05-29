@@ -25,6 +25,8 @@ const CourseModal = ({ open, handleClose, course }) => {
         comments
     } = course;
 
+
+
     return (
         <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
             <DialogTitle>
@@ -74,7 +76,7 @@ const CourseModal = ({ open, handleClose, course }) => {
                 <Button onClick={handleClose} color="primary" variant="contained" style={{ fontFamily: 'Poppins' }}>
                     Close
                 </Button>
-                <Button onClick={/* enroll course function here */} color="secondary" variant="contained" style={{ fontFamily: 'Poppins' }}>
+                <Button color="secondary" variant="contained" style={{ fontFamily: 'Poppins' }}>
                     Enroll
                 </Button>
             </DialogActions>
