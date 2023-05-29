@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { useForm, Controller } from 'react-hook-form'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Box, Grid, IconButton, InputAdornment, TextField } from '@mui/material'
 import { useEffect, useState } from 'react'
 import Typography from "@mui/material/Typography";
@@ -35,6 +36,12 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
         mode: 'all',
     })
 
+    const theme = createTheme({
+        typography: {
+            fontFamily: 'Poppins, Arial, sans-serif',
+        },
+    });
+
     const passwordValue = watch('password');
     const emailValue = watch('email')
     const confirmPasswordValue = watch('confirmPassword')
@@ -50,154 +57,156 @@ const UserRegisterForm = ({ onSubmit, setPassword, setError }) => {
     }, [passwordValue, emailValue, confirmPasswordValue])
 
     return (
-        <Box
-            id='user-form'
-            component='form'
-            onSubmit={handleSubmit(onSubmit)}
-            sx={{
-                paddingY: '10px',
-            }}
-        >
-            <Grid
-                container
-                spacing={3}
-                direction="column"
-                alignItems="center"
-                justify="center"
+        <ThemeProvider theme={theme}>
+            <Box
+                id='user-form'
+                component='form'
+                onSubmit={handleSubmit(onSubmit)}
+                sx={{
+                    paddingY: '10px',
+                }}
             >
-                <Grid item xs={8} sx={{ width: '80%', marginY: '0px' }}>
-                    <Controller
-                        control={control}
-                        name='email'
-                        render={({ field, fieldState }) => (
-                            <TextField
-                                {...field}
-                                label='Email'
-                                variant='outlined'
-                                fullWidth
-                                InputProps={{
-                                    style: {
-                                        fontFamily: 'Poppins',
-                                        fontWeight: 'Bold',
-                                    },
-                                    endAdornment: (
-                                        <InputAdornment position="end">
-                                            <EmailRoundedIcon />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                                error={!!fieldState.error}
-                                helperText={
-                                    <Typography
-                                        component="div"
-                                        sx={{
-                                            fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
-                                            fontWeight: 'bold',
-                                            fontSize: '13px',
-                                            color: '', // Puedes cambiar el color aquí
-                                        }}
-                                    >
-                                        {fieldState.error?.message}
-                                    </Typography>
-                                }
-                            />
-                        )}
-                    />
+                <Grid
+                    container
+                    spacing={3}
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                >
+                    <Grid item xs={8} sx={{ width: '80%', marginY: '0px' }}>
+                        <Controller
+                            control={control}
+                            name='email'
+                            render={({ field, fieldState }) => (
+                                <TextField
+                                    {...field}
+                                    label='Email'
+                                    variant='outlined'
+                                    fullWidth
+                                    InputProps={{
+                                        style: {
+                                            fontFamily: 'Poppins',
+                                            fontWeight: 'Bold',
+                                        },
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <EmailRoundedIcon />
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                    error={!!fieldState.error}
+                                    helperText={
+                                        <Typography
+                                            component="div"
+                                            sx={{
+                                                fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
+                                                fontWeight: 'bold',
+                                                fontSize: '13px',
+                                                color: '', // Puedes cambiar el color aquí
+                                            }}
+                                        >
+                                            {fieldState.error?.message}
+                                        </Typography>
+                                    }
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={8} sx={{ width: '80%', marginY: '0px' }}>
+                        <Controller
+                            control={control}
+                            name='password'
+                            render={({ field, fieldState }) => (
+                                <TextField
+                                    {...field}
+                                    label='Password'
+                                    type={showPassword ? 'text' : "password"}
+                                    variant='outlined'
+                                    fullWidth
+                                    error={!!fieldState.error}
+                                    helperText={
+                                        <Typography
+                                            component="div"
+                                            sx={{
+                                                fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
+                                                fontWeight: 'bold',
+                                                fontSize: '13px',
+                                                color: '', // Puedes cambiar el color aquí
+                                            }}
+                                        >
+                                            {fieldState.error?.message}
+                                        </Typography>
+                                    }
+                                    InputProps={{
+                                        style: {
+                                            fontFamily: 'Poppins',
+                                            fontWeight: 'Bold',
+                                        },
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    onClick={handleClickShowPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                    edge="end"
+                                                >
+                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={8} sx={{ width: '80%', marginY: '0px' }}>
+                        <Controller
+                            control={control}
+                            name='confirmPassword'
+                            render={({ field, fieldState }) => (
+                                <TextField
+                                    {...field}
+                                    label='Confirm Password'
+                                    type={showPassword ? 'text' : "password"}
+                                    variant='outlined'
+                                    fullWidth
+                                    error={!!fieldState.error}
+                                    helperText={
+                                        <Typography
+                                            component="div"
+                                            sx={{
+                                                fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
+                                                fontWeight: 'bold',
+                                                fontSize: '13px',
+                                                color: '', // Puedes cambiar el color aquí
+                                            }}
+                                        >
+                                            {fieldState.error?.message}
+                                        </Typography>
+                                    }
+                                    InputProps={{
+                                        style: {
+                                            fontFamily: 'Poppins',
+                                            fontWeight: 'Bold',
+                                        },
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    onClick={handleClickShowPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                    edge="end"
+                                                >
+                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+                            )}
+                        />
+                    </Grid>
                 </Grid>
-                <Grid item xs={8} sx={{ width: '80%', marginY: '0px' }}>
-                    <Controller
-                        control={control}
-                        name='password'
-                        render={({ field, fieldState }) => (
-                            <TextField
-                                {...field}
-                                label='Password'
-                                type={showPassword ? 'text' : "password"}
-                                variant='outlined'
-                                fullWidth
-                                error={!!fieldState.error}
-                                helperText={
-                                    <Typography
-                                        component="div"
-                                        sx={{
-                                            fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
-                                            fontWeight: 'bold',
-                                            fontSize: '13px',
-                                            color: '', // Puedes cambiar el color aquí
-                                        }}
-                                    >
-                                        {fieldState.error?.message}
-                                    </Typography>
-                                }
-                                InputProps={{
-                                    style: {
-                                        fontFamily: 'Poppins',
-                                        fontWeight: 'Bold',
-                                    },
-                                    endAdornment: (
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                                edge="end"
-                                            >
-                                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
-                        )}
-                    />
-                </Grid>
-                <Grid item xs={8} sx={{ width: '80%', marginY: '0px' }}>
-                    <Controller
-                        control={control}
-                        name='confirmPassword'
-                        render={({ field, fieldState }) => (
-                            <TextField
-                                {...field}
-                                label='Confirm Password'
-                                type={showPassword ? 'text' : "password"}
-                                variant='outlined'
-                                fullWidth
-                                error={!!fieldState.error}
-                                helperText={
-                                    <Typography
-                                        component="div"
-                                        sx={{
-                                            fontFamily: 'Poppins', // Agrega el nombre de tu nueva fuente aquí
-                                            fontWeight: 'bold',
-                                            fontSize: '13px',
-                                            color: '', // Puedes cambiar el color aquí
-                                        }}
-                                    >
-                                        {fieldState.error?.message}
-                                    </Typography>
-                                }
-                                InputProps={{
-                                    style: {
-                                        fontFamily: 'Poppins',
-                                        fontWeight: 'Bold',
-                                    },
-                                    endAdornment: (
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                                edge="end"
-                                            >
-                                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
-                        )}
-                    />
-                </Grid>
-            </Grid>
-        </Box>
+            </Box>
+        </ThemeProvider> 
     );
 
 }
