@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { makeStyles } from '@mui/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {
     Avatar,
@@ -15,10 +14,6 @@ import { io } from "socket.io-client"
 import useUser from "../hooks/useStudent";
 
 const socket = io(process.env.REACT_APP_API_URL)
-
-// const useStyles = makeStyles({
-//     // Agregar aqui un style
-// });
 
 const theme = createTheme({
     typography: {
