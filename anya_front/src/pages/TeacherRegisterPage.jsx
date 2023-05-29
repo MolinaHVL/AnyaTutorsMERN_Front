@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Paper, Button, TextField, Step, Stepper, StepLabel, FormControl, Select, MenuItem, Stack } from '@mui/material';
+import { Paper, Button, TextField, Grid, Step, Stepper, StepLabel, FormControl, Select, MenuItem, Stack } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Typography from "@mui/material/Typography";
@@ -31,6 +33,14 @@ const FormProvider = ({ children }) => {
 const useFormData = () => useContext(FormContext);
 
 const useStyles = makeStyles({
+  fontStepper: {
+    fontSize: '15px',
+  },
+  customStepper: {
+    '& .MuiStepLabel-label': {
+      fontSize: '15px',
+    },
+  },
   h1: {
     fontSize: 'var(--h2FontSize)',
     color: 'var(--blackColor)',
@@ -54,14 +64,27 @@ const useStyles = makeStyles({
   datosG: {
     marginTop: '20px',
     position: 'relative',
-    width: '445px',
+    // width: '600px',
     height: 'auto',
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    padding: '.5rem',
+    padding: '0 30px 15px 30px',
     borderRadius: '10px',
-    border: '2px solid #205295',
+    // border: '2px solid #205295',
+    background: 'var(--whiteColor)',
+  },
+  datosG2: {
+    marginTop: '20px',
+    position: 'relative',
+    width: '650px',
+    height: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    padding: '0 0 15px 0',
+    borderRadius: '10px',
+    // border: '2px solid #205295',
     background: 'var(--whiteColor)',
   },
   select: {
@@ -135,6 +158,20 @@ const useStyles = makeStyles({
     marginBottom: '3px',
     borderBottom: '1px solid black',
   },
+  buttonsCustomized: {
+    textTransform: 'none',
+    width: '40%',
+    fontSize: '16px',
+    fontFamily: 'Poppins',
+    fontWeight: 'bold',
+  },
+  cajita: {
+    color: 'black',
+    fontSize: 'var(--normalFontSize)',
+    width: '100%',
+    marginTop: '10px',
+    fontFamily: '"Poppins", sans-serif',
+  },
 });
 
 const CssTextField = styled(TextField)(({ hasError }) => ({
@@ -143,13 +180,19 @@ const CssTextField = styled(TextField)(({ hasError }) => ({
       borderColor: hasError ? 'red' : '#205295',
     },
     '&:hover fieldset': {
-      borderColor: hasError ? 'red' : '#E8E2E2',
+      borderColor: hasError ? 'red' : '',
     },
     '&.Mui-focused fieldset': {
-      borderColor: hasError ? 'red' : 'blue',
+      borderColor: hasError ? 'red' : '',
     },
   },
 }));
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Poppins, Arial, sans-serif',
+  },
+});
 
 const RegisterForm = () => {
 
@@ -187,7 +230,7 @@ const RegisterForm = () => {
       setError('Falta el campo de correo')
       return
     } else if (activeStep === 1 && (!form.nombre || !form.apellidoM || !form.apellidoP || !form.fechaNac || !form.celular)) {
-      setError('faltan campos por llenar')
+      setError('Faltan campos por llenar')
       return
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1)
@@ -198,7 +241,7 @@ const RegisterForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!form.dip || !form.iden || !form.picture) {
-      setError("hace falta uno o mas documentos")
+      setError("Hace falta uno o mas documentos")
       return
     }
     try {
@@ -289,295 +332,357 @@ const RegisterForm = () => {
   };
 
   return (
-    <Paper elevation={1} sx={{
-      borderRadius: '15px',
-      maxHeight: '90vh',
-      overflowY: 'auto',
-    }}>
-      <Stepper activeStep={activeStep} alternativeLabel sx={{ pt: '15px' }}>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
+    <ThemeProvider theme={theme}>
+      <Paper elevation={1} sx={{
+        borderRadius: '15px',
+        maxHeight: '90vh',
+        overflowY: 'auto',
+      }}>
+        <Stepper activeStep={activeStep} alternativeLabel sx={{ pt: '15px' }}>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
 
-      {error && <Typography sx={{ color: "red" }}>{error}</Typography>}
+        <Typography fontSize={"25px"} padding={'25px 0 0 0'} color={"Black"} fontFamily={'Poppins'} fontWeight={'bold'}>
+          Registro de Cuenta
+        </Typography>
 
-      <form onSubmit={handleSubmit} sx={{ padding: '10px' }}>
-        {getStepContent(activeStep)}
-        <div>
-          <Button disabled={activeStep === 0} onClick={handleBack}>
-            Back
-          </Button>
-          <Button variant="contained" color="primary" onClick={activeStep === steps.length - 1 ? handleSubmit : handleNext}>
-            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-          </Button>
-        </div>
-      </form>
-    </Paper>
+        <Stepper activeStep={activeStep} className={classes.customStepper} alternativeLabel sx={{ pt: '30px' }}>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel sx={{
+                fontSize: '15px',
+              }}>
+                {label}
+              </StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+
+        {error && <Typography sx={{ color: "red", padding: '25px 0 0 0' }}>{error}</Typography>}
+
+        <form onSubmit={handleSubmit}>
+          {getStepContent(activeStep)}
+          <div style={{ padding: '10px 0px 30px 0' }}>
+            <Button variant='outlined' disabled={activeStep === 0} onClick={handleBack} sx={{
+              textTransform: 'none',
+              width: '40%',
+              margin: '0 15px 0 0',
+              fontSize: '15px',
+              fontFamily: 'Poppins',
+              fontWeight: 'bold',
+            }}>
+              Atrás
+            </Button>
+            <Button variant="contained" color="primary" onClick={activeStep === steps.length - 1 ? handleSubmit : handleNext} sx={{
+              textTransform: 'none',
+              width: '40%',
+              fontSize: '15px',
+              fontFamily: 'Poppins',
+              fontWeight: 'bold',
+            }}>
+              {activeStep === steps.length - 1 ? 'Registrarse' : 'Siguiente'}
+            </Button>
+
+            <Button
+              component={Link}
+              to="/AnyaTutorsMERN_Front/userLogIn"
+              variant="text"
+              color="primary"
+              sx={{
+                textTransform: 'none',
+                textDecoration: 'underline',
+                width: '83%',
+                margin: '15px 0 0 0',
+                padding: '7px',
+                fontSize: '15px',
+                fontFamily: 'Poppins',
+                fontWeight: 'bold',
+              }}
+            >
+              ¿Ya tienes una cuenta? Inicia sesión
+            </Button>
+          </div>
+        </form>
+      </Paper>
+    </ThemeProvider >
   );
 };
 
 const StepTwo = ({ form, classes, handleInputChange, handleInputChangeForm }) => {
 
   return (
-    <div className={classes.datosG}>
-      <h3>Datos Generales</h3>
-      <div className={classes.select}>
-        <CssTextField
-          required
-          className={classes.comp}
-          id="nombre"
-          label="Nombre"
-          type="text"
-          variant="outlined"
-          value={form.nombre || ''}
-          onChange={handleInputChange}
-          sx={{ mt: '10px' }}
-          hasError={!form.nombre} // added this line
-        />
-        <CssTextField
-          className={classes.comp}
-          id="apellidoP"
-          label="Apellido Paterno"
-          type="text"
-          variant="outlined"
-          value={form.apellidoP || ''}
-          onChange={handleInputChange}
-          sx={{ mt: '10px' }}
-          hasError={!form.apellidoP} // added this line
-        />
-        <CssTextField
-          className={classes.comp}
-          id="apellidoM"
-          label="Apellido Materno"
-          type="text"
-          variant="outlined"
-          value={form.apellidoM || ''}
-          onChange={handleInputChange}
-          sx={{ mt: '10px' }}
-          hasError={!form.apellidoM} // added this line
-        />
-        <FormControl required className={classes.comp}>
-          <Select
-            id="genero"
-            name="genero"
-            value={form.genero || "No especificar"}
-            onChange={handleInputChangeForm}
-            sx={{ textAlign: 'left', mt: '10px' }}
-          >
-            <MenuItem value=""><em>Ninguno</em></MenuItem>
-            <MenuItem value={"Masculino"}>Masculino</MenuItem>
-            <MenuItem value={"Femenino"}>Femenino</MenuItem>
-            <MenuItem value={"No especificar"}>No especificar</MenuItem>
-          </Select>
-        </FormControl>
-        <CssTextField
-          className={classes.comp}
-          id="fechaNac"
-          label="Fecha Nacimiento"
-          type="date"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          value={form.fechaNac || ''}
-          onChange={handleInputChange}
-          sx={{ mt: '10px' }}
-          hasError={!form.fechaNac} // added this line
-        />
-        <CssTextField
-          className={classes.comp}
-          id="celular"
-          label="Celular"
-          placeholder="000-000-0000"
-          type="tel"
-          variant="outlined"
-          value={form.celular || ''}
-          onChange={handleInputChange}
-          sx={{ mt: '10px' }}
-          hasError={!form.celular} // added this line
-        />
-        <CssTextField
-          className={classes.comp}
-          id="pais"
-          label="Pais"
-          type="city"
-          variant="outlined"
-          value={form.pais || ''}
-          onChange={handleInputChange}
-          sx={{ mt: '10px' }}
-        />
+    <ThemeProvider theme={theme}>
+      <div className={classes.datosG2}>
+        <h3>Datos Generales</h3>
+        <div style={{ marginTop: '10px', paddingTop: '10px' }} className={classes.select}></div>
+        <Grid container direction="row" justifyContent="center">
+          <Grid item xs={5} style={{ padding: '0px 10px' }}>
+            <CssTextField
+              required
+              className={classes.cajita}
+              id="nombre"
+              label="Nombre"
+              type="text"
+              variant="outlined"
+              value={form.nombre || ''}
+              onChange={handleInputChange}
+              sx={{ mt: '10px' }}
+              hasError={!form.nombre} // added this line
+            />
+            <CssTextField
+              className={classes.cajita}
+              id="apellidoP"
+              label="Apellido Paterno"
+              type="text"
+              variant="outlined"
+              value={form.apellidoP || ''}
+              onChange={handleInputChange}
+              sx={{ mt: '10px' }}
+              hasError={!form.apellidoP} // added this line
+            />
+            <CssTextField
+              className={classes.cajita}
+              id="apellidoM"
+              label="Apellido Materno"
+              type="text"
+              variant="outlined"
+              value={form.apellidoM || ''}
+              onChange={handleInputChange}
+              sx={{ mt: '10px' }}
+              hasError={!form.apellidoM} // added this line
+            />
+            <FormControl required className={classes.cajita}>
+              <Select
+                id="genero"
+                name="genero"
+                value={form.genero || "No especificar"}
+                onChange={handleInputChangeForm}
+                sx={{ textAlign: 'left', mt: '10px' }}
+              >
+                <MenuItem value=""><em>Ninguno</em></MenuItem>
+                <MenuItem value={"Masculino"}>Masculino</MenuItem>
+                <MenuItem value={"Femenino"}>Femenino</MenuItem>
+                <MenuItem value={"No especificar"}>No especificar</MenuItem>
+              </Select>
+            </FormControl>
+            <CssTextField
+              className={classes.cajita}
+              id="fechaNac"
+              label="Fecha Nacimiento"
+              type="date"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              value={form.fechaNac || ''}
+              onChange={handleInputChange}
+              sx={{ mt: '10px' }}
+              hasError={!form.fechaNac} // added this line
+            />
+          </Grid>
+          <Grid item xs={5}>
+            <CssTextField
+              className={classes.cajita}
+              id="celular"
+              label="Celular"
+              placeholder="000-000-0000"
+              type="tel"
+              variant="outlined"
+              value={form.celular || ''}
+              onChange={handleInputChange}
+              sx={{ mt: '10px' }}
+              hasError={!form.celular} // added this line
+            />
+            <CssTextField
+              className={classes.cajita}
+              id="pais"
+              label="Pais"
+              type="city"
+              variant="outlined"
+              value={form.pais || ''}
+              onChange={handleInputChange}
+              sx={{ mt: '10px' }}
+            />
 
-        <CssTextField
-          className={classes.comp}
-          id="estado"
-          label="Estado"
-          type="city"
-          variant="outlined"
-          value={form.estado || ''}
-          onChange={handleInputChange}
-          sx={{ mt: '10px' }}
-        />
+            <CssTextField
+              className={classes.cajita}
+              id="estado"
+              label="Estado"
+              type="city"
+              variant="outlined"
+              value={form.estado || ''}
+              onChange={handleInputChange}
+              sx={{ mt: '10px' }}
+            />
 
-        <CssTextField
-          className={classes.comp}
-          id="ciudad"
-          label="Ciudad"
-          type="city"
-          variant="outlined"
-          value={form.ciudad || ''}
-          onChange={handleInputChange}
-          sx={{ mt: '10px' }}
-        />
+            <CssTextField
+              className={classes.cajita}
+              id="ciudad"
+              label="Ciudad"
+              type="city"
+              variant="outlined"
+              value={form.ciudad || ''}
+              onChange={handleInputChange}
+              sx={{ mt: '10px' }}
+            />
+          </Grid>
+        </Grid>
       </div>
-    </div>
+    </ThemeProvider >
   );
 };
 
 const StepOne = ({ form, classes, handleInputChange, hasCapitalLetter, hasNumbers, hasSpecialSymbol }) => {
 
   return (
-    <div className={classes.datosG}>
-      <CssTextField
-        className={classes.comp}
-        id="correo"
-        label="Correo"
-        type="email"
-        variant="outlined"
-        value={form.correo || ''}
-        onChange={handleInputChange}
-        sx={{ mt: '10px' }}
-      />
-      <CssTextField
-        className={classes.comp}
-        id="clave"
-        label="Contraseña"
-        type="password"
-        variant="outlined"
-        value={form.clave || ''}
-        onChange={handleInputChange}
-        sx={{ mt: '10px' }}
-      />
-      <CssTextField
-        className={classes.comp}
-        id="confirmarClave"
-        label="confirmar Contraseña"
-        type="password"
-        variant="outlined"
-        value={form.confirmarClave || ''}
-        onChange={handleInputChange}
-        sx={{ mt: '10px' }}
-      />
+    <ThemeProvider theme={theme}>
+      <div className={classes.datosG}>
+        <CssTextField
+          className={classes.cajita}
+          id="correo"
+          label="Correo"
+          type="email"
+          variant="outlined"
+          value={form.correo || ''}
+          onChange={handleInputChange}
+          sx={{ mt: '10px' }}
+        />
+        <CssTextField
+          className={classes.cajita}
+          id="clave"
+          label="Contraseña"
+          type="password"
+          variant="outlined"
+          value={form.clave || ''}
+          onChange={handleInputChange}
+          sx={{ mt: '10px' }}
+        />
+        <CssTextField
+          className={classes.cajita}
+          id="confirmarClave"
+          label="Confirmar Contraseña"
+          type="password"
+          variant="outlined"
+          value={form.confirmarClave || ''}
+          onChange={handleInputChange}
+          sx={{ mt: '10px' }}
+        />
 
-      {form.clave &&
-        <Stack direction={'column'} style={{ paddingTop: '20px', display: "flex", width: "100%", paddingLeft: "75px" }} paddingBottom={'15px'}>
-          <Stack direction={'row'}>
-            {hasCapitalLetter ? (
-              <CheckCircleIcon sx={{ color: "green", mr: 1 }} />
-            ) : (
-              <CancelIcon sx={{ color: "red", mr: 1 }} />
-            )}
-            <Typography sx={{
-              fontSize: "14px", fontFamily: "Poppins", fontWeight: "bold",
-              color: hasCapitalLetter ? "green" : "red"
-            }}> Mínimo una Mayúscula </Typography>
+        {form.clave &&
+          <Stack direction={'column'} style={{ paddingTop: '20px', display: "flex", width: "100%", paddingLeft: "0px" }} paddingBottom={'15px'}>
+            <Stack direction={'row'}>
+              {hasCapitalLetter ? (
+                <CheckCircleIcon sx={{ color: "green", mr: 1 }} />
+              ) : (
+                <CancelIcon sx={{ color: "red", mr: 1 }} />
+              )}
+              <Typography sx={{
+                fontSize: "14px", fontFamily: "Poppins", fontWeight: "bold",
+                color: hasCapitalLetter ? "green" : "red"
+              }}> Mínimo una Mayúscula </Typography>
+            </Stack>
+            <Stack direction={'row'}>
+              {hasNumbers ? (
+                <CheckCircleIcon sx={{ color: "green", mr: 1 }} />
+              ) : (
+                <CancelIcon sx={{ color: "red", mr: 1 }} />
+              )}
+              <Typography sx={{ fontSize: "14px", fontFamily: "Poppins", fontWeight: "bold", color: hasNumbers ? "green" : "red" }}> Mínimo un Número </Typography>
+            </Stack>
+            <Stack direction={'row'}>
+              {hasSpecialSymbol ? (
+                <CheckCircleIcon sx={{ color: "green", mr: 1 }} />
+              ) : (
+                <CancelIcon sx={{ color: "red", mr: 1 }} />
+              )}
+              <Typography sx={{ fontSize: "14px", fontFamily: "Poppins", fontWeight: "bold", color: hasSpecialSymbol ? "green" : "red" }}> Mínimo un símbolo especial <u>@!#</u></Typography>
+            </Stack>
           </Stack>
-          <Stack direction={'row'}>
-            {hasNumbers ? (
-              <CheckCircleIcon sx={{ color: "green", mr: 1 }} />
-            ) : (
-              <CancelIcon sx={{ color: "red", mr: 1 }} />
-            )}
-            <Typography sx={{ fontSize: "14px", fontFamily: "Poppins", fontWeight: "bold", color: hasNumbers ? "green" : "red" }}> Mínimo un Número </Typography>
-          </Stack>
-          <Stack direction={'row'}>
-            {hasSpecialSymbol ? (
-              <CheckCircleIcon sx={{ color: "green", mr: 1 }} />
-            ) : (
-              <CancelIcon sx={{ color: "red", mr: 1 }} />
-            )}
-            <Typography sx={{ fontSize: "14px", fontFamily: "Poppins", fontWeight: "bold", color: hasSpecialSymbol ? "green" : "red" }}> Mínimo un símbolo especial <u>@!#</u></Typography>
-          </Stack>
-        </Stack>
-      }
-    </div>
+        }
+      </div>
+    </ThemeProvider>
 
   );
 };
 
 const StepThree = ({ form, setForm, classes, handleInputChange }) => {
   return (
-    <div className={classes.datosG}>
-      <h3>Foto de perfil</h3>
-      <div className={classes.select}>
-        <div className={classes.iconos}>
-          <FcPanorama className={classes.pic} />
-        </div>
-        <CssTextField
-          className={classes.comp}
-          id="picture"
-          label="Nueva foto"
-          type="file"
-          variant="outlined"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={(e) => setForm({ ...form, picture: e.target.files[0] })}
-          sx={{ mt: '10px' }}
-        />
-      </div>
+    <ThemeProvider theme={theme}>
+      <div className={classes.datosG}>
+        <h3>Foto de perfil</h3>
+        <div style={{ marginTop: '10px', paddingTop: '5px' }} className={classes.select}>
+          <div className={classes.iconos}>
+            <FcPanorama className={classes.pic} />
+          </div>
+          <CssTextField
+            className={classes.cajita}
+            id="picture"
+            label="Nueva foto"
+            type="file"
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(e) => setForm({ ...form, picture: e.target.files[0] })}
+            sx={{ mt: '10px' }}
+          />
 
-      <div className={classes.doc}>
-        <h3>Identificacion</h3>
-        <div className={classes.iconos}>
-          <FcDocument className={classes.pic} />
+          <CssTextField
+            className={classes.cajita}
+            id="descripcion"
+            label="Acerca de ti"
+            type="text"
+            multiline
+            rows={2}
+            variant="outlined"
+            value={form.descripcion || ''}
+            onChange={handleInputChange}
+            sx={{ mt: '10px' }}
+          />
         </div>
-        <CssTextField
-          className={classes.comp}
-          id="iden"
-          label="Identificacion"
-          type="file"
-          variant="outlined"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={(e) => setForm({ ...form, iden: e.target.files[0] })}
-          sx={{ mt: '10px' }}
-        />
-      </div>
 
-      <div className={classes.doc}>
-        <h3>Diplomado</h3>
-        <div className={classes.iconos}>
-          <FcDiploma1 className={classes.pic} />
+        <div className={classes.doc}>
+          <h3>Identificacion</h3>
+          <div className={classes.iconos}>
+            <FcDocument className={classes.pic} />
+          </div>
+          <CssTextField
+            className={classes.cajita}
+            id="iden"
+            label="Identificacion"
+            type="file"
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(e) => setForm({ ...form, iden: e.target.files[0] })}
+            sx={{ mt: '10px' }}
+          />
         </div>
-        <CssTextField
-          className={classes.comp}
-          id="dip"
-          label="Diplomado"
-          type="file"
-          variant="outlined"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          onChange={(e) => setForm({ ...form, dip: e.target.files[0] })}
-          sx={{ mt: '10px' }}
-        />
-        <CssTextField
-          className={classes.cajita}
-          id="descripcion"
-          label="Acerca de ti"
-          type="text"
-          multiline
-          rows={2}
-          variant="outlined"
-          value={form.descripcion || ''}
-          onChange={handleInputChange}
-          sx={{ mt: '10px' }}
-        />
-      </div>
-    </div>
+
+        <div className={classes.doc}>
+          <h3>Diplomado</h3>
+          <div className={classes.iconos}>
+            <FcDiploma1 className={classes.pic} />
+          </div>
+          <CssTextField
+            className={classes.comp}
+            id="dip"
+            label="Diplomado"
+            type="file"
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(e) => setForm({ ...form, dip: e.target.files[0] })}
+            sx={{ mt: '10px' }}
+          />
+        </div>
+      </div >
+    </ThemeProvider >
   );
 };
 
