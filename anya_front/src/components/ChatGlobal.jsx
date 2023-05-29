@@ -42,7 +42,7 @@ const Chat = () => {
         const newMessage = {
             text: inputValue,
             timestamp: new Date(),
-            sender: [student.nombre, student.picture],
+            sender: [student.nombre, student.picture, student.role],
         };
         socket.emit("message", newMessage);
         setInputValue("");
@@ -61,7 +61,7 @@ const Chat = () => {
                                 <Box key={index} display="flex" alignItems="center" p={2}>
                                     <Avatar src={message.sender[1]}>{message.sender[0][0]}</Avatar>
                                     <Box ml={2} textAlign={'left'}>
-                                        <Typography variant="body1"><strong>{message.sender[0]}</strong> [{student.role}]</Typography>
+                                        <Typography variant="body1"><strong>{message.sender[0]}</strong> [{message.sender[2]}]</Typography>
                                         <Typography variant="body2">{message.text}</Typography>
                                     </Box>
                                 </Box>
