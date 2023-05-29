@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, Grid, Paper, Typography, Box, Avatar, Card, CardContent, } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, Grid, Typography, Box, Avatar, Card, } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useForm } from 'react-hook-form';
 import useUser from '../hooks/useStudent'
