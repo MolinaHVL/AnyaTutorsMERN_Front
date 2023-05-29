@@ -16,16 +16,21 @@ import {
 } from '@mui/material';
 
 const CourseModal = ({ open, handleClose, course }) => {
-    const {
-        coverImage,
-        teacherProfileImage,
-        title,
-        description,
-        numVideos,
-        comments
-    } = course;
+    // const {
+    //     coverImage,
+    //     teacherProfileImage,
+    //     title,
+    //     description,
+    //     numVideos,
+    //     comments
+    // } = course;
 
-
+    const coverImage = "https://cdn.statically.io/img/timelinecovers.pro/facebook-cover/download/ultra-hd-space-facebook-cover.jpg"
+    const teacherProfileImage = "https://www.vectornator.io/blog/content/images/2022/03/611b830385d20348a9809a8e_Cover-Album-Covers--1-.png"
+    const title = "Curso mamalon"
+    const description = "Este curso es el mero mero, el que te va a traer un buen de morras a tus pies si sigues paso a paso como ser un macho alfa"
+    const numVideos = 3
+    const comments = [{ username: "Arshun", text: "Este curso funciona incluso antes de tomarlo alv" }]
 
     return (
         <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
@@ -55,7 +60,7 @@ const CourseModal = ({ open, handleClose, course }) => {
                     {comments.map((comment, index) => (
                         <ListItem key={index}>
                             <ListItemAvatar>
-                                <Avatar />
+                                <Avatar src={"https://res.cloudinary.com/practicaldev/image/fetch/s--LxmrVhLY--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/u1x7n8mbvor1nq6tcbk0.jpg"} />
                             </ListItemAvatar>
                             <ListItemText primary={comment.username} secondary={comment.text} />
                         </ListItem>

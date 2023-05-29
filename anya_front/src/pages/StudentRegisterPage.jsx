@@ -278,7 +278,7 @@ const RegisterForm = () => {
             case 1:
                 return <StepTwo form={form} classes={classes} handleInputChange={handleInputChange} handleInputChangeForm={handleInputChangeForm} />;
             case 2:
-                return <StepThree form={form} setForm={setForm} classes={classes} />;
+                return <StepThree form={form} setForm={setForm} classes={classes} handleInputChange={handleInputChange} />;
             default:
                 return 'Unknown step';
         }
@@ -498,7 +498,7 @@ const StepOne = ({ form, classes, handleInputChange, hasCapitalLetter, hasNumber
     );
 };
 
-const StepThree = ({ form, setForm, classes }) => {
+const StepThree = ({ form, setForm, classes, handleInputChange }) => {
     return (
         <div className={classes.datosG}>
             <h3>Foto de perfil</h3>
@@ -519,6 +519,16 @@ const StepThree = ({ form, setForm, classes }) => {
                     sx={{ mt: '10px' }}
                 />
             </div>
+            <CssTextField
+                className={classes.comp}
+                id="descripcion"
+                label="Acerca de ti"
+                type="text"
+                variant="outlined"
+                value={form.descripcion || ''}
+                onChange={handleInputChange}
+                sx={{ mt: '10px' }}
+            />
         </div>
     );
 };

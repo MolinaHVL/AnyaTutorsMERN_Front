@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, Grid, Paper, Typography, Box } from '@mui/material';
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, Grid, Paper, Typography, Box, Avatar } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import useUser from '../hooks/useStudent'
 import { getCourses, saveCourse } from '../api/CoursesAPI';
+import CourseModal from '../modals/CourseInfo';
 
 
 function CoursesComponent() {
@@ -61,10 +62,10 @@ function CoursesComponent() {
                     : courses.map((course, index) => (
                         <Grid item xs={4} key={index}>
                             <Paper elevation={3}>
+                                <Avatar src={course.teacher.picture} style={{ width: 30, height: 30 }} />
                                 <Typography variant="h5">{course.titulo}</Typography>
-                                <Typography variant="body1">{course.materia}</Typography>
-                                <Typography variant="body2">{course.descripcion}</Typography>
-                                <Typography variant="body2">{course.videos[0].url}</Typography>
+                                <Typography variant="body1">Maestro: {course.teacher.nombre}</Typography>
+                                <Typography variant="body1">Materia: {course.materia}</Typography>
                             </Paper>
                         </Grid>
                     ))
@@ -75,7 +76,7 @@ function CoursesComponent() {
                 Agregar un nuevo curso
             </Button>
 
-            <Dialog open={show} onClose={handleClose}>
+            {/* <Dialog open={show} onClose={handleClose}>
                 <DialogTitle>Agregar un nuevo curso</DialogTitle>
                 <DialogContent>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -101,7 +102,8 @@ function CoursesComponent() {
                         </DialogActions>
                     </form>
                 </DialogContent>
-            </Dialog>
+            </Dialog> */}
+            <CourseModal open={show} handleClose={handleClose} />
         </Box>
     );
 }

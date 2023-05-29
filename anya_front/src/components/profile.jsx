@@ -80,9 +80,7 @@ const UserProfile = () => {
                                     <Grid item xs={9}>
                                         <Typography variant="h5" className={classes.typographyTitle}><strong>{`${displayData(student.nombre)} ${student.apellidoP} ${student.apellidoM}`}</strong></Typography>
                                         <Typography variant="h6"><strong>Acerca de mi</strong></Typography>
-                                        <Typography variant="body1" style={{ paddingRight: '10px' }}>
-                                            ¡Hola! Soy Vanessa Rubiera, una apasionada de la programación y actualmente resido en Tijuana. Me encanta sumergirme en el mundo de la tecnología y descubrir nuevas formas de crear soluciones a través del desarrollo de software.
-                                        </Typography>
+                                        <Typography variant="body1" style={{ paddingRight: '10px' }}> {displayData(student.descripcion)} </Typography>
                                     </Grid>
                                     <Grid item xs={3} className={classes.cardAvatar}>
                                         <Avatar className={`${classes.avatar} ${classes.avatarHover}`} src={displayData(student.picture)} />
