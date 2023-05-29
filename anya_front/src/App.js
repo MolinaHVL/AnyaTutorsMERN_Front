@@ -5,7 +5,6 @@ import UserLogPage from './pages/UserLogPage';
 import Index from './pages/index';
 import Layout from './LayoutRoute';
 import AdminGrid from './components/AdminGrid';
-import TeacherList from './components/Body Section/TeacherList';
 import AllStudents from './components/AllStudents';
 import Chat from './components/ChatGlobal';
 import StudentRegisterPage from './pages/StudentRegisterPage';
@@ -14,6 +13,7 @@ import CoursesComponent from './components/TeacherCourses';
 import UserProfile from './components/profile';
 import StudentCourses from './components/StudentCourses';
 import AllTeachers from './components/AllTeachers';
+import CoursesAvailable from './components/CoursesAvailable';
 
 
 
@@ -73,7 +73,7 @@ function App() {
           />
           <Route
             path='AnyaTutorsMERN_Front/student'
-            element={<Layout><TeacherList /></Layout>}
+            element={<Layout><CoursesAvailable /></Layout>}
           />
           <Route
             path="AnyaTutorsMERN_Front/admin"

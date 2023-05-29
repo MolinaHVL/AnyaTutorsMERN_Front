@@ -3,7 +3,7 @@ import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, G
 import { useForm } from 'react-hook-form';
 import useUser from '../hooks/useStudent'
 import { getCourses, saveCourse } from '../api/CoursesAPI';
-import CourseModal from '../modals/CourseInfo';
+import CourseModal from '../modals/CourseInfoTeacher';
 
 
 function CoursesComponent() {
@@ -87,13 +87,13 @@ function CoursesComponent() {
                 <DialogContent>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <TextField id="titulo" style={{ marginBottom: '10px' }} label="Titulo" {...register('titulo', { required: true })} fullWidth />
-                        {errors && errors.title && <Typography>Este campo es requerido</Typography>}
+                        {errors && errors.titulo && <Typography>Este campo es requerido</Typography>}
 
                         <TextField id="materia" style={{ marginBottom: '10px' }} label="materia del curso" multiline {...register('materia', { required: true })} fullWidth />
-                        {errors && errors.description && <Typography>Este campo es requerido</Typography>}
+                        {errors && errors.materia && <Typography>Este campo es requerido</Typography>}
 
                         <TextField id="descripcion" style={{ marginBottom: '10px' }} label="Descripcion del Curso" multiline {...register('descripcion', { required: true })} fullWidth />
-                        {errors && errors.description && <Typography>Este campo es requerido</Typography>}
+                        {errors && errors.descripcion && <Typography>Este campo es requerido</Typography>}
 
                         <TextField id="imagenPortada" style={{ marginBottom: '10px' }} label="Imagen de portada (Opcional)" {...register('imagenPortada', { required: false })} fullWidth />
 
@@ -109,7 +109,7 @@ function CoursesComponent() {
                     </form>
                 </DialogContent>
             </Dialog>
-            <CourseModal open={modalOpen} handleClose={handleClose} course={selectedCourse} />
+            <CourseModal open={modalOpen} handleClose={handleClose} course={selectedCourse} user={student} />
         </Box>
     );
 }

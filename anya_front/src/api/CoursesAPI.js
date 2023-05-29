@@ -16,6 +16,38 @@ export const getCourses = async () => {
     }
 };
 
+export const getEnrolledCourses = async (id) => {
+    try {
+        const response = await fetch(SERVER_URL + "registered/" + id, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.status === 200) return response.json();
+        else return [];
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const getUnEnrolledCourses = async (id) => {
+    try {
+        const response = await fetch(SERVER_URL + "unregistered/" + id, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.status === 200) return response.json();
+        else return [];
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const saveCourse = async (Course) => {
     try {
         console.log(SERVER_URL)
@@ -34,15 +66,44 @@ export const saveCourse = async (Course) => {
     }
 };
 
-export const updateCourse = async (Course) => {
+
+export const addComment = async (Course, newComment) => {
     try {
         const response = await fetch(SERVER_URL + Course._id, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(Course),
+            body: JSON.stringify(newComment),
         });
 
-        if (response.status === 200) return response.json();
+        if (response.ok) return response.json();
+        else return false;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const enrollCourse = async (Course, student) => {
+    try {
+        const response = await fetch(SERVER_URL + "enroll/" + Course._id + "/" + student._id, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+        });
+
+        if (response.ok) return response.json();
+        else return false;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const unEnrollCourse = async (Course, student) => {
+    try {
+        const response = await fetch(SERVER_URL + "unEnroll/" + Course._id + "/" + student._id, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+        });
+
+        if (response.ok) return response.json();
         else return false;
     } catch (error) {
         console.log(error);

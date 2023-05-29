@@ -78,7 +78,7 @@ const Sidebar = () => {
 
           <li className='listItem'>
             {student && student.role === "Estudiante" && (
-              <Link to='#top' className='menuLink flex'>
+              <Link to='/AnyaTutorsMERN_Front/student' className='menuLink flex'>
                 <ImCalendar className='icon' />
                 <span className='smallText'>
                   Tutorias

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {
@@ -16,6 +16,8 @@ import {
     ListItemAvatar,
     ListItemText,
 } from '@mui/material';
+import { addComment } from '../api/CoursesAPI';
+
 
 const theme = createTheme({
     typography: {
@@ -52,23 +54,39 @@ const useStyles = makeStyles({
     },
 });
 
-const CourseModal = ({ open, handleClose, course }) => {
-    // const {
-    //     coverImage,
-    //     teacherProfileImage,
-    //     title,
-    //     description,
-    //     numVideos,
-    //     comments
-    // } = course;
+const CourseModal = ({ open, handleClose, course, user }) => {
 
-    const coverImage = "https://cdn.statically.io/img/timelinecovers.pro/facebook-cover/download/ultra-hd-space-facebook-cover.jpg"
-    const teacherProfileImage = "https://www.vectornator.io/blog/content/images/2022/03/611b830385d20348a9809a8e_Cover-Album-Covers--1-.png"
-    const title = "Curso mamalon"
-    const description = "Este curso es el mero mero, el que te va a traer un buen de morras a tus pies si sigues paso a paso como ser un macho alfa"
-    const numVideos = 3
-    const comments = [{ username: "Arshun", text: "Este curso funciona incluso antes de tomarlo alv" }]
+
+
+    const [inputValue, setInputValue] = useState("");
+
+    const [comments, setComments] = useState([])
+
+    const handleInputChange = (event) => {
+        setInputValue(event.target.value);
+    };
+
+    const handleSendMessage = async (course, profilePhoto, from, message) => {
+        const newComment = { profilePhoto: profilePhoto, from: from, message: message }
+        setComments([...comments, newComment])
+        setInputValue('')
+
+        await addComment(course, newComment)
+    };
+
     const classes = useStyles();
+
+    useEffect(() => {
+        if (course && course.comments) {
+            setComments(course.comments)
+        }
+    }, [course]);
+
+    if (!course) {
+        return null;
+    }
+
+
 
     return (
         <ThemeProvider theme={theme}>
@@ -76,16 +94,16 @@ const CourseModal = ({ open, handleClose, course }) => {
                 <DialogTitle>
                     <Grid container spacing={3} alignItems="center" className={classes.modalTitle}>
                         <Grid item>
-                            <Avatar src={coverImage} variant="square" style={{ width: '100px', height: '60px' }} />
+                            <Avatar src={course.imagenPortada} variant="square" style={{ width: '100px', height: '60px' }} />
                         </Grid>
                         <Grid item>
                             <Typography variant="h5" style={{ fontFamily: 'Poppins', color: '#004d7a' }}>
-                                {title}
+                                {course.titulo}
                             </Typography>
                             <Grid container alignItems="center">
-                                <Avatar src={teacherProfileImage} style={{ width: 30, height: 30 }} />
+                                <Avatar src={course.teacher.picture} style={{ width: 30, height: 30 }} />
                                 <Typography variant="subtitle1" style={{ marginLeft: 8, fontFamily: 'Poppins', color: '#0077b6' }}>
-                                    {numVideos} Videos
+                                    {course.videos.length} Video(s)
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -97,8 +115,8 @@ const CourseModal = ({ open, handleClose, course }) => {
                             <Typography variant="h6" style={{ marginBottom: '5px' }}>
                                 Descripción
                             </Typography>
-                            <Typography variant="body1" style={{ fontFamily: 'Poppins', color: '#023e8a', marginBottom: '10px'}}>
-                                {description}
+                            <Typography variant="body1" style={{ fontFamily: 'Poppins', color: '#023e8a', marginBottom: '10px' }}>
+                                {course.descripcion}
                             </Typography>
 
                             {/* Línea de separación */}
@@ -110,14 +128,20 @@ const CourseModal = ({ open, handleClose, course }) => {
                         </Grid>
                         <Grid container direction="column" style={{ textAlign: 'justify' }}>
                             <List>
-                                {comments.map((comment, index) => (
-                                    <ListItem key={index} style={{ padding: '0px' }}>
-                                        <ListItemAvatar>
-                                            <Avatar src={"https://res.cloudinary.com/practicaldev/image/fetch/s--LxmrVhLY--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/u1x7n8mbvor1nq6tcbk0.jpg"} />
-                                        </ListItemAvatar>
-                                        <ListItemText primary={comment.username} secondary={comment.text} />
-                                    </ListItem>
-                                ))}
+                                {comments.length === 0 ?
+                                    <Typography variant="body1" style={{ fontFamily: 'Poppins', color: '#023e8a' }}>
+                                        Este curso no tiene comentarios todavia...
+                                    </Typography>
+                                    :
+                                    comments.map((comment, index) => (
+                                        <ListItem key={index}>
+                                            <ListItemAvatar>
+                                                <Avatar src={comment.profilePhoto} />
+                                            </ListItemAvatar>
+                                            <ListItemText primary={comment.from} secondary={comment.message} />
+                                        </ListItem>
+                                    ))
+                                }
                             </List>
                         </Grid>
                         <TextField
@@ -129,6 +153,28 @@ const CourseModal = ({ open, handleClose, course }) => {
                             type="text"
                             id="comment"
                             style={{ fontFamily: 'Poppins' }}
+                            value={inputValue}
+                            onChange={handleInputChange}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' && !e.shiftKey) {
+
+                                    if (inputValue.trim() === '') {
+                                        e.preventDefault(); // Evitar el comportamiento por defecto de Enter (nueva línea)
+
+                                        const trimmedValue = inputValue.trim(); // Eliminar los espacios en blanco al inicio y al final
+
+                                        if (trimmedValue !== '') {
+
+
+                                            handleSendMessage(course, user.picture, user.nombre, inputValue);
+                                        }
+                                    } else {
+                                        e.preventDefault(); // Evitar el comportamiento por defecto de Enter (nueva línea)
+                                        // Función que maneja el envío del mensaje
+                                        handleSendMessage(course, user.picture, user.nombre, inputValue);
+                                    }
+                                }
+                            }}
                         />
                     </Grid>
                 </DialogContent>

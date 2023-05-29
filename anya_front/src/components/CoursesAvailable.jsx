@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, Grid, Paper, Typography, Box, Avatar } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import useUser from '../hooks/useStudent'
-import { getEnrolledCourses, saveCourse } from '../api/CoursesAPI';
-import CourseModal from '../modals/CourseInfoTeacher';
+import { getUnEnrolledCourses, saveCourse } from '../api/CoursesAPI';
+import CourseModal from '../modals/CourseInfoStudent';
 
 
-function CoursesComponent() {
+function CoursesAvailable() {
 
     const { student } = useUser();
 
@@ -27,7 +27,7 @@ function CoursesComponent() {
 
     useEffect(() => {
 
-        student && getEnrolledCourses(student._id).then(allCourses => setCourses(allCourses))
+        student && getUnEnrolledCourses(student._id).then(allCourses => setCourses(allCourses))
 
     }, [student]);
 
@@ -115,4 +115,4 @@ function CoursesComponent() {
     );
 }
 
-export default CoursesComponent;
+export default CoursesAvailable;
