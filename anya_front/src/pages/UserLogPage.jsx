@@ -64,7 +64,7 @@ const UserLogPage = () => {
                     display: "static",
                     marginX: "auto",
                     marginY: "5%",
-                    paddingX: "5%",
+                    paddingX: "0%", //Antes 5%
                     paddingTop: "7%",
                     paddingBottom: "5%",
                     color: "white",
@@ -113,7 +113,7 @@ const UserLogPage = () => {
                             textDecoration: 'none',
                             width: '40%',
                             padding: '3',
-                            fontSize: '13px',
+                            fontSize: '14px',
                             fontFamily: 'Poppins',
                             fontWeight: 'bold',
                             color: '', // Cambia el color a un tono más oscuro
@@ -131,7 +131,7 @@ const UserLogPage = () => {
                             // textDecoration: 'underline', 
                             width: '40%',
                             padding: '3',
-                            fontSize: '13px',
+                            fontSize: '15px',
                             fontFamily: 'Poppins',
                             fontWeight: 'bold',
                             color: '', // Cambia el color a un tono más oscuro
