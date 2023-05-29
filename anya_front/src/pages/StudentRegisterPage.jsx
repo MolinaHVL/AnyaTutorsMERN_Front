@@ -285,7 +285,7 @@ const RegisterForm = () => {
 
             await saveStudent({ ...form, uid });
 
-            navigate('/AnyaTutorsMERN_Front/student');
+            navigate('/AnyaTutorsMERN_Front/UserLogin');
 
         } catch (e) {
             let message = ''
@@ -329,13 +329,10 @@ const RegisterForm = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Paper elevation={1} style={{
-                marginLeft: 'auto',
-                marginRight: 'auto',
-                marginTop: '5%',
-                marginBottom: '5%',
+            <Paper elevation={1} sx={{
                 borderRadius: '15px',
-                padding: '10px 20px'
+                maxHeight: '90vh',
+                overflowY: 'auto',
             }}>
 
                 <Typography fontSize={"25px"} padding={'25px 0 0 0'} color={"Black"} fontFamily={'Poppins'} fontWeight={'bold'}>

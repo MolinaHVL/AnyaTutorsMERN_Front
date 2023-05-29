@@ -246,7 +246,7 @@ const RegisterForm = () => {
 
       await saveTeacher({ ...form, uid });
 
-      navigate('/AnyaTutorsMERN_Front/teacher');
+      navigate('/AnyaTutorsMERN_Front/UserLogin');
 
     } catch (e) {
       let message = ''
@@ -282,14 +282,18 @@ const RegisterForm = () => {
       case 1:
         return <StepTwo form={form} classes={classes} handleInputChange={handleInputChange} handleInputChangeForm={handleInputChangeForm} />;
       case 2:
-        return <StepThree form={form} setForm={setForm} classes={classes} />;
+        return <StepThree form={form} setForm={setForm} classes={classes} handleInputChange={handleInputChange} />;
       default:
         return 'Unknown step';
     }
   };
 
   return (
-    <Paper elevation={1}>
+    <Paper elevation={1} sx={{
+      borderRadius: '15px',
+      maxHeight: '90vh',
+      overflowY: 'auto',
+    }}>
       <Stepper activeStep={activeStep} alternativeLabel sx={{ pt: '15px' }}>
         {steps.map((label) => (
           <Step key={label}>
@@ -300,7 +304,7 @@ const RegisterForm = () => {
 
       {error && <Typography sx={{ color: "red" }}>{error}</Typography>}
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} sx={{ padding: '10px' }}>
         {getStepContent(activeStep)}
         <div>
           <Button disabled={activeStep === 0} onClick={handleBack}>
@@ -502,7 +506,7 @@ const StepOne = ({ form, classes, handleInputChange, hasCapitalLetter, hasNumber
   );
 };
 
-const StepThree = ({ form, setForm, classes }) => {
+const StepThree = ({ form, setForm, classes, handleInputChange }) => {
   return (
     <div className={classes.datosG}>
       <h3>Foto de perfil</h3>
@@ -558,6 +562,18 @@ const StepThree = ({ form, setForm, classes }) => {
             shrink: true,
           }}
           onChange={(e) => setForm({ ...form, dip: e.target.files[0] })}
+          sx={{ mt: '10px' }}
+        />
+        <CssTextField
+          className={classes.cajita}
+          id="descripcion"
+          label="Acerca de ti"
+          type="text"
+          multiline
+          rows={2}
+          variant="outlined"
+          value={form.descripcion || ''}
+          onChange={handleInputChange}
           sx={{ mt: '10px' }}
         />
       </div>

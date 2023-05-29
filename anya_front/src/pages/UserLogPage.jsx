@@ -29,10 +29,38 @@ const UserLogPage = () => {
 
     const handleLogIn = async (submit) => {
         try {
-            await signInWithEmailAndPassword(getAuth(), submit.email, submit.password);
+            const userCredential = await signInWithEmailAndPassword(getAuth(), submit.email, submit.password);
+
+            // Force a refresh of the ID token
+            await userCredential.user.getIdToken(true);
+
+            // get the ID token result
+            const idTokenResult = await userCredential.user.getIdTokenResult();
+
+            // access the custom claims
+            const claims = idTokenResult.claims;
+            let role = '';
+
+            // Determine the user's role from the custom claims
+            if (claims.Student) {
+                role = "Estudiante";
+            } else if (claims.Teacher) {
+                role = "Maestro";
+            } else if (claims.admin) {
+                role = "Admin";
+            }
+
+            // Redirect user based on role
+            if (role === "Estudiante") {
+                navigate('/AnyaTutorsMERN_Front/student');
+            } else if (role === "Maestro") {
+                navigate('/AnyaTutorsMERN_Front/teacher');
+            } else if (role === "Admin") {
+                navigate('/AnyaTutorsMERN_Front/admin');
+            }
+
         } catch (e) {
             let message = '';
-
             switch (e.message) {
                 case 'Firebase: Error (auth/invalid-email).':
                     message = 'Direccion de e-mail invalida, favor de cambiarla';
