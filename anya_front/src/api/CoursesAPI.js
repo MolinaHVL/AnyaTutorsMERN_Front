@@ -112,6 +112,7 @@ export const unEnrollCourse = async (Course, student) => {
 
 export const deleteCourse = async (id) => {
     try {
+        console.log('borrando curso...')
         const response = await fetch(SERVER_URL + id, { method: "DELETE" });
         return response.status === 204;
     } catch (error) {

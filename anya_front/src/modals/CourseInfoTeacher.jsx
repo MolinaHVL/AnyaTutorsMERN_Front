@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 import {
     Button,
     Dialog,
@@ -16,7 +17,7 @@ import {
     ListItemAvatar,
     ListItemText,
 } from '@mui/material';
-import { addComment } from '../api/CoursesAPI';
+import { addComment, deleteCourse } from '../api/CoursesAPI';
 
 
 const theme = createTheme({
@@ -56,7 +57,7 @@ const useStyles = makeStyles({
 
 const CourseModal = ({ open, handleClose, course, user }) => {
 
-
+    const navigate = useNavigate()
 
     const [inputValue, setInputValue] = useState("");
 
@@ -64,6 +65,17 @@ const CourseModal = ({ open, handleClose, course, user }) => {
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            await deleteCourse(id);
+            handleClose();
+            navigate('/AnyaTutorsMERN_Front/profile');
+        } catch (err) {
+            console.error(err);
+            // handle the error appropriately
+        }
     };
 
     const handleSendMessage = async (course, profilePhoto, from, message) => {
@@ -213,8 +225,11 @@ const CourseModal = ({ open, handleClose, course, user }) => {
                 </DialogContent>
                 <DialogActions>
                     <Grid container justifyContent='flex-end' className={classes.modalActions}>
-                        <Button onClick={handleClose} color="secondary" variant='outlined' className={classes.buttonsCustomized} style={{ margin: '0px 10px 15px 0px' }}>
+                        <Button onClick={handleClose} color="primary" variant='outlined' className={classes.buttonsCustomized} style={{ margin: '0px 10px 15px 0px' }}>
                             Cerrar
+                        </Button>
+                        <Button onClick={() => handleDelete(course._id)} color="secondary" variant='contained' className={classes.buttonsCustomized} style={{ margin: '0px 10px 15px 0px' }}>
+                            Borrar Curso
                         </Button>
                     </Grid>
                 </DialogActions>
