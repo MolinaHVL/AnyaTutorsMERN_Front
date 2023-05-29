@@ -338,13 +338,6 @@ const RegisterForm = () => {
         maxHeight: '90vh',
         overflowY: 'auto',
       }}>
-        <Stepper activeStep={activeStep} alternativeLabel sx={{ pt: '15px' }}>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
 
         <Typography fontSize={"25px"} padding={'25px 0 0 0'} color={"Black"} fontFamily={'Poppins'} fontWeight={'bold'}>
           Registro de Cuenta
