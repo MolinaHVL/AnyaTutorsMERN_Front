@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/AnyaTutorsMERN_Front/static/css/main.d4defdb1.css",
-    "main.js": "/AnyaTutorsMERN_Front/static/js/main.828bf095.js",
+    "main.js": "/AnyaTutorsMERN_Front/static/js/main.a756d35b.js",
     "static/media/logo.png": "/AnyaTutorsMERN_Front/static/media/logo.bc42b5177a2291f1aeff.png",
     "static/media/mountains_front.png": "/AnyaTutorsMERN_Front/static/media/mountains_front.b9f5ac84a4e59fe43b5e.png",
     "static/media/mountains_behind.png": "/AnyaTutorsMERN_Front/static/media/mountains_behind.c50cf728938a7cf57c1e.png",
@@ -9,10 +9,10 @@
     "static/media/Moon2.png": "/AnyaTutorsMERN_Front/static/media/Moon2.1f10a452ea5a241d765a.png",
     "index.html": "/AnyaTutorsMERN_Front/index.html",
     "main.d4defdb1.css.map": "/AnyaTutorsMERN_Front/static/css/main.d4defdb1.css.map",
-    "main.828bf095.js.map": "/AnyaTutorsMERN_Front/static/js/main.828bf095.js.map"
+    "main.a756d35b.js.map": "/AnyaTutorsMERN_Front/static/js/main.a756d35b.js.map"
   },
   "entrypoints": [
     "static/css/main.d4defdb1.css",
-    "static/js/main.828bf095.js"
+    "static/js/main.a756d35b.js"
   ]
 }
