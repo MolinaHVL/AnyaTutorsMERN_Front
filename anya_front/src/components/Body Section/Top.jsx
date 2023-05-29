@@ -38,7 +38,7 @@ const Top = () => {
 
       </div>
 
-      <div className="cardSection flex">
+      {/* <div className="cardSection flex">
         <div className="rightCard flex">
           <div className='textCont'>
             <div className='circle3'></div>
@@ -56,7 +56,7 @@ const Top = () => {
         </div>
 
 
-      </div>
+      </div> */}
     </div>
   )
 
