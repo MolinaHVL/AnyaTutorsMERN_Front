@@ -57,3 +57,17 @@ export const deleteTeacher = async (id) => {
         console.log(error);
     }
 };
+
+export const getSingleTeacher = async (teacher) => {
+    try {
+        const response = await fetch(SERVER_URL + teacher.email, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+        });
+
+        if (response.status === 200) return response.json();
+        else return false;
+    } catch (error) {
+        console.log(error);
+    }
+};

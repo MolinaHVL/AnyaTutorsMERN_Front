@@ -27,6 +27,7 @@ const AllStudents = () => {
                     <Grid item xs={12} sm={6} md={4} key={student._id}>
                         <StudentInfo
                             student={student}
+                            rol={"Estudiante"}
                         />
                     </Grid>
                 );

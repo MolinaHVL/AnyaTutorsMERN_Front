@@ -1,24 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, Grid, Paper, Typography, Box } from '@mui/material';
+import { useForm } from 'react-hook-form';
+import useUser from '../hooks/useStudent'
+import { getCourses, saveCourse } from '../api/CoursesAPI';
+
 
 function CoursesComponent() {
+
+    const { student } = useUser();
+
     const [show, setShow] = useState(false);
     const [courses, setCourses] = useState([]);
-    const [courseName, setCourseName] = useState('');
-    const [courseDescription, setCourseDescription] = useState('');
-    const [courseURLs, setCourseURLs] = useState('');
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const handleSubmit = () => {
-        const newCourse = { courseName, courseDescription, courseURLs };
-        setCourses([...courses, newCourse]);
-        setCourseName('');
-        setCourseDescription('');
-        setCourseURLs('');
-        handleClose();
-    }
+    const { register, handleSubmit, errors } = useForm();
+    const [videos, setVideos] = useState([""]);
+
+    useEffect(() => {
+
+        getCourses().then(allCourses => setCourses(allCourses))
+
+    }, []);
+
+    const onSubmit = async (data) => {
+        const videoObjects = videos.map(video => ({ url: video }));
+        const course = { ...data, idMaestro: student._id, videos: videoObjects }
+        console.log(course)
+        const savedCourse = await saveCourse(course)
+        console.log(savedCourse)
+
+    };
+
+    const addVideoField = () => {
+        setVideos([...videos, ""]);
+    };
+
+    const handleVideoChange = (event, index) => {
+        const newVideos = [...videos];
+        newVideos[index] = event.target.value;
+        setVideos(newVideos);
+    };
 
     return (
         <Box
@@ -38,9 +61,10 @@ function CoursesComponent() {
                     : courses.map((course, index) => (
                         <Grid item xs={4} key={index}>
                             <Paper elevation={3}>
-                                <Typography variant="h5">{course.courseName}</Typography>
-                                <Typography variant="body1">{course.courseDescription}</Typography>
-                                <Typography variant="body2">{course.courseURLs}</Typography>
+                                <Typography variant="h5">{course.titulo}</Typography>
+                                <Typography variant="body1">{course.materia}</Typography>
+                                <Typography variant="body2">{course.descripcion}</Typography>
+                                <Typography variant="body2">{course.videos[0].url}</Typography>
                             </Paper>
                         </Grid>
                     ))
@@ -54,45 +78,29 @@ function CoursesComponent() {
             <Dialog open={show} onClose={handleClose}>
                 <DialogTitle>Agregar un nuevo curso</DialogTitle>
                 <DialogContent>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="Nombre del curso"
-                        type="text"
-                        fullWidth
-                        value={courseName}
-                        onChange={(e) => setCourseName(e.target.value)}
-                    />
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="description"
-                        label="Descripción"
-                        type="text"
-                        fullWidth
-                        value={courseDescription}
-                        onChange={(e) => setCourseDescription(e.target.value)}
-                    />
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="urls"
-                        label="URLs"
-                        type="text"
-                        fullWidth
-                        value={courseURLs}
-                        onChange={(e) => setCourseURLs(e.target.value)}
-                    />
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <TextField id="titulo" style={{ marginBottom: '10px' }} label="Titulo" {...register('titulo', { required: true })} fullWidth />
+                        {errors && errors.title && <Typography>Este campo es requerido</Typography>}
+
+                        <TextField id="materia" style={{ marginBottom: '10px' }} label="materia del curso" multiline {...register('materia', { required: true })} fullWidth />
+                        {errors && errors.description && <Typography>Este campo es requerido</Typography>}
+
+                        <TextField id="descripcion" style={{ marginBottom: '10px' }} label="Descripcion del Curso" multiline {...register('descripcion', { required: true })} fullWidth />
+                        {errors && errors.description && <Typography>Este campo es requerido</Typography>}
+
+                        <TextField id="imagenPortada" style={{ marginBottom: '10px' }} label="Imagen de portada (Opcional)" {...register('imagenPortada', { required: false })} fullWidth />
+
+                        <Typography>Videos:</Typography>
+                        {videos.map((video, index) => (
+                            <TextField key={index} style={{ marginBottom: '10px' }} label={`Video URL ${index + 1}`} value={video} onChange={(event) => handleVideoChange(event, index)} fullWidth />
+                        ))}
+
+                        <DialogActions>
+                            <Button variant="contained" color="primary" onClick={addVideoField}>Agregar otro video</Button>
+                            <Button type="submit" variant="contained" color="secondary">Crear curso</Button>
+                        </DialogActions>
+                    </form>
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} color="secondary">
-                        Cerrar
-                    </Button>
-                    <Button onClick={handleSubmit} color="primary">
-                        Guardar Cambios
-                    </Button>
-                </DialogActions>
             </Dialog>
         </Box>
     );

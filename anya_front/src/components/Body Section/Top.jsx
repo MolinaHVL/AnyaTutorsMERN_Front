@@ -17,7 +17,7 @@ const Top = () => {
     <div className='topSection'>
       <div className="headerSection flex">
         <div className="title">
-          <h1>Bienvenido Estudiante</h1>
+          <h1>Bienvenido {student && student.role}</h1>
           <p>Hola {student && student.nombre}</p>
         </div>
 
@@ -38,25 +38,6 @@ const Top = () => {
 
       </div>
 
-      <div className="cardSection flex">
-        <div className="rightCard flex">
-          <div className='textCont'>
-            <div className='circle3'></div>
-            <div className='circle4'></div>
-          </div>
-
-          {student
-            ?
-            <h1>Resuelve tus dudas con AnyaTutors</h1>
-            :
-            <h1>Por favor inicia Sesión</h1>
-          }
-
-
-        </div>
-
-
-      </div>
     </div>
   )
 

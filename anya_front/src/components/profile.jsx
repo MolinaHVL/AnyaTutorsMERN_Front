@@ -34,7 +34,7 @@ const UserProfile = () => {
             <Card className={classes.card}>
                 <CardContent>
                     <Avatar className={classes.avatar} src={displayData(student.picture)} />
-                    <Typography variant="h5" className={classes.title}>Perfil del Estudiante</Typography>
+                    <Typography variant="h5" className={classes.title}>Perfil del {student.role}</Typography>
                     <Typography variant="body1"><strong>Nombre:</strong> {displayData(student.nombre)}</Typography>
                     <Typography variant="body1"><strong>Apellido Paterno:</strong> {displayData(student.apellidoP)}</Typography>
                     <Typography variant="body1"><strong>Apellido Materno:</strong> {displayData(student.apellidoM)}</Typography>

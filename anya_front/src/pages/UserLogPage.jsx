@@ -16,11 +16,11 @@ const UserLogPage = () => {
 
     useEffect(() => {
         if (student) {
-            if (student.token.Student) {
+            if (student.role === "Estudiante") {
                 navigate('/AnyaTutorsMERN_Front/student');
-            } else if (student.token.Teacher) {
+            } else if (student.role === "Maestro") {
                 navigate('/AnyaTutorsMERN_Front/teacher');
-            } else if (student.token.admin) {
+            } else if (student.role === "Admin") {
                 navigate('/AnyaTutorsMERN_Front/admin');
             }
         }

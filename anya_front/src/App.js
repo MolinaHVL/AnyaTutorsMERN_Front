@@ -12,6 +12,8 @@ import StudentRegisterPage from './pages/StudentRegisterPage';
 import TeacherRegisterPage from './pages/TeacherRegisterPage';
 import CoursesComponent from './components/TeacherCourses';
 import UserProfile from './components/profile';
+import StudentCourses from './components/StudentCourses';
+import AllTeachers from './components/AllTeachers';
 
 
 
@@ -66,6 +68,10 @@ function App() {
             element={<Layout><AllStudents /></Layout>}
           />
           <Route
+            path='AnyaTutorsMERN_Front/ListTeachers'
+            element={<Layout><AllTeachers /></Layout>}
+          />
+          <Route
             path='AnyaTutorsMERN_Front/student'
             element={<Layout><TeacherList /></Layout>}
           />
@@ -81,6 +87,11 @@ function App() {
             path='AnyaTutorsMERN_Front/profile'
             element={<Layout><UserProfile /></Layout>}
           />
+          <Route
+            path='AnyaTutorsMERN_Front/studentCourses'
+            element={<Layout><StudentCourses /></Layout>}
+          />
+
         </Routes>
 
       </div>

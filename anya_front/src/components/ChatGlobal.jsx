@@ -60,8 +60,8 @@ const Chat = () => {
                             {messages.map((message, index) => (
                                 <Box key={index} display="flex" alignItems="center" p={2}>
                                     <Avatar src={message.sender[1]}>{message.sender[0][0]}</Avatar>
-                                    <Box ml={2}>
-                                        <Typography variant="body1">{message.sender[0]}</Typography>
+                                    <Box ml={2} textAlign={'left'}>
+                                        <Typography variant="body1"><strong>{message.sender[0]}</strong> [{student.role}]</Typography>
                                         <Typography variant="body2">{message.text}</Typography>
                                     </Box>
                                 </Box>

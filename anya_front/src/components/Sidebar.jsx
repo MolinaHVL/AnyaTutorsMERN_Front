@@ -28,10 +28,6 @@ const Sidebar = () => {
 
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    navigate('/AnyaTutorsMERN_Front/userLogIn')
-  }
-
   const handleLogout = async () => {
     await signOut(auth)
       .then(() => {
@@ -57,6 +53,7 @@ const Sidebar = () => {
         </h3>
 
         <ul className='menuLists grid'>
+
           <li className='listItem'>
             {student && (
               <Link to='/AnyaTutorsMERN_Front/profile' className='menuLink flex'>
@@ -69,7 +66,18 @@ const Sidebar = () => {
           </li>
 
           <li className='listItem'>
-            {student && (
+            {student && student.role === "Admin" && (
+              <Link to='/AnyaTutorsMERN_Front/admin' className='menuLink flex'>
+                <IoMdContact className='icon' />
+                <span className='smallText'>
+                  Admin
+                </span>
+              </Link>
+            )}
+          </li>
+
+          <li className='listItem'>
+            {student && student.role === "Estudiante" && (
               <Link to='#top' className='menuLink flex'>
                 <ImCalendar className='icon' />
                 <span className='smallText'>
@@ -88,7 +96,7 @@ const Sidebar = () => {
                 </span>
               </Link>
             ) : (
-              <Link to='#top' className='menuLink flex' onClick={handleLogin}>
+              <Link to='/AnyaTutorsMERN_Front/userLogIn' className='menuLink flex'>
                 <CiPower className='icon' />
                 <span className='smallText'>
                   Iniciar sesión
@@ -96,36 +104,36 @@ const Sidebar = () => {
               </Link>
             )}
           </li>
+
+
+          <li className='listItem'>
+            <Link to='/AnyaTutorsMERN_Front/chat' className='menuLink flex'>
+              <IoLanguageOutline className='icon' />
+              <span className='smallText'>
+                Chat Global
+              </span>
+            </Link>
+          </li>
+
+          <li className='listItem'>
+            {student && student.role === "Estudiante" &&
+              <Link to='/AnyaTutorsMERN_Front/studentCourses' className='menuLink flex'>
+                <IoCardOutline className='icon' />
+                <span className='smallText'>
+                  Mis cursos
+                </span>
+              </Link>}
+
+            {student && student.role === "Maestro" && <Link to='/AnyaTutorsMERN_Front/teacher' className='menuLink flex'>
+              <IoCardOutline className='icon' />
+              <span className='smallText'>
+                Mis cursos
+              </span>
+            </Link>}
+          </li>
         </ul>
       </div>
 
-      {student && (
-        <div className="settingsDiv">
-          <h3 className='divTitle'>
-            Configuracion
-          </h3>
-
-          <ul className='menuLists grid'>
-            <li className='listItem'>
-              <Link to='/AnyaTutorsMERN_Front/chat' className='menuLink flex'>
-                <IoLanguageOutline className='icon' />
-                <span className='smallText'>
-                  Chat Global
-                </span>
-              </Link>
-            </li>
-
-            <li className='listItem'>
-              <Link to='#top' className='menuLink flex'>
-                <IoCardOutline className='icon' />
-                <span className='smallText'>
-                  Tarjetas
-                </span>
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
 
       <div className='sideBarCard'>
         <IoHelpCircleOutline className="icon" />

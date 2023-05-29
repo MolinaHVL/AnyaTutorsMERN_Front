@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 
 
-const StudentInfo = ({ student }) => {
+const StudentInfo = ({ student, rol }) => {
     return (
         <Box
             sx={{
@@ -38,7 +38,7 @@ const StudentInfo = ({ student }) => {
                 </Stack>
                 <Stack spacing={1} sx={{ width: 1 }}>
                     <Typography fontSize={16} fontFamily={'Poppins'} sx={{ fontWeight: 'bold' }}>Rol:</Typography>
-                    <Typography fontSize={20} fontFamily={'Poppins'}>Estudiante</Typography>
+                    <Typography fontSize={20} fontFamily={'Poppins'}>{rol}</Typography>
                 </Stack>
             </Stack>
         </Box>
