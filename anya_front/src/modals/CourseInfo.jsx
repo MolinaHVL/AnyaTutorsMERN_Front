@@ -30,8 +30,8 @@ const useStyles = makeStyles({
         width: '120px',
         padding: '3',
         fontSize: '13px',
-        fontWeight: 'bold',
-        color: '',
+        // fontWeight: 'bold',
+        // color: '',
     },
     modalTitle: {
         width: '100%',
@@ -134,7 +134,7 @@ const CourseModal = ({ open, handleClose, course }) => {
                 </DialogContent>
                 <DialogActions>
                     <Grid container justifyContent='flex-end' className={classes.modalActions}>
-                        <Button onClick={handleClose} color="secondary" variant='outlined' className={classes.buttonsCustomized} style={{ margin: '0px 10px 15px 0px' }}>
+                        <Button onClick={handleClose} color="primary" variant='outlined' className={classes.buttonsCustomized} style={{ margin: '0px 10px 15px 0px' }}>
                             Cerrar
                         </Button>
                         <Button color='secondary' variant="contained" className={classes.buttonsCustomized} style={{ margin: '0px 15px 15px 0px' }}>
