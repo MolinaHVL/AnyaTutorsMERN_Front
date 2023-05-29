@@ -12,9 +12,15 @@ function CoursesComponent() {
 
     const [show, setShow] = useState(false);
     const [courses, setCourses] = useState([]);
+    const [selectedCourse, setSelectedCourse] = useState(null);
+    const [modalOpen, setModalOpen] = useState(false);
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => { setShow(false); setModalOpen(false); };
     const handleShow = () => setShow(true);
+    const handleCourseClick = (course) => {
+        setSelectedCourse(course);
+        setModalOpen(true);
+    };
 
     const { register, handleSubmit, errors } = useForm();
     const [videos, setVideos] = useState([""]);
@@ -60,7 +66,7 @@ function CoursesComponent() {
                 {courses.length === 0
                     ? <Typography variant="h6">Tu no tienes ningun curso todavia</Typography>
                     : courses.map((course, index) => (
-                        <Grid item xs={4} key={index}>
+                        <Grid item xs={4} key={index} onClick={() => handleCourseClick(course)}>
                             <Paper elevation={3}>
                                 <Avatar src={course.teacher.picture} style={{ width: 30, height: 30 }} />
                                 <Typography variant="h5">{course.titulo}</Typography>
@@ -76,7 +82,7 @@ function CoursesComponent() {
                 Agregar un nuevo curso
             </Button>
 
-            {/* <Dialog open={show} onClose={handleClose}>
+            <Dialog open={show} onClose={handleClose}>
                 <DialogTitle>Agregar un nuevo curso</DialogTitle>
                 <DialogContent>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -102,8 +108,8 @@ function CoursesComponent() {
                         </DialogActions>
                     </form>
                 </DialogContent>
-            </Dialog> */}
-            <CourseModal open={show} handleClose={handleClose} />
+            </Dialog>
+            <CourseModal open={modalOpen} handleClose={handleClose} course={selectedCourse} />
         </Box>
     );
 }
