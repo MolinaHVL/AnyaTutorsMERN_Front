@@ -76,7 +76,7 @@ const CourseModal = ({ open, handleClose, course }) => {
                 <DialogTitle>
                     <Grid container spacing={3} alignItems="center" className={classes.modalTitle}>
                         <Grid item>
-                            <Avatar src={coverImage} variant="square" style={{ width: '100px', height: '60px' }} />
+                            <Avatar src={coverImage} variant="square" style={{ width: '100px', height: '60px', borderRadius: '5px'}} />
                         </Grid>
                         <Grid item>
                             <Typography variant="h5" style={{ fontFamily: 'Poppins', color: '#004d7a' }}>

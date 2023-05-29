@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, Grid, Paper, Typography, Box, Avatar } from '@mui/material';
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, Grid, Paper, Typography, Box, Avatar, Card, CardContent, } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useForm } from 'react-hook-form';
@@ -58,6 +58,8 @@ function CoursesComponent() {
         },
     });
 
+    const coverImage = "https://cdn.statically.io/img/timelinecovers.pro/facebook-cover/download/ultra-hd-space-facebook-cover.jpg"
+
     return (
         <ThemeProvider theme={theme}>
             <Box
@@ -68,28 +70,69 @@ function CoursesComponent() {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    // justifyContent: 'center', //Para centrar el contenido verticalmente
+                    padding: '30px 20px',
                 }}
             >
+                <Grid container direction="column" justifyContent="center">
+                    <Grid item>
+                        <Typography variant="h5" style={{fontSize: '26px' }}>Mis cursos</Typography>
+                    </Grid>
+                    <Grid item style={{ margin: '20px 0px', justifyContent:'flex-end' }}>
+                        <Button variant="outlined" color="primary" onClick={handleShow}>
+                            Agregar un nuevo curso
+                        </Button>
+                    </Grid>
+                </Grid>
+
                 <Grid container spacing={2} justifyContent="center">
                     {courses.length === 0
-                        ? <Typography variant="h5">Tu no tienes ningun curso todavia</Typography>
+                        ? <Typography variant="h6">Tu no tienes ningun curso todavia</Typography>
                         : courses.map((course, index) => (
-                            <Grid item xs={4} key={index} onClick={() => handleCourseClick(course)}>
-                                <Paper elevation={3}>
-                                    <Avatar src={course.teacher.picture} style={{ width: 30, height: 30 }} />
-                                    <Typography variant="h5">{course.titulo}</Typography>
-                                    <Typography variant="body1">Maestro: {course.teacher.nombre}</Typography>
-                                    <Typography variant="body1">Materia: {course.materia}</Typography>
-                                </Paper>
-                            </Grid>
+
+                            <Card style={{
+                                width: '20%',
+                                // height: '150px',
+                                minWidth: '250px',
+                                margin: '10px',
+                                padding: '15px 20px',
+                                textAlign: 'center',
+                                marginTop: '20px',
+                                borderRadius: '30px',
+                            }} onClick={() => handleCourseClick(course)}>
+
+                                <Grid item xs={12} key={index}>
+                                    <Grid container direction="column" style={{ textAlign: 'justify' }}>
+                                        <Grid item xs={6}>
+                                            <Avatar src={coverImage} variant="square" style={{ width: '100%', height: '60px', borderRadius: '30px 5px 30px 5px', }} />
+                                        </Grid>
+                                        <Grid item xs={6} style={{ margin: '10px 0px 10px 0px' }}>
+                                            <Typography variant="h5">{course.titulo}</Typography>
+
+                                            <Grid container direction="row" style={{ textAlign: 'left' }}>
+                                                <Grid item xs={12}>
+                                                    <Typography variant="body1" ><strong>Materia: </strong>{course.materia}</Typography>
+
+                                                    <Grid container direction="row" style={{ marginTop: '10px' }}>
+                                                        <Grid item xs={1}>
+                                                            <Avatar src={course.teacher.picture} style={{ width: '100%', height: '20px' }} />
+                                                        </Grid>
+                                                        <Grid item xs={11} style={{ paddingLeft: '8px' }}>
+                                                            <Typography variant="body1"><strong>Maestro: </strong>{`${course.teacher.nombre} ${course.teacher.apellidoP}`}</Typography>
+                                                        </Grid>
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
+
+
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Card>
+
                         ))
                     }
                 </Grid>
-
-                <Button variant="outlined" color="primary" onClick={handleShow} sx={{ mt: 3 }}>
-                    Agregar un nuevo curso
-                </Button>
 
                 <Dialog open={show} onClose={handleClose}>
                     <DialogTitle>
