@@ -14,6 +14,7 @@ import UserProfile from './components/profile';
 import StudentCourses from './components/StudentCourses';
 import AllTeachers from './components/AllTeachers';
 import CoursesAvailable from './components/CoursesAvailable';
+import Dashboard from './components/Dashboard';
 
 
 
@@ -90,6 +91,10 @@ function App() {
           <Route
             path='AnyaTutorsMERN_Front/studentCourses'
             element={<Layout><StudentCourses /></Layout>}
+          />
+          <Route
+            path='AnyaTutorsMERN_Front/dashboard'
+            element={<Dashboard />}
           />
 
         </Routes>
